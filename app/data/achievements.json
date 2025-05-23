@@ -1,0 +1,102 @@
+{
+  "achievements": [
+    {
+      "id": "tv-platform",
+      "companyId": "brightland",
+      "title": "TV Signage Platform Transformation",
+      "description": "Led a major initiative to overhaul the outdated TV signage platform, saving $299,000 by implementing a $200 mini PC solution instead of $2,500 TV units. Rebuilt the TV signage website from scratch, adding QR code lead capture functionality and admin tools for cross-selling across multiple communities.",
+      "year": 2023
+    },
+    {
+      "id": "cms-development",
+      "companyId": "brightland",
+      "title": "Custom CMS Development",
+      "description": "Led the development of a custom Content Management System (ARC) and multiple corporate websites, supporting over $1 billion in annual revenue. These platforms power marketing operations by significantly enhancing lead generation, website traffic, and platform scalability.",
+      "year": 2023
+    },
+    {
+      "id": "maps-optimization",
+      "companyId": "gehan",
+      "title": "Google Maps API Optimization",
+      "description": "Strategically optimized Google Maps API implementation, achieving $50,000 in annual cost savings and redirecting funds to other key initiatives.",
+      "year": 2022
+    },
+    {
+      "id": "in-house-dev",
+      "companyId": "gehan",
+      "title": "In-House Development",
+      "description": "Implemented website and ARC features in-house, saving $40,000 (equivalent to eight weeks of agency work). Implemented GIT version control for all in-house web projects, significantly improving project stability and team collaboration.",
+      "year": 2022
+    },
+    {
+      "id": "vendor-reduction",
+      "companyId": "gehan",
+      "title": "Vendor Dependency Reduction",
+      "description": "Reduced third-party vendor dependency by proactively taking on in-house development, saving an estimated $30,000 annually in contractor costs.",
+      "year": 2022
+    },
+    {
+      "id": "website-performance",
+      "companyId": "gehan",
+      "title": "Website Performance Optimization",
+      "description": "Doubled PageSpeed Insights scores from 30 to 60 points and increased user engagement time by 40%. Enhanced website security by reducing vulnerabilities by 30% through rigorous QA testing methodologies.",
+      "year": 2022
+    },
+    {
+      "id": "platform-integrations",
+      "companyId": "gehan",
+      "title": "Platform Integrations",
+      "description": "Engineered robust integrations with HubSpot, Zillow, Realtor.com, Facebook, and Google Ads, utilizing Node.js Express for REST API development. These integrations enhanced lead generation, enabled dynamic advertising capabilities, and synchronized data seamlessly across platforms.",
+      "year": 2022
+    },
+    {
+      "id": "marketing-productivity",
+      "companyId": "gehan",
+      "title": "Marketing Productivity Enhancement",
+      "description": "Boosted marketing productivity by 15% through CRM enhancements and automated workflows. Designed programmable CRM modules and custom objects within HubSpot, streamlining designer workflows and automating inventory pricing emails.",
+      "year": 2022
+    },
+    {
+      "id": "lead-generation",
+      "companyId": "gehan",
+      "title": "Lead Generation Optimization",
+      "description": "Increased lead generation by 10% through dynamic landing pages and optimized promotional processes. Created dynamic landing pages that integrated promotional data seamlessly with HubSpot and TV platforms.",
+      "year": 2022
+    },
+    {
+      "id": "newblue-web-dev",
+      "companyId": "newblue",
+      "title": "Marketing-Driven Web Development",
+      "description": "Leveraged WordPress, JavaScript, PHP, and MySQL to build and manage responsive websites. Developed custom WordPress modules, streamlining workflows between marketing and development teams, accelerating project delivery speed by 10%.",
+      "year": 2019
+    },
+    {
+      "id": "newblue-analytics",
+      "companyId": "newblue",
+      "title": "Analytics Implementation",
+      "description": "Utilized Google Analytics, Google Ads, and Tag Manager to analyze user behavior, resulting in a 12% increase in click-through rates. Conducted meticulous manual web testing and proposed innovative features based on reporting metrics.",
+      "year": 2019
+    },
+    {
+      "id": "avacomtech-sales",
+      "companyId": "avacomtech",
+      "title": "E-commerce Growth",
+      "description": "Drove substantial e-commerce growth by optimizing product listings, leading to a remarkable 259% sales increase within the first three months.",
+      "year": 2017
+    },
+    {
+      "id": "ufeelgood-expansion",
+      "companyId": "ufeelgood",
+      "title": "Sales Channel Expansion",
+      "description": "Successfully expanded sales channels to Amazon EU, eBay, Walmart, Newegg, Shopify, and Magento, increasing revenue by an average of 30% year-over-year.",
+      "year": 2015
+    },
+    {
+      "id": "ufeelgood-seo",
+      "companyId": "ufeelgood",
+      "title": "SEO Strategy Implementation",
+      "description": "Developed SEO-focused marketing strategies that boosted product visibility by 18%, attracting more users to listings.",
+      "year": 2015
+    }
+  ]
+} 

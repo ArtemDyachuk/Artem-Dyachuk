@@ -1,0 +1,179 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-card);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 3px var(--color-card-shadow);
+  border-bottom: 1px solid var(--color-border);
+  z-index: 10000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--color-primary-hover);
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--color-primary);
+}
+
+.link.active {
+  color: var(--color-primary);
+}
+
+.link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.themeToggleWrapper {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  z-index: 10001;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .links,
+  .themeToggleWrapper {
+    display: none;
+  }
+}
+
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.drawerOverlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 80vw;
+  max-width: 320px;
+  background: var(--color-bg-card);
+  box-shadow: -2px 0 12px rgba(0,0,0,0.18);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.drawerOverlay.open .drawer {
+  transform: translateX(0);
+}
+
+.drawerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.drawerThemeToggle {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.hamburgerIcon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.bar {
+  display: block;
+  position: absolute;
+  left: 4px;
+  width: 24px;
+  height: 3px;
+  background: #2563eb;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s, top 0.3s, background 0.3s;
+}
+
+.bar:nth-child(1) {
+  top: 8px;
+}
+.bar:nth-child(2) {
+  top: 15px;
+}
+.bar:nth-child(3) {
+  top: 22px;
+}
+
+.barTopOpen {
+  transform: translateY(7px) rotate(45deg);
+}
+.barMidOpen {
+  opacity: 0;
+}
+.barBotOpen {
+  transform: translateY(-7px) rotate(-45deg);
+} 

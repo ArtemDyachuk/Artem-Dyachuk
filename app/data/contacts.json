@@ -1,0 +1,22 @@
+{
+  "contacts": [
+    {
+      "type": "email",
+      "value": "contact@artemdyachuk.com"
+    },
+    {
+      "type": "phone",
+      "value": "347-323-0608"
+    },
+    {
+      "type": "link",
+      "value": "https://github.com/TommyCardello",
+      "linkType": "GitHub"
+    },
+    {
+      "type": "link",
+      "value": "https://www.linkedin.com/in/artem-dyachuk",
+      "linkType": "LinkedIn"
+    }
+  ]
+}

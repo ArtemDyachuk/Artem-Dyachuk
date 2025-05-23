@@ -1,13 +1,16 @@
 .main {
   min-height: 100vh;
+  background: var(--color-bg);
 }
 
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: var(--color-bg);
   display: flex;
   align-items: center;
-  padding: 4rem 0;
+  justify-content: center;
+  padding-top: 64px;
+  padding-bottom: 0;
 }
 
 .container {
@@ -26,21 +29,28 @@
 .heroTitle {
   font-size: 3rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--color-text);
   margin-bottom: 1.5rem;
 }
 
 .heroSubtitle {
   font-size: 1.5rem;
-  color: #2563eb;
+  color: var(--color-primary);
   margin-bottom: 2rem;
 }
 
 .heroDescription {
   font-size: 1.25rem;
-  color: #4b5563;
+  color: var(--color-text-secondary);
   margin-bottom: 2.5rem;
   line-height: 1.6;
+}
+
+.ctaContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
 }
 
 .ctaButton {
@@ -49,13 +59,14 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: #2563eb;
+  background-color: var(--color-primary);
   border-radius: 9999px;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .ctaButton:hover {
-  background-color: #22c55e;
+  background-color: var(--color-primary-hover);
   transform: translateY(-2px);
 }
 
@@ -79,16 +90,16 @@
 .statNumber {
   font-size: 2.25rem;
   font-weight: 700;
-  color: #2563eb;
+  color: var(--color-primary);
 }
 
 .statLabel {
-  color: #4b5563;
+  color: var(--color-text-secondary);
 }
 
 .experience {
   padding: 4rem 0;
-  background-color: #f8f9fa;
+  background-color: var(--color-form-bg);
 }
 
 .sectionTitle {
@@ -96,6 +107,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 3rem;
+  color: var(--color-text);
 }
 
 .accordionItem {
@@ -108,14 +120,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  background-color: #ffffff;
+  background-color: var(--color-bg-card);
   border-radius: 0.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px var(--color-card-shadow);
   transition: box-shadow 0.3s ease;
 }
 
 .accordionButton:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--color-card-shadow);
 }
 
 .accordionButton.active {
@@ -131,18 +143,19 @@
 
 .roleTitle {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .companyInfo,
 .period {
-  color: #6b7280;
+  color: var(--color-text-secondary);
 }
 
 .accordionContent {
   padding: 1.5rem;
-  background-color: #ffffff;
+  background-color: var(--color-bg-card);
   border-radius: 0 0 0.5rem 0.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px var(--color-card-shadow);
 }
 
 .achievements {
@@ -153,6 +166,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  color: var(--color-text);
 }
 
 .achievementsList {
@@ -164,6 +178,7 @@
 .achievementsList li {
   display: flex;
   align-items: flex-start;
+  color: var(--color-text-secondary);
 }
 
 .checkmark {
@@ -185,26 +200,28 @@
 }
 
 .card {
-  background-color: #ffffff;
+  background-color: var(--color-bg-card);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px var(--color-card-shadow);
   transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--color-card-shadow);
 }
 
 .cardTitle {
   font-weight: 600;
   margin-bottom: 1rem;
+  color: var(--color-text);
 }
 
 .cardList {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  color: var(--color-text-secondary);
 }
 
 .timeline {
@@ -216,7 +233,7 @@
 .timelineItem {
   position: relative;
   padding-left: 1.5rem;
-  border-left: 2px solid #2563eb;
+  border-left: 2px solid var(--color-primary);
 }
 
 .timelineItem::before {
@@ -227,15 +244,16 @@
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  background-color: #2563eb;
+  background-color: var(--color-primary);
 }
 
 .timelineTitle {
   font-weight: 600;
+  color: var(--color-text);
 }
 
 .timelineCompany {
-  color: #6b7280;
+  color: var(--color-text-secondary);
 }
 
 .timelineList {
@@ -243,4 +261,90 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+.experiencePreview {
+  padding: 4rem 0;
+  background-color: var(--color-form-bg);
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.experienceCard {
+  background: var(--color-bg-card);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px var(--color-card-shadow);
+  transition: transform 0.2s ease-in-out;
+}
+
+.experienceCard:hover {
+  transform: translateY(-4px);
+}
+
+.experienceCard h3 {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.experienceCard .company {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.experienceCard .period {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.experienceCard .highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experienceCard .highlights li {
+  color: var(--color-text-secondary);
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.experienceCard .highlights li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.experienceCta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.secondaryButton {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
 } 

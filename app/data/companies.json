@@ -1,0 +1,52 @@
+{
+  "companies": [
+    {
+      "id": "brightland",
+      "name": "Brightland Homes",
+      "startYear": 2023,
+      "endYear": null,
+      "location": "Addison, TX",
+      "jobTitle": "Digital Product Manager"
+    },
+    {
+      "id": "gehan",
+      "name": "Gehan Homes/Brightland Homes",
+      "startYear": 2020,
+      "endYear": 2023,
+      "location": "Addison, TX",
+      "jobTitle": "Web Specialist"
+    },
+    {
+      "id": "newblue",
+      "name": "NewBlue Inc.",
+      "startYear": 2019,
+      "endYear": 2020,
+      "location": "San Diego, CA",
+      "jobTitle": "Digital Marketing Specialist"
+    },
+    {
+      "id": "avacomtech",
+      "name": "Avacomtech Inc.",
+      "startYear": 2017,
+      "endYear": 2019,
+      "location": "National City, CA",
+      "jobTitle": "E-Commerce Manager"
+    },
+    {
+      "id": "ufeelgood",
+      "name": "Ufeelgood LLC",
+      "startYear": 2015,
+      "endYear": 2018,
+      "location": "Stanhope, NJ",
+      "jobTitle": "E-Commerce Manager"
+    },
+    {
+      "id": "dscape",
+      "name": "Dscape Interactive",
+      "startYear": 2015,
+      "endYear": 2016,
+      "location": "Mount Olive, NJ",
+      "jobTitle": "Front-End Testing"
+    }
+  ]
+} 
