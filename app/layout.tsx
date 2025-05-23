@@ -6,7 +6,7 @@ import Navigation from "./components/Navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Artem Dyachuk - Digital Product Manager",
+  title: "Artem Dyachuk – Digital Product Manager",
   description: "Digital Product Manager & Full-Stack Developer with over a decade of experience transforming digital marketing efforts and product landscapes.",
 };
 
