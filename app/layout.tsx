@@ -5,6 +5,7 @@ import Header from "./components/navigation/header/Header";
 import FabContact from "./components/FabContact";
 import Footer from "./components/navigation/footer/Footer";
 import { Analytics } from "@vercel/analytics/next"
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-KHWLTHMR" />
       <body className={inter.className}>
         <Header />
         <FabContact />
