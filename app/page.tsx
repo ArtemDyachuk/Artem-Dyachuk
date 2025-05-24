@@ -16,10 +16,10 @@ export default function Home() {
               and achieved significant cost savings through strategic initiatives.
             </p>
             <div className={styles.ctaContainer}>
-              <Link href="/roles" className={styles.ctaButton}>
-                View My Roles
+              <Link href="/achievements" className={styles.ctaButton}>
+                View My Achievements
               </Link>
-              <Link href="/experience" className={styles.secondaryButton}>
+              <Link href="/experience" className={styles.secondaryButton}> 
                 Explore Experience
               </Link>
             </div>
