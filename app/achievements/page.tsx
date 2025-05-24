@@ -8,7 +8,7 @@ import achievementsData from "../data/achievements.json";
 export default function Achievements() {
   // Sort companies by start year (most recent first)
   const sortedCompanies = [...companiesData.companies].sort(
-    (a, b) => b.startYear - a.startYear
+    (a, b) => (Number(b.startMonthYear) || 0) - (Number(a.startMonthYear) || 0)
   );
 
   // Group achievements by company
@@ -16,7 +16,7 @@ export default function Achievements() {
     ...company,
     achievements: achievementsData.achievements
       .filter((achievement) => achievement.companyId === company.id)
-      .sort((a, b) => b.year - a.year),
+      .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0)),
   }));
 
   // Always expand the first company on initial load
@@ -36,21 +36,20 @@ export default function Achievements() {
       <section className={styles.achievements}>
         <div className={styles.container}>
           <h1 className={styles.title}>Key Achievements</h1>
-          
+
           <div className={styles.achievementsList}>
             {achievementsByCompany.map((company) => (
               <div key={company.id} className={styles.companyGroup}>
                 <button
-                  className={`${styles.companyHeader} ${
-                    expandedCompany === company.id ? styles.expanded : ""
-                  }`}
+                  className={`${styles.companyHeader} ${expandedCompany === company.id ? styles.expanded : ""
+                    }`}
                   onClick={() => toggleCompany(company.id)}
                 >
                   <div className={styles.companyInfo}>
                     <h2 className={styles.companyName}>{company.name}</h2>
                     <span className={styles.companyJobTitle}>{company.jobTitle}</span>
                     <span className={styles.companyYears}>
-                      {company.startYear} - {company.endYear || "Present"}
+                      {company.startMonthYear} - {company.endMonthYear || "Present"}
                     </span>
                   </div>
                   <span className={styles.achievementCount}>
@@ -60,7 +59,7 @@ export default function Achievements() {
                     {expandedCompany === company.id ? "−" : "+"}
                   </span>
                 </button>
-                
+
                 {expandedCompany === company.id && (
                   <div className={styles.achievementsColumn}>
                     {company.achievements.map((achievement) => (

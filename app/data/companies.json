@@ -3,50 +3,55 @@
     {
       "id": "brightland",
       "name": "Brightland Homes",
-      "startYear": 2023,
-      "endYear": null,
+      "startMonthYear": "March 2023",
+      "current": true,
       "location": "Addison, TX",
       "jobTitle": "Digital Product Manager"
     },
     {
       "id": "gehan",
       "name": "Gehan Homes/Brightland Homes",
-      "startYear": 2020,
-      "endYear": 2023,
+      "startMonthYear": "October 2020",
+      "endMonthYear": "March 2023",
+      "current": false,
       "location": "Addison, TX",
       "jobTitle": "Web Specialist"
     },
     {
       "id": "newblue",
       "name": "NewBlue Inc.",
-      "startYear": 2019,
-      "endYear": 2020,
+      "startMonthYear": "February 2019",
+      "endMonthYear": "October 2020",
+      "current": false,
       "location": "San Diego, CA",
       "jobTitle": "Digital Marketing Specialist"
     },
     {
       "id": "avacomtech",
       "name": "Avacomtech Inc.",
-      "startYear": 2017,
-      "endYear": 2019,
+      "startMonthYear": "August 2017",
+      "endMonthYear": "February 2019",
+      "current": false,
       "location": "National City, CA",
       "jobTitle": "E-Commerce Manager"
     },
     {
       "id": "ufeelgood",
       "name": "Ufeelgood LLC",
-      "startYear": 2015,
-      "endYear": 2018,
+      "startMonthYear": "July 2015",
+      "endMonthYear": "February 2018",
+      "current": false,
       "location": "Stanhope, NJ",
-      "jobTitle": "E-Commerce Manager"
+      "jobTitle": "E-Commerce Manager (Full-Time 2015-2017, Part-Time 2017-2018)"
     },
     {
       "id": "dscape",
       "name": "Dscape Interactive",
-      "startYear": 2015,
-      "endYear": 2016,
+      "startMonthYear": "October 2015",
+      "endMonthYear": "January 2016",
+      "current": false,
       "location": "Mount Olive, NJ",
       "jobTitle": "Front-End Testing"
     }
   ]
-} 
+}

@@ -1,11 +1,9 @@
 .main {
-  padding-top: 80px;
   min-height: 100vh;
   background: var(--color-bg);
 }
 
 .achievements {
-  padding: 4rem 0;
   background-color: var(--color-bg);
 }
 
@@ -171,4 +169,4 @@
     padding: 1rem;
     gap: 1rem;
   }
-} 
+}

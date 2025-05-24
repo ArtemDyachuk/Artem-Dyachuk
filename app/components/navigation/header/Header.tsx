@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import styles from "./Navigation.module.css";
-import ThemeToggle from "./toggle/theme/ThemeToggle";
+import styles from "./Header.module.css";
 
 function HamburgerIcon({ open, ...props }: { open: boolean; [key: string]: unknown }) {
   return (
@@ -16,7 +15,7 @@ function HamburgerIcon({ open, ...props }: { open: boolean; [key: string]: unkno
   );
 }
 
-export default function Navigation() {
+export default function Header() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
@@ -81,6 +80,12 @@ export default function Navigation() {
         </button>
         <div className={styles.links}>
           <Link 
+            href="/about" 
+            className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
+          >
+            About
+          </Link>
+          <Link 
             href="/skills" 
             className={`${styles.link} ${pathname === "/skills" ? styles.active : ""}`}
           >
@@ -105,9 +110,6 @@ export default function Navigation() {
             Contact
           </Link>
         </div>
-        <div className={styles.themeToggleWrapper}>
-          <ThemeToggle />
-        </div>
       </div>
       {/* Drawer overlay */}
       <div
@@ -121,6 +123,9 @@ export default function Navigation() {
           tabIndex={-1}
         >
           <div className={styles.drawerLinks}>
+            <Link href="/about" className={styles.link} onClick={() => setDrawerOpen(false)}>
+              About
+            </Link>
             <Link href="/skills" className={styles.link} onClick={() => setDrawerOpen(false)}>
               Skills
             </Link>
@@ -133,9 +138,6 @@ export default function Navigation() {
             <Link href="/contact" className={styles.link} onClick={() => setDrawerOpen(false)}>
               Contact
             </Link>
-          </div>
-          <div className={styles.drawerThemeToggle}>
-            <ThemeToggle />
           </div>
         </div>
       </div>

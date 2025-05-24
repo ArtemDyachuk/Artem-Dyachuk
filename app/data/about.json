@@ -1,0 +1,112 @@
+{
+  "personalInfo": {
+    "firstName": "Artem",
+    "lastName": "Dyachuk",
+    "currentRole": "Digital Product Manager",
+    "currentCompany": "Brightland Homes",
+    "location": "Addison, TX",
+    "languages": [
+      "English",
+      "Ukrainian",
+      "Russian"
+    ],
+    "education": {
+      "degree": "Bachelor of Science",
+      "field": "Economics and Management",
+      "year": 2016
+    }
+  },
+  "summary": "Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Backed by a strong foundation as a Full-Stack Web Developer, I have developed and guided software solutions that power core marketing infrastructure, supporting over $1 billion in annual revenue. My expertise spans from technical implementation to strategic leadership, consistently delivering innovative solutions, optimizing operational efficiency, and effectively leading cross-functional teams.",
+  "keyStrengths": [
+    "Full-Stack Development",
+    "Product Strategy",
+    "Technical Leadership",
+    "Cross-functional Collaboration",
+    "Cost Optimization",
+    "Digital Marketing",
+    "System Architecture",
+    "Project Management",
+    "Revenue Growth Support",
+    "Process Optimization",
+    "Vendor Management",
+    "Data-Driven Decision Making"
+  ],
+  "technicalSkills": {
+    "frontend": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Bootstrap"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "PHP",
+      "Nest.js",
+      "CommonJS"
+    ],
+    "databases": [
+      "MongoDB",
+      "MySQL",
+      "SFTP (for inventory databases)"
+    ],
+    "frameworks_platforms_cms": [
+      "WordPress",
+      "Magento",
+      "Shopify",
+      "HubSpot CMS"
+    ],
+    "tools_technologies": [
+      "Git",
+      "JIRA",
+      "HubSpot API",
+      "Google Analytics (GA4)",
+      "Google Ads",
+      "Google Tag Manager",
+      "Looker Studio (formerly Data Studio)",
+      "Vercel",
+      "Heroku",
+      "Mailchimp",
+      "VWO Testing",
+      "BDX XML feeds",
+      "Mongoose"
+    ],
+    "cloud": [
+      "AWS (proficient)",
+      "Heroku (preferred for backend simplicity)"
+    ]
+  },
+  "certifications": [
+    "Google Analytics Individual Qualification",
+    "Google Ads",
+    "HubSpot Content Marketing"
+  ],
+  "careerHighlights": [
+    {
+      "title": "Revenue-Supporting Software Leadership",
+      "description": "As Digital Product Manager at Brightland Homes, spearheaded the development of a custom CMS (ARC) and pivotal corporate websites supporting over $1 billion in annual revenue."
+    },
+    {
+      "title": "Major Cost Savings Initiatives",
+      "description": "Achieved $299,000 savings from a 2022 TV signage platform transformation, $50,000 annually via Google Maps API optimization, $40,000 by leading in-house development, and $30,000 annually from reduced vendor dependency."
+    },
+    {
+      "title": "User Engagement & Performance Boost",
+      "description": "Doubled PageSpeed Insights scores from 30 to 60 points and increased user engagement time by 40% for a custom corporate website."
+    },
+    {
+      "title": "Marketing Productivity and Lead Generation",
+      "description": "Improved marketing productivity by 15% through strategic HubSpot CRM enhancements and increased leads by 10% via expertly crafted integrations and dynamic landing pages."
+    },
+    {
+      "title": "Full-Stack Technical Expertise & Integrations",
+      "description": "Engineered robust integrations with HubSpot, Zillow, Realtor.com, Facebook, and Google Ads using Node.js Express, significantly enhancing lead generation and data synchronization."
+    },
+    {
+      "title": "E-commerce Growth Success",
+      "description": "Drove a 259% sales increase within the first three months at Avacomtech Inc. by optimizing product listings. Expanded sales channels at Ufeelgood LLC, increasing revenue by an average of 30% year-over-year."
+    }
+  ]
+}

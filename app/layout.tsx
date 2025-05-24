@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "./components/Navigation";
+import Header from "./components/navigation/header/Header";
 import FabContact from "./components/FabContact";
+import Footer from "./components/navigation/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Artem Dyachuk - Digital Product Manager",
-  description: "Digital Product Manager & Full-Stack Developer with over a decade of experience transforming digital marketing efforts and product landscapes.",
+  title: "Artem Dyachuk - Product Manager | Full-Stack Developer",
+  description: "Product Manager & Full-Stack Developer with over a decade of experience transforming digital marketing efforts and product landscapes.",
 };
 
 export default function RootLayout({
@@ -19,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navigation />
+        <Header />
         <FabContact />
         {children}
+        <Footer />
       </body>
     </html>
   );

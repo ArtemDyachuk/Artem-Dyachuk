@@ -9,6 +9,7 @@
   --secondary: #666666;
   --max-width: 1200px;
   --color-bg: #f8f9fa;
+  --color-bg-main: #f8f9fa;
   --color-bg-card: #fff;
   --color-text: #1a1a1a;
   --color-text-secondary: #4b5563;
@@ -29,6 +30,7 @@
     --primary: #3291ff;
     --secondary: #999999;
     --color-bg: #181a1b;
+    --color-bg-main: #181a1b;
     --color-bg-card: #23272a;
     --color-text: #f3f4f6;
     --color-text-secondary: #a1a1aa;
@@ -45,6 +47,7 @@
 /* Theme override for manual toggle */
 [data-theme="dark"] {
   --color-bg: #181a1b;
+  --color-bg-main: #181a1b;
   --color-bg-card: #23272a;
   --color-text: #f3f4f6;
   --color-text-secondary: #a1a1aa;
@@ -59,6 +62,7 @@
 
 [data-theme="light"] {
   --color-bg: #f8f9fa;
+  --color-bg-main: #f8f9fa;
   --color-bg-card: #fff;
   --color-text: #1a1a1a;
   --color-text-secondary: #4b5563;
@@ -143,8 +147,9 @@ a:hover {
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 6rem 1rem 2rem;
-  min-height: 100vh;
+  margin-top: 65px;
+  padding: 1rem;
+  min-height: calc(100vh - 65px);
 }
 
 @media (prefers-color-scheme: dark) {
