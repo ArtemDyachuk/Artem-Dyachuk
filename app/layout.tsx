@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/navigation/header/Header";
 import FabContact from "./components/FabContact";
 import Footer from "./components/navigation/footer/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <FabContact />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

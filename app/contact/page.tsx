@@ -1,10 +1,11 @@
+import React from 'react';
 import contactsData from "../data/contacts.json";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styles from "./page.module.css";
 import { headers } from "next/headers";
 
-const iconMap: Record<string, JSX.Element> = {
+const iconMap: Record<string, React.ReactNode> = {
   email: <MdEmail size={22} color="#2563eb" style={{ marginRight: 8 }} />,
   phone: <MdPhone size={22} color="#2563eb" style={{ marginRight: 8 }} />,
   GitHub: <FaGithub size={22} color="#333" style={{ marginRight: 8 }} />,
@@ -14,7 +15,7 @@ const iconMap: Record<string, JSX.Element> = {
 async function submitForm(formData: FormData) {
   "use server";
   
-  const headersList = headers();
+  const headersList = await headers();
   const host = headersList.get("host");
   const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
   

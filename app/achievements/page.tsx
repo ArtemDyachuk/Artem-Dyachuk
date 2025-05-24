@@ -34,7 +34,7 @@ export default function Achievements() {
     if (achievementsByCompany.length > 0) {
       setExpandedCompany(achievementsByCompany[0].id);
     }
-  }, []); // Only run on mount
+  }, [achievementsByCompany]); // Only run on mount
 
   const toggleCompany = (companyId: string) => {
     setExpandedCompany(expandedCompany === companyId ? null : companyId);
