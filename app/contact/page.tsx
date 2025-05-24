@@ -57,13 +57,13 @@ export default function Contact() {
             {email && (
               <div className={styles.infoRow}>
                 {iconMap.email}
-                <span><strong>Email:</strong> {email.value}</span>
+                <span><strong>Email:</strong> <a href={`mailto:${email.value}`}>{email.value}</a></span>
               </div>
             )}
             {phone && (
               <div className={styles.infoRow}>
                 {iconMap.phone}
-                <span><strong>Phone:</strong> {phone.value}</span>
+                <span><strong>Phone:</strong> <a href={`tel:${phone.value}`}>{phone.value}</a></span>
               </div>
             )}
           </div>
