@@ -1,0 +1,181 @@
+.container {
+  margin-top: 65px;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pageTitle {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.projectCard {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.projectTitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-accent);
+  text-align: center;
+  border-bottom: 2px solid var(--text-accent);
+  padding-bottom: 0.75rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.contentRow {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2rem;
+}
+
+.descriptionBlock {
+  background: #232323;
+  grid-row: 1 / span 2;
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.impactBlock {
+  background: #0033cc;
+  color: #fff;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.impactNumber {
+  font-size: 6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.5rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+}
+
+.featuresBlock {
+  background: #3d4346;
+  color: #fff;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.blockTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 0.3rem;
+}
+
+.contentBlock {
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.contentBlock p,
+.contentBlock ul li {
+  color: #fff;
+  line-height: 1.6;
+}
+
+.contentBlock ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.contentBlock ul li {
+  margin-bottom: 0.3rem;
+}
+
+/* Placeholder image styling for description block */
+.placeholderImage {
+  width: 100%;
+  max-width: 260px;
+  margin: 1.5rem auto 0 auto;
+  display: block;
+  border-radius: 12px;
+  background: #fff;
+  min-height: 140px;
+}
+
+@media (max-width: 900px) {
+  .contentRow {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .descriptionBlock, .impactBlock, .featuresBlock {
+    grid-row: auto;
+    grid-column: auto;
+  }
+  .projectTitle {
+    font-size: 1.5rem;
+  }
+  .contentBlock {
+    min-height: 0;
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+  }
+
+  .projectTitle {
+    font-size: 1.75rem;
+  }
+
+  .blockTitle {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+   .projectTitle {
+    font-size: 1.5rem;
+  }
+  .contentRow {
+     grid-template-columns: 1fr;
+  }
+} 

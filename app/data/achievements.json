@@ -1,144 +1,374 @@
-{
-  "achievements": [
-    {
-      "id": "tv-platform-transformation",
-      "companyId": "gehan",
-      "title": "TV Signage Platform Transformation & Rebuild",
-      "description": "Led a Product Manager-level initiative to overhaul the outdated TV signage platform. Phase 1: Proposed a $200 mini PC solution saving $299,000 on hardware for 130 units. Phase 2: Rebuilt the TV signage website from scratch with modern architecture, QR code lead capture, and admin tools, boosting lead generation by 8%.",
-      "year": 2022
-    },
-    {
-      "id": "custom-cms-websites-bh",
-      "companyId": "brightland",
-      "title": "Custom CMS (ARC) and Corporate Websites Development",
-      "description": "Led a team of overseas developers to build and launch a custom Content Management System (ARC) and multiple corporate websites. These platforms power marketing operations supporting over $1 billion in annual revenue by enhancing lead generation, website traffic, and scalability.",
-      "year": "2023-2024"
-    },
-    {
-      "id": "maps-api-optimization-bh",
-      "companyId": "brightland",
-      "title": "Google Maps API Optimization",
-      "description": "Strategically optimized the Google Maps API, achieving $50,000 in annual cost savings.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "in-house-dev-savings-bh",
-      "companyId": "brightland",
-      "title": "In-House Feature Implementation Savings",
-      "description": "Saved $40,000 by implementing website and ARC features in-house, equivalent to eight weeks of agency work.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "api-consolidation-savings-bh",
-      "companyId": "brightland",
-      "title": "API Consolidation & Database Optimization",
-      "description": "Achieved $4,000 annually in savings by consolidating APIs and optimizing database queries.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "custom-integrations-bh",
-      "companyId": "brightland",
-      "title": "Robust Custom Integrations (HubSpot, Zillow, etc.)",
-      "description": "Engineered integrations with HubSpot, Zillow, Realtor.com, Facebook, Google Ads, and GA4 using Node.js Express, enhancing lead generation, dynamic advertising, and data synchronization.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "website-cms-launch-bh",
-      "companyId": "brightland",
-      "title": "Corporate Website & ARC CMS Launch",
-      "description": "Spearheaded development and launch of a custom corporate website, doubling PageSpeed Insights scores (30 to 60) and increasing user engagement time by 40%. Delivered ARC CMS, minimizing third-party vendor dependency.",
-      "year": "2023-2024"
-    },
-    {
-      "id": "crm-marketing-enhancements-bh",
-      "companyId": "brightland",
-      "title": "CRM Modules & Marketing Productivity Boost",
-      "description": "Designed programmable CRM modules and custom objects in HubSpot, streamlining workflows, automating emails, and boosting marketing productivity by 15%.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "redirect-service-dev-bh",
-      "companyId": "brightland",
-      "title": "Dedicated Redirect Service Website",
-      "description": "Developed a dedicated service website for GPH/WH redirects, averting $1,500 in potential costs.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "dynamic-landing-pages-bh",
-      "companyId": "brightland",
-      "title": "Dynamic Landing Pages & Feeds for Lead Gen",
-      "description": "Created dynamic landing pages integrated with HubSpot & TV platforms, and custom feeds for Zillow/Realtor.com, generating a 10% increase in lead generation.",
-      "year": "Ongoing from 2023"
-    },
-    {
-      "id": "vendor-dependency-reduction-gh",
-      "companyId": "gehan",
-      "title": "Vendor Dependency Reduction (In-House Development)",
-      "description": "Reduced dependency on third-party vendors by taking on in-house development, saving an estimated $30,000 annually. Implemented GIT version control.",
-      "year": 2022
-    },
-    {
-      "id": "inventory-db-tools-gh",
-      "companyId": "gehan",
-      "title": "Inventory Database Design & Marketing Tools",
-      "description": "Designed a new inventory database (BDX XML, MongoDB, SFTP) for dynamic feeds. Developed user-centric marketing tools for exterior packages, floor plans, and room galleries.",
-      "year": 2022
-    },
-    {
-      "id": "hubspot-rollout-savings-gh",
-      "companyId": "gehan",
-      "title": "HubSpot Rollout Assistance & Custom Objects",
-      "description": "Assisted with HubSpot rollout, saving ~$15,000 in contractor costs by handling data transfer from Lasso. Introduced HubSpot custom objects for dynamic pages and advanced reporting.",
-      "year": 2021
-    },
-    {
-      "id": "reporting-tools-data-clarity-gh",
-      "companyId": "gehan",
-      "title": "New Reporting Tools Implementation",
-      "description": "Introduced Google Analytics, Data Studio, heatmaps, and HubSpot API reports, improving marketing data clarity by 20%.",
-      "year": 2022
-    },
-    {
-      "id": "facebook-inventory-sync-gh",
-      "companyId": "gehan",
-      "title": "Facebook Inventory Sync Program",
-      "description": "Built a program to sync inventory with Facebook, replacing Feedonomics and enabling Dynamic Ads.",
-      "year": 2022
-    },
-    {
-      "id": "newblue-workflow-acceleration",
-      "companyId": "newblue",
-      "title": "Marketing & Development Workflow Acceleration",
-      "description": "Developed custom WordPress modules, streamlining workflows between marketing and development, accelerating project delivery speed by 10%.",
-      "year": "2019-2020"
-    },
-    {
-      "id": "newblue-ctr-increase",
-      "companyId": "newblue",
-      "title": "User Behavior Analysis & CTR Increase",
-      "description": "Utilized Google Analytics, Ads, and Tag Manager to analyze user behavior, resulting in a 12% increase in click-through rates.",
-      "year": "2019-2020"
-    },
-    {
-      "id": "avacomtech-ecommerce-sales-growth",
-      "companyId": "avacomtech",
-      "title": "E-commerce Sales Growth (259%)",
-      "description": "Drove substantial e-commerce growth by optimizing product listings, leading to a 259% sales increase within the first three months.",
-      "year": 2017
-    },
-    {
-      "id": "ufeelgood-revenue-increase",
-      "companyId": "ufeelgood",
-      "title": "Sales Channel Expansion & Revenue Growth (30% YoY)",
-      "description": "Expanded sales channels to Amazon EU, eBay, Walmart, Newegg, Shopify, and Magento, increasing revenue by an average of 30% year-over-year.",
-      "year": "2015-2018"
-    },
-    {
-      "id": "ufeelgood-seo-visibility",
-      "companyId": "ufeelgood",
-      "title": "SEO Strategy for Product Visibility",
-      "description": "Developed SEO-focused marketing strategies that boosted product visibility by 18%.",
-      "year": "2015-2018"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "companyId": "brightland",
+    "title": "Revenue-Driving Custom CMS (ARC) & Corporate Websites Platform",
+    "description": "Led the strategy, development, and launch of a bespoke Content Management System (ARC) and multiple interconnected corporate websites. This platform serves as the core marketing infrastructure, directly supporting over $1 billion in annual company revenue by enhancing lead generation, website traffic, and operational scalability.",
+    "year": "2023-2024",
+    "skills": [
+      24,
+      30,
+      25,
+      23,
+      29,
+      6,
+      31
+    ]
+  },
+  {
+    "id": 2,
+    "companyId": "gehan",
+    "title": "Transformative TV Signage Platform Overhaul with Major Cost Savings",
+    "description": "Spearheaded a Product Manager-level initiative to overhaul an outdated, costly TV signage platform. Proposed and implemented a mini PC solution cutting hardware costs by $299,000. Rebuilt the platform's website from scratch, integrating QR lead capture and admin tools, which boosted lead generation by 8%.",
+    "year": "2022",
+    "skills": [
+      27,
+      24,
+      30,
+      23,
+      25,
+      39
+    ]
+  },
+  {
+    "id": 3,
+    "companyId": "gehan",
+    "title": "Foundational Software Architecture for $1B+ Revenue Support",
+    "description": "Architected and developed foundational software solutions, including website frameworks and CMS integrations, that underpinned Gehan Homes’ successful rebranding to Brightland Homes. These systems became instrumental in supporting over $1 billion in annual revenue.",
+    "year": "2020-2022",
+    "skills": [
+      29,
+      23,
+      30,
+      24
+    ]
+  },
+  {
+    "id": 4,
+    "companyId": "avacomtech",
+    "title": "Explosive E-commerce Sales Growth (259%)",
+    "description": "Drove substantial e-commerce growth by meticulously optimizing product listings on Magento and other platforms, leading to a remarkable 259% sales increase within the first three months.",
+    "year": "2017",
+    "skills": [
+      33,
+      28,
+      36,
+      13
+    ]
+  },
+  {
+    "id": 5,
+    "companyId": "brightland",
+    "title": "Corporate Website Performance & Engagement Boost",
+    "description": "Led the development and launch of a custom corporate website, focusing on performance and user experience. Successfully doubled PageSpeed Insights scores from 30 to 60 points and increased average user engagement time by 40%.",
+    "year": "2023-2024",
+    "skills": [
+      32,
+      30,
+      23,
+      24,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 6,
+    "companyId": "brightland",
+    "title": "Strategic Multi-Platform API Integrations for Marketing Enhancement",
+    "description": "Engineered a suite of robust REST APIs using Node.js Express to integrate key marketing and sales platforms including HubSpot, Zillow, Realtor.com, Facebook, Google Ads, and Google Analytics 4. This enhanced lead generation, enabled dynamic advertising, and streamlined data synchronization.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      31,
+      6,
+      7,
+      17,
+      29,
+      28
+    ]
+  },
+  {
+    "id": 7,
+    "companyId": "brightland",
+    "title": "HubSpot CRM Enhancement for Marketing Productivity",
+    "description": "Designed and implemented programmable CRM modules and custom objects within HubSpot. This initiative streamlined designer workflows, automated inventory pricing emails, and boosted overall marketing team productivity by 15%.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      17,
+      28,
+      37,
+      3
+    ]
+  },
+  {
+    "id": 8,
+    "companyId": "brightland",
+    "title": "Google Maps API Optimization for Annual Cost Savings",
+    "description": "Strategically analyzed and optimized the Google Maps API implementation across company platforms, resulting in $50,000 in annual cost savings which were redirected to other key initiatives.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      27,
+      31,
+      39
+    ]
+  },
+  {
+    "id": 9,
+    "companyId": "brightland",
+    "title": "In-House Development Initiative Yielding Significant Savings",
+    "description": "Championed and executed in-house development for critical website and ARC CMS features, saving $40,000 compared to projected agency costs (equivalent to eight weeks of agency work).",
+    "year": "Ongoing from 2023",
+    "skills": [
+      27,
+      23,
+      30
+    ]
+  },
+  {
+    "id": 10,
+    "companyId": "gehan",
+    "title": "Vendor Dependency Reduction and Annual Savings",
+    "description": "Proactively reduced dependency on third-party vendors by taking on complex in-house development tasks, saving an estimated $30,000 annually in contractor costs and improving project agility.",
+    "year": "2022",
+    "skills": [
+      27,
+      38,
+      23
+    ]
+  },
+  {
+    "id": 11,
+    "companyId": "ufeelgood",
+    "title": "Multi-Channel E-commerce Expansion & Consistent Revenue Growth",
+    "description": "Successfully expanded e-commerce sales channels to Amazon EU, eBay, Walmart, Newegg, Shopify, and Magento. This strategy resulted in an average revenue increase of 30% year-over-year.",
+    "year": "2015-2018",
+    "skills": [
+      33,
+      28,
+      13,
+      14
+    ]
+  },
+  {
+    "id": 12,
+    "companyId": "gehan",
+    "title": "HubSpot Rollout & Migration with Cost Avoidance",
+    "description": "Played a key role in the company-wide HubSpot rollout, efficiently handling data transfer from the legacy CRM (Lasso). This saved approximately $15,000 in contractor costs and ensured a smooth transition. Also introduced HubSpot custom objects for dynamic page creation.",
+    "year": "2021",
+    "skills": [
+      17,
+      27,
+      36,
+      39
+    ]
+  },
+  {
+    "id": 13,
+    "companyId": "brightland",
+    "title": "Dynamic Landing Page System for Increased Lead Generation",
+    "description": "Created and implemented dynamic landing pages that seamlessly integrated promotional data with HubSpot and TV platforms. Developed custom feeds for Zillow and Realtor.com, optimizing promotional processes and generating a 10% increase in lead generation.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      28,
+      31,
+      23,
+      17
+    ]
+  },
+  {
+    "id": 14,
+    "companyId": "gehan",
+    "title": "Advanced Marketing Analytics & Reporting Tools Implementation",
+    "description": "Introduced and managed a suite of new marketing analytics tools, including Google Analytics, Data Studio (Looker Studio), website heatmaps, and HubSpot API reports. This initiative improved marketing data clarity by 20% and campaign effectiveness by 12%.",
+    "year": "2021-2022",
+    "skills": [
+      36,
+      18,
+      51,
+      17,
+      44
+    ]
+  },
+  {
+    "id": 15,
+    "companyId": "gehan",
+    "title": "Facebook Dynamic Ads Program via Custom Inventory Sync",
+    "description": "Developed a custom program to synchronize inventory data with Facebook, replacing the third-party service Feedonomics. This enabled highly targeted Dynamic Ad campaigns, significantly enhancing advertising efficiency.",
+    "year": "2022",
+    "skills": [
+      31,
+      6,
+      28,
+      49
+    ]
+  },
+  {
+    "id": 16,
+    "companyId": "gehan",
+    "title": "Website Redesign & Rebranding Project Leadership",
+    "description": "Supported the Gehan Homes website rebrand to Brightland Homes with meticulous SEO planning and rollover strategies. Subsequently launched the redesigned website, incorporating thorough QA, team training, and dynamic content, improving user engagement by 10%.",
+    "year": "2021-2022",
+    "skills": [
+      30,
+      28,
+      34,
+      43
+    ]
+  },
+  {
+    "id": 17,
+    "companyId": "gehan",
+    "title": "Initial Product Roadmap for Custom CMS (ARC)",
+    "description": "As product owner, spearheaded the creation of the initial product roadmap for a custom website and CMS (ARC). This foundational work laid the critical groundwork for the subsequent 2023-2024 project, strategically aimed at reducing external vendor reliance.",
+    "year": "2022",
+    "skills": [
+      24,
+      30,
+      45
+    ]
+  },
+  {
+    "id": 18,
+    "companyId": "newblue",
+    "title": "Enhanced Click-Through Rates via User Behavior Analysis",
+    "description": "Utilized Google Analytics, Google Ads, and Tag Manager to analyze user behavior, leading to website optimizations that resulted in a 12% increase in click-through rates.",
+    "year": "2019-2020",
+    "skills": [
+      36,
+      18,
+      44,
+      49,
+      50
+    ]
+  },
+  {
+    "id": 19,
+    "companyId": "newblue",
+    "title": "Marketing & Development Workflow Optimization",
+    "description": "Developed custom WordPress modules and streamlined workflows between marketing and development teams, accelerating project delivery speed by 10%.",
+    "year": "2019-2020",
+    "skills": [
+      30,
+      12,
+      8
+    ]
+  },
+  {
+    "id": 20,
+    "companyId": "brightland",
+    "title": "API Consolidation & Database Query Optimization for Efficiency",
+    "description": "Achieved $4,000 in annual savings by consolidating APIs and optimizing database queries, which also improved overall system efficiency and performance.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      27,
+      31,
+      10,
+      11,
+      32
+    ]
+  },
+  {
+    "id": 21,
+    "companyId": "avacomtech",
+    "title": "E-commerce Operational Efficiency Improvement",
+    "description": "Conducted daily data analysis of pricing, inventory, advertising, and shipping performance using Google Analytics and Data Studio, improving operational efficiency by 20%.",
+    "year": "2017-2019",
+    "skills": [
+      36,
+      33,
+      51
+    ]
+  },
+  {
+    "id": 22,
+    "companyId": "ufeelgood",
+    "title": "SEO Strategy Implementation for Increased Product Visibility",
+    "description": "Developed and executed SEO-focused marketing strategies that boosted product visibility by 18%, attracting more qualified users to product listings.",
+    "year": "2015-2018",
+    "skills": [
+      34,
+      28,
+      33
+    ]
+  },
+  {
+    "id": 23,
+    "companyId": "newblue",
+    "title": "Website Stability Improvement through QA & Feature Proposal",
+    "description": "Conducted meticulous manual web testing and proposed innovative features based on reporting metrics and user feedback, reducing site errors by 15%.",
+    "year": "2019-2020",
+    "skills": [
+      43,
+      39
+    ]
+  },
+  {
+    "id": 24,
+    "companyId": "gehan",
+    "title": "GIT Version Control Implementation for Web Projects",
+    "description": "Implemented GIT version control for all in-house web projects, significantly improving project stability, team collaboration, and code management practices.",
+    "year": "2022",
+    "skills": [
+      15,
+      23,
+      30
+    ]
+  },
+  {
+    "id": 25,
+    "companyId": "gehan",
+    "title": "Design of New Inventory Database for Dynamic Feeds",
+    "description": "Designed a new inventory database utilizing BDX XML feeds, MongoDB, and SFTP storage, enabling dynamic feeds for HubSpot, Facebook, and Zillow, and providing crucial flexibility for future integrations.",
+    "year": "2022",
+    "skills": [
+      29,
+      10,
+      31
+    ]
+  },
+  {
+    "id": 26,
+    "companyId": "dscape",
+    "title": "Reduced Defect Resolution Time in Front-End Testing",
+    "description": "Provided technical assistance in testing, modified quality testing processes, and meticulously evaluated and reported software defects via JIRA. Coordinated with development teams to create and execute comprehensive test plans, scenarios, and cases, reducing defect resolution time by 25%.",
+    "year": "2015-2016",
+    "skills": [
+      43,
+      16,
+      26
+    ]
+  },
+  {
+    "id": 27,
+    "companyId": "ufeelgood",
+    "title": "High Customer Satisfaction Rate through Efficient Service",
+    "description": "Improved customer experience by efficiently handling inquiries and resolving issues, achieving and maintaining a 95% customer satisfaction rate.",
+    "year": "2015-2018",
+    "skills": [
+      40,
+      39
+    ]
+  },
+  {
+    "id": 28,
+    "companyId": "brightland",
+    "title": "Redirect Service Website Development Cost Aversion",
+    "description": "Developed a dedicated service website for GPH/WH redirects, proactively averting $1,500 in potential third-party service costs.",
+    "year": "Ongoing from 2023",
+    "skills": [
+      27,
+      23
+    ]
+  },
+  {
+    "id": 29,
+    "companyId": "brightland",
+    "title": "Executive Presentations on Technical Upgrades & Savings",
+    "description": "Delivered polished, impactful presentations to DRB Homes’ executive team post-merger, effectively showcasing technical upgrades, substantial cost savings, and infrastructure improvements that supported strategic decision-making.",
+    "year": "2023-2024",
+    "skills": [
+      40,
+      26,
+      24
+    ]
+  }
+]

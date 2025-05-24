@@ -1,0 +1,156 @@
+[
+  {
+    "id": "proj_001",
+    "title": "Custom CMS (ARC) Development",
+    "productDescription": "A bespoke Content Management System (ARC) built to power corporate websites and marketing operations, offering enhanced flexibility and internal control.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes",
+    "role": "Digital Product Manager (Product Lead)",
+    "year": "2023–2024",
+    "challenge": "Reduce dependency on third-party vendors, enhance internal content management capabilities, and provide a scalable platform to support core marketing operations.",
+    "action": "Led a team of overseas developers through the full product lifecycle, from roadmap creation to launch. Oversaw the architecture and development of the custom Content Management System (ARC).",
+    "results": [
+      "Launched a robust CMS supporting marketing operations for a company with over $1 billion in annual revenue.",
+      "Enhanced lead generation and website traffic through improved platform scalability.",
+      "Minimized third-party vendor dependency, improving operational flexibility."
+    ],
+    "keyFeatures": [
+      "Custom content modeling and management",
+      "Third-party feed integration capabilities",
+      "Scalable multi-site architecture"
+    ],
+    "skillIds": [
+      24,
+      30,
+      25,
+      23,
+      29,
+      6,
+      31,
+      16
+    ]
+  },
+  {
+    "id": "proj_002",
+    "title": "Corporate Websites Platform Development",
+    "productDescription": "A suite of high-performance corporate websites designed to drive lead generation and enhance user engagement for Brightland Homes.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes",
+    "role": "Digital Product Manager",
+    "year": "2023–2024",
+    "challenge": "Develop new corporate websites that effectively support marketing operations, improve user engagement, and achieve high performance standards.",
+    "action": "Spearheaded the development and launch of multiple custom corporate websites, focusing on UI/UX, technical implementation, and performance optimization strategies, often integrated with the ARC CMS.",
+    "results": [
+      "Doubled PageSpeed Insights scores (e.g., 30 to 60 points for a key site).",
+      "Increased user engagement time by 40% on redesigned websites.",
+      "Contributed to the platform infrastructure supporting over $1 billion in annual revenue."
+    ],
+    "keyFeatures": [
+      "Responsive and mobile-first design",
+      "Dynamic content driven by ARC CMS",
+      "Optimized for speed and user experience"
+    ],
+    "skillIds": [
+      24,
+      30,
+      32,
+      23,
+      4,
+      5,
+      3,
+      18
+    ]
+  },
+  {
+    "id": "proj_003",
+    "title": "Digital TV Signage Platform",
+    "productDescription": "A modernized digital TV signage platform for sales centers, featuring interactive content, lead capture, and centralized management tools.",
+    "companyId": "gehan",
+    "companyName": "Gehan Homes (now Brightland Homes)",
+    "role": "Web Specialist (acting as Product Manager)",
+    "year": "2022",
+    "challenge": "Overhaul an outdated, unstable TV signage platform reliant on obsolete technology and expensive hardware, which limited feature development and incurred high costs.",
+    "action": "Researched and proposed a cost-effective mini PC solution. Rebuilt the TV signage website from scratch with modern architecture. Implemented QR code lead capture and admin tools for cross-selling. Architected hardware configurations for 150 touchscreen devices.",
+    "results": [
+      "Saved $299,000 in hardware costs by switching to mini PCs.",
+      "Boosted lead generation by 8% through new website functionalities.",
+      "Eliminated previous hardware limitations, enabling new feature development and enhancing sales team capabilities."
+    ],
+    "keyFeatures": [
+      "Web-based content management",
+      "Interactive touchscreen capabilities",
+      "QR code lead capture",
+      "Cross-community content selling tools"
+    ],
+    "skillIds": [
+      27,
+      24,
+      30,
+      23,
+      25,
+      39,
+      29,
+      43
+    ]
+  },
+  {
+    "id": "proj_004",
+    "title": "Marketing Data & Integration Hub",
+    "productDescription": "An integrated data hub connecting various marketing and sales platforms (HubSpot, Zillow, etc.) to enable dynamic advertising, unified reporting, and streamlined data workflows.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes / Gehan Homes",
+    "role": "Digital Product Manager / Web Specialist",
+    "year": "2020–Present",
+    "challenge": "Streamline marketing/sales operations by enabling seamless data flow between critical platforms, improve reporting accuracy, and enhance dynamic advertising.",
+    "action": "Engineered and implemented robust REST APIs (Node.js Express) to integrate key systems including HubSpot, Zillow, Realtor.com, Facebook (Dynamic Ads), Google Ads, and GA4. Mastered HubSpot API for advanced data manipulations.",
+    "results": [
+      "Enhanced lead generation (e.g., +10% from specific dynamic landing page integrations).",
+      "Enabled dynamic advertising capabilities and synchronized data seamlessly.",
+      "Streamlined marketing workflows and provided advanced reporting."
+    ],
+    "keyFeatures": [
+      "Custom REST API development",
+      "HubSpot CRM/CMS deep integration",
+      "Real-time data synchronization",
+      "Dynamic Ad feed creation"
+    ],
+    "skillIds": [
+      31,
+      6,
+      7,
+      17,
+      29,
+      36,
+      28,
+      49,
+      18
+    ]
+  },
+  {
+    "id": "proj_005",
+    "title": "HubSpot Programmable CRM Modules",
+    "productDescription": "A set of custom-developed programmable modules and objects within HubSpot CRM, designed to automate marketing tasks and streamline internal workflows.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes",
+    "role": "Digital Product Manager",
+    "year": "2023–Present",
+    "challenge": "Improve marketing team efficiency by streamlining repetitive tasks and enhancing CRM functionalities within HubSpot.",
+    "action": "Designed and developed programmable CRM modules and custom objects within HubSpot, including fully custom-coded programmable email modules for dynamic content and personalization. Automated inventory pricing emails.",
+    "results": [
+      "Boosted marketing productivity by 15% (measured by campaign efficiency).",
+      "Optimized marketing team time by 10% via automation (e.g., inventory pricing emails).",
+      "Streamlined designer workflows and improved overall marketing team output."
+    ],
+    "keyFeatures": [
+      "HubSpot custom objects for dynamic content",
+      "Custom-coded programmable email modules",
+      "Workflow automation for marketing tasks"
+    ],
+    "skillIds": [
+      17,
+      37,
+      3,
+      28
+    ]
+  }
+]

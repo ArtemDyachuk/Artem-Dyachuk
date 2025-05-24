@@ -122,6 +122,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px var(--color-card-shadow);
   transition: box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .accordionButton:hover {
@@ -147,6 +148,9 @@
 .companyInfo,
 .period {
   color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
 }
 
 .accordionContent {
@@ -344,4 +348,150 @@
   background-color: var(--color-primary);
   color: #ffffff;
   transform: translateY(-2px);
+}
+
+.achievementSkills {
+  margin-top: 0.25em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  align-items: center;
+  font-size: 0.97em;
+  color: #b0b0b0;
+}
+
+.skillBadge {
+  background: #23272f;
+  color: #e0e0e0;
+  border-radius: 12px;
+  padding: 0.18em 0.9em;
+  font-size: 0.97em;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.achievementItem {
+  margin-bottom: 1.7em;
+}
+
+.achievementDescription {
+  margin-bottom: 0.2em;
+  font-size: 1.07em;
+}
+
+.achievementsBlock {
+  margin-top: 2em;
+}
+
+.responsibilitiesBlock {
+  margin-bottom: 2em;
+}
+
+.responsibilityItem {
+  margin-bottom: 0.7em;
+  display: flex;
+  align-items: flex-start;
+}
+
+.responsibilityTitle {
+  font-weight: 600;
+  margin-right: 0.3em;
+}
+
+.responsibilityDescription {
+  color: #b0b0b0;
+}
+
+.achievementContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+/* Dot divider for skill badges */
+.achievementSkills .skillBadge:not(:last-child)::after {
+  content: none;
+}
+
+.responsibilitiesList {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  align-items: start;
+  row-gap: 0.7em;
+}
+
+.responsibilityItem {
+  display: contents;
+}
+
+.responsibilityTitle {
+  font-weight: 600;
+  margin-right: 0.3em;
+  grid-column: 1;
+  align-self: start;
+  text-align: right;
+  padding-right: 0.7em;
+}
+
+.responsibilityDescription {
+  color: #b0b0b0;
+  grid-column: 2;
+  align-self: start;
+}
+
+@media (max-width: 700px) {
+  .responsibilitiesList {
+    display: block;
+  }
+  .responsibilityTitle, .responsibilityDescription {
+    display: block;
+    text-align: left;
+    padding-right: 0;
+  }
+}
+
+.accordionExpandBar {
+  display: none;
+}
+
+.accordionExpandIconBtn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  margin-left: 0.5em;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  flex-shrink: 0;
+}
+
+.accordionExpandIconBtn:hover {
+  background: var(--color-primary-hover);
+}
+
+.accordionExpandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .skillBadge {
+  background: #23293a;
+  color: #f3f4f6;
+  border-color: #353a42;
+}
+
+:root[data-theme="dark"] .skillBadge:hover {
+  background: #2d3650;
+  border-color: var(--color-primary, #60a5fa);
 }

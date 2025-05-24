@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import styles from "./Header.module.css";
 
-function HamburgerIcon({ open, ...props }: { open: boolean; [key: string]: unknown }) {
+function HamburgerIcon({ open, ...props }: { open: boolean;[key: string]: unknown }) {
   return (
     <span className={styles.hamburgerIcon} aria-hidden="true" {...props}>
       <span className={`${styles.bar} ${open ? styles.barTopOpen : ""}`} />
@@ -79,32 +79,38 @@ export default function Header() {
           <HamburgerIcon open={drawerOpen} />
         </button>
         <div className={styles.links}>
-          <Link 
-            href="/about" 
-            className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
-          >
-            About
-          </Link>
-          <Link 
-            href="/skills" 
-            className={`${styles.link} ${pathname === "/skills" ? styles.active : ""}`}
-          >
-            Skills
-          </Link>
-          <Link 
-            href="/experience" 
+          <Link
+            href="/experience"
             className={`${styles.link} ${pathname === "/experience" ? styles.active : ""}`}
           >
             Experience
           </Link>
-          <Link 
-            href="/achievements" 
+          <Link
+            href="/achievements"
             className={`${styles.link} ${pathname === "/achievements" ? styles.active : ""}`}
           >
             Achievements
           </Link>
-          <Link 
-            href="/contact" 
+          <Link
+            href="/skills"
+            className={`${styles.link} ${pathname === "/skills" ? styles.active : ""}`}
+          >
+            Skills
+          </Link>
+          <Link
+            href="/portfolio"
+            className={`${styles.link} ${pathname === "/portfolio" ? styles.active : ""}`}
+          >
+            Portfolio
+          </Link>
+          <Link
+            href="/about"
+            className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
+          >
+            About
+          </Link>
+          <Link
+            href="/contact"
             className={`${styles.link} ${pathname === "/contact" ? styles.active : ""}`}
           >
             Contact

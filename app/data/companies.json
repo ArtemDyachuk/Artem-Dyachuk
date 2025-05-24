@@ -1,57 +1,194 @@
-{
-  "companies": [
-    {
-      "id": "brightland",
-      "name": "Brightland Homes",
-      "startMonthYear": "March 2023",
-      "current": true,
-      "location": "Addison, TX",
-      "jobTitle": "Digital Product Manager"
-    },
-    {
-      "id": "gehan",
-      "name": "Gehan Homes/Brightland Homes",
-      "startMonthYear": "October 2020",
-      "endMonthYear": "March 2023",
-      "current": false,
-      "location": "Addison, TX",
-      "jobTitle": "Web Specialist"
-    },
-    {
-      "id": "newblue",
-      "name": "NewBlue Inc.",
-      "startMonthYear": "February 2019",
-      "endMonthYear": "October 2020",
-      "current": false,
-      "location": "San Diego, CA",
-      "jobTitle": "Digital Marketing Specialist"
-    },
-    {
-      "id": "avacomtech",
-      "name": "Avacomtech Inc.",
-      "startMonthYear": "August 2017",
-      "endMonthYear": "February 2019",
-      "current": false,
-      "location": "National City, CA",
-      "jobTitle": "E-Commerce Manager"
-    },
-    {
-      "id": "ufeelgood",
-      "name": "Ufeelgood LLC",
-      "startMonthYear": "July 2015",
-      "endMonthYear": "February 2018",
-      "current": false,
-      "location": "Stanhope, NJ",
-      "jobTitle": "E-Commerce Manager (Full-Time 2015-2017, Part-Time 2017-2018)"
-    },
-    {
-      "id": "dscape",
-      "name": "Dscape Interactive",
-      "startMonthYear": "October 2015",
-      "endMonthYear": "January 2016",
-      "current": false,
-      "location": "Mount Olive, NJ",
-      "jobTitle": "Front-End Testing"
-    }
-  ]
-}
+[
+  {
+    "id": "brightland",
+    "name": "Brightland Homes",
+    "startDate": "March 2023",
+    "endDate": null,
+    "current": true,
+    "location": "Addison, TX",
+    "jobTitle": "Digital Product Manager",
+    "jobDuties": [
+      {
+        "title": "Product Development & Strategy",
+        "description": "Oversee end-to-end development and strategic management of digital products (software tools, websites, platforms)."
+      },
+      {
+        "title": "Lifecycle & Feature Management",
+        "description": "Define robust product strategies, strategically prioritize features, and oversee the web development lifecycle."
+      },
+      {
+        "title": "Solution Architecture & Research",
+        "description": "Architect scalable client-side and server-side solutions and conduct thorough market research."
+      },
+      {
+        "title": "Product Operations",
+        "description": "Steer day-to-day product operations including QA, content updates, feature enhancements, and bug resolution."
+      },
+      {
+        "title": "Vision & Marketing Alignment",
+        "description": "Craft compelling long-term and short-term product visions to bolster marketing efforts."
+      }
+    ],
+    "achievements": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  {
+    "id": "gehan",
+    "name": "Brightland Homes",
+    "startDate": "October 2020",
+    "endDate": "March 2023",
+    "current": false,
+    "location": "Addison, TX",
+    "jobTitle": "Web Specialist",
+    "jobDuties": [
+      {
+        "title": "Website & Campaign Management",
+        "description": "Managed corporate websites and executed impactful digital marketing campaigns to drive lead generation."
+      },
+      {
+        "title": "Content & Platform Optimization",
+        "description": "Maintained and optimized website content, executed targeted SEO and PPC campaigns, and managed diverse lead generation platforms."
+      },
+      {
+        "title": "Integrations & Vendor Liaison",
+        "description": "Oversaw critical CRM integrations, rigorously evaluated new digital platforms for strategic adoption, and skillfully managed external vendors."
+      },
+      {
+        "title": "Functional Enhancements & Collaboration",
+        "description": "Significantly enhanced website functionality, SEO, and online reputation, fostering close collaboration with sales, IT, and marketing teams."
+      }
+    ],
+    "achievements": [
+      1,
+      9,
+      10,
+      11,
+      12,
+      13
+    ]
+  },
+  {
+    "id": "newblue",
+    "name": "NewBlue Inc.",
+    "startDate": "February 2019",
+    "endDate": "October 2020",
+    "current": false,
+    "location": "San Diego, CA",
+    "jobTitle": "Digital Marketing Specialist",
+    "jobDuties": [
+      {
+        "title": "Marketing-Driven Web Development",
+        "description": "Focused on marketing-driven web development in a fast-paced startup environment, leveraging WordPress, JavaScript, PHP, and MySQL."
+      },
+      {
+        "title": "Custom Module Development",
+        "description": "Developed custom WordPress modules, streamlined workflows between marketing and development teams."
+      },
+      {
+        "title": "User Behavior Analysis",
+        "description": "Utilized Google Analytics, Google Ads, and Tag Manager to analyze user behavior for campaign optimization."
+      },
+      {
+        "title": "QA & Feature Proposal",
+        "description": "Conducted meticulous manual web testing and proposed innovative features based on reporting metrics and user feedback."
+      }
+    ],
+    "achievements": [
+      14,
+      15,
+      16
+    ]
+  },
+  {
+    "id": "avacomtech",
+    "name": "Avacomtech Inc.",
+    "startDate": "August 2017",
+    "endDate": "February 2019",
+    "current": false,
+    "location": "National City, CA",
+    "jobTitle": "E-Commerce Manager",
+    "jobDuties": [
+      {
+        "title": "E-commerce Platform Management",
+        "description": "Drove substantial e-commerce growth by optimizing product listings and managing corporate Magento websites and web stores."
+      },
+      {
+        "title": "CRM Strategy Oversight",
+        "description": "Oversaw comprehensive CRM strategies across Amazon, Magento, and other e-commerce platforms."
+      },
+      {
+        "title": "Data-Driven Performance Analysis",
+        "description": "Conducted daily data analysis of pricing, inventory, advertising, and shipping performance using Google Analytics and Data Studio."
+      }
+    ],
+    "achievements": [
+      17,
+      18
+    ]
+  },
+  {
+    "id": "ufeelgood",
+    "name": "Ufeelgood LLC",
+    "startDate": "July 2015",
+    "endDate": "February 2018",
+    "current": false,
+    "location": "Stanhope, NJ",
+    "jobTitle": "E-Commerce Manager (Full-Time 2015-2017, Part-Time 2017-2018)",
+    "jobDuties": [
+      {
+        "title": "Multi-Channel Sales Management",
+        "description": "Successfully expanded sales channels to Amazon EU, eBay, Walmart, Newegg, Shopify, and Magento."
+      },
+      {
+        "title": "SEO & Marketing Strategy",
+        "description": "Developed SEO-focused marketing strategies that boosted product visibility."
+      },
+      {
+        "title": "Financial Performance Reporting",
+        "description": "Managed financial performance using Google Analytics and Data Studio for reporting, ensuring accurate sales tax and metrics reporting."
+      },
+      {
+        "title": "Customer Experience Enhancement",
+        "description": "Improved customer experience by efficiently handling inquiries."
+      }
+    ],
+    "achievements": [
+      19,
+      20,
+      21
+    ]
+  },
+  {
+    "id": "dscape",
+    "name": "Dscape Interactive",
+    "startDate": "October 2015",
+    "endDate": "January 2016",
+    "current": false,
+    "location": "Mount Olive, NJ",
+    "jobTitle": "Front-End Testing",
+    "jobDuties": [
+      {
+        "title": "Quality Assurance Testing",
+        "description": "Provided technical assistance in testing and modified quality testing processes."
+      },
+      {
+        "title": "Defect Reporting & Tracking",
+        "description": "Meticulously evaluated and reported software defects via JIRA."
+      },
+      {
+        "title": "Test Plan Coordination",
+        "description": "Coordinated with development teams to create and execute comprehensive test plans, scenarios, and cases."
+      }
+    ],
+    "achievements": [
+      22
+    ]
+  }
+]
