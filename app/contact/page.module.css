@@ -1,25 +1,29 @@
-.main {
+/* .main is handled by main tag with global styles */
+/* .main {
   min-height: 100vh;
   background: var(--color-bg);
-}
+} */
 
+/* .title uses .page-title (or .page-header > .page-title if there's a subtitle) */
 .title {
+  /* font-size: 2.5rem; */ /* Slightly smaller than global .page-title (2.8rem) */
   font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  text-align: center;
-  margin-bottom: 2.5rem;
+  /* font-weight: 700; */
+  /* color: var(--color-text); */
+  /* text-align: center; */
+  /* margin-bottom: 2.5rem; */ /* .page-title has 0.75rem, .page-header has 3rem */
 }
 
+/* .contactContainer can be a .content-card or a specific layout structure */
 .contactContainer {
-  max-width: 900px;
+  max-width: 900px; /* Specific max-width for this layout */
   margin: 0 auto;
   display: flex;
   gap: 3rem;
   background: var(--color-bg-card);
-  border-radius: 12px;
+  border-radius: 12px; /* .content-card is 8px */
   box-shadow: var(--color-card-shadow);
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2rem; /* .content-card is 2rem */
   flex-wrap: wrap;
 }
 
@@ -31,7 +35,7 @@
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Could be a .subsection-title or similar if standardized */
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
@@ -99,18 +103,19 @@
   text-decoration: underline;
   word-break: break-all;
   font-size: 1rem;
-  margin-left: 2.1rem;
+  margin-left: 2.1rem; /* Specific to this layout */
 }
 
+/* .contactForm could be a .content-card with var(--color-form-bg) or remain specific */
 .contactForm {
   flex: 1 1 320px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   background: var(--color-form-bg);
-  border-radius: 10px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-radius: 10px; /* .content-card is 8px */
+  padding: 2rem 1.5rem; /* .content-card is 2rem */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Softer than var(--color-card-shadow) */
 }
 
 .formGroup {
@@ -141,22 +146,27 @@
   outline: none;
 }
 
+/* .submitButton uses .btn and .btn-primary */
 .submitButton {
-  background: var(--color-primary);
-  color: #fff;
-  font-weight: 600;
-  border: none;
+  /* background: var(--color-primary); */
+  /* color: #fff; */
+  /* font-weight: 600; */
+  /* border: none; */
+  /* border-radius: 6px; */ /* .btn is pill-shaped, this is different */
   border-radius: 6px;
-  padding: 0.9rem 1.5rem;
+  /* padding: 0.9rem 1.5rem; */ /* Similar to .btn padding */
+  /* font-size: 1.1rem; */ /* .btn is 1rem */
   font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.2s;
+  /* cursor: pointer; */
+  /* transition: background 0.2s; */
 }
 
+/* .submitButton:hover uses .btn-primary:hover */
 .submitButton:hover {
-  background: var(--color-primary-hover);
+  /* background: var(--color-primary-hover); */
 }
 
+/* Message styles are specific, keep them */
 .successMessage {
   background-color: #dcfce7;
   color: #166534;
@@ -186,3 +196,5 @@
     padding: 1.5rem 0.5rem;
   }
 }
+
+/* No specific dark theme overrides here that are not covered by variables */

@@ -1,24 +1,29 @@
-.main {
+/* .main is handled by main tag with global styles */
+/* .main {
   min-height: 100vh;
   background: var(--color-bg);
-}
+} */
 
-.achievements {
+/* .achievements (page wrapper) can use .section or be part of main content area */
+/* .achievements {
   background-color: var(--color-bg);
-}
+} */
 
+/* .container can be main tag or .section-content-wrapper if inside a full-width section */
 .container {
-  max-width: 1200px;
+  max-width: 1200px; /* Matches var(--max-width) */
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Matches main padding */
 }
 
+/* .title uses .page-title (or .page-header > .page-title) */
 .title {
+  /* font-size: 2.5rem; */ /* Slightly smaller than global .page-title (2.8rem) */
   font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  text-align: center;
-  margin-bottom: 3rem;
+  /* font-weight: 700; */
+  /* color: var(--color-text); */
+  /* text-align: center; */
+  /* margin-bottom: 3rem; */ /* .page-title has 0.75rem, .page-header has 3rem */
 }
 
 .achievementsList {
@@ -27,27 +32,29 @@
   gap: 1rem;
 }
 
+/* .companyGroup can be seen as a type of .content-card, especially the header part. */
+/* The collapsible nature makes it a more complex component. */
 .companyGroup {
   background: var(--color-bg-card);
-  border-radius: 8px;
+  border-radius: 8px; /* Matches .content-card */
   overflow: hidden;
-  box-shadow: var(--color-card-shadow);
+  box-shadow: var(--color-card-shadow); /* Matches .content-card */
 }
 
 .companyHeader {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.5rem; /* .content-card has 2rem, this is slightly less */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-bg-card);
+  background: var(--color-bg-card); /* Redundant if .companyGroup has it and no border */
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .companyHeader:hover {
-  background-color: var(--color-form-bg);
+  background-color: var(--color-form-bg); /* Or a specific hover variable */
 }
 
 .companyHeader.expanded {
@@ -84,7 +91,7 @@
   color: var(--color-text-secondary);
   background: var(--color-form-bg);
   padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 9999px; /* Pill badge style */
 }
 
 .expandIcon {
@@ -102,16 +109,17 @@
   flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: var(--color-form-bg);
+  background: var(--color-form-bg); /* Inside the .companyGroup card, uses form-bg */
 }
 
+/* .achievement can be a variation of .content-card or a nested card style */
 .achievement {
   background: var(--color-bg-card);
-  border-radius: 6px;
-  padding: 0.75rem;
+  border-radius: 6px; /* .content-card is 8px */
+  padding: 0.75rem; /* .content-card is 2rem, this is much smaller */
   position: relative;
   transition: transform 0.2s ease;
-  box-shadow: 0 1px 3px var(--color-card-shadow);
+  box-shadow: 0 1px 3px var(--color-card-shadow); /* Slightly different shadow definition, though var could be same */
 }
 
 .achievement:hover {
@@ -121,7 +129,7 @@
 .achievementTitle {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  color: var(--color-text-secondary); /* Not --color-text or --color-primary */
   margin: 0 0 0.25rem 0;
 }
 
@@ -156,12 +164,13 @@
 }
 
 @media (max-width: 768px) {
-  .main {
-    padding-top: 120px;
-  }
+  /* .main global styles has margin-top: 65px for nav. This is an additional top padding. */
+  /* .main {
+    padding-top: 120px; 
+  } */
 
   .title {
-    font-size: 2rem;
+    /* font-size: 2rem; */
   }
 
   .companyHeader {
@@ -185,3 +194,5 @@
     gap: 1rem;
   }
 }
+
+/* No specific dark theme overrides here that aren't covered by variables like var(--color-bg-card), var(--color-form-bg) etc. */

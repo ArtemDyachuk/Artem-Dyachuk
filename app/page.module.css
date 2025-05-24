@@ -1,117 +1,168 @@
+/* .main is handled by globals.css body and main tags */
+
+/* .hero uses .section */
 .main {
-  height: 100%;
   background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .hero {
-  min-height: 100vh;
-  background: var(--color-bg);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 0;
+  padding: 5rem 1rem 3rem 1rem;
+  text-align: center;
+  border-radius: 0 0 32px 32px;
+  background: none;
 }
 
+/* .container can be replaced by main tag or .section-content-wrapper if inside .section.alternate-bg */
+/* If .container is used directly inside .main, it might be redundant if main already has max-width and padding */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1200px; /* Matches var(--max-width) */
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Matches main padding */
 }
 
+/* .heroContent can be replaced by .page-header */
 .heroContent {
-  max-width: 48rem;
-  margin: 0 auto;
-  text-align: center;
+  /* max-width: 48rem; */ /* Can be adjusted in .page-header if different from default */
+  /* margin: 0 auto; */ /* Handled by .page-header */
+  /* text-align: center; */ /* Handled by .page-header */
 }
 
+/* .heroTitle uses .page-title */
 .heroTitle {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1.5rem;
+  font-size: 3.8rem;
+  font-weight: 800;
+  color: #23272a;
+  margin-bottom: 1.2rem;
+  letter-spacing: -1.5px;
 }
 
+/* .heroSubtitle uses .page-subtitle */
 .heroSubtitle {
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 2.2rem;
 }
 
 .heroDescription {
-  font-size: 1.25rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  font-size: 1.45rem;
+  color: #444950;
+  margin-bottom: 3.2rem;
+  line-height: 1.5;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
 }
 
 .ctaContainer {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3.5rem;
 }
 
+/* .ctaButton uses .btn and .btn-primary */
 .ctaButton {
   display: inline-block;
-  padding: 1rem 2rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #ffffff;
-  background-color: var(--color-primary);
+  padding: 0.8em 2em;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.2;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.15s ease-in-out;
+  box-shadow: none;
 }
 
-.ctaButton:hover {
-  background-color: var(--color-primary-hover);
-  transform: translateY(-2px);
+.ctaButton.primary {
+  background-color: #007AFF;
+  color: #ffffff;
+  border-color: #007AFF;
+}
+
+.ctaButton.primary:hover {
+  background-color: #005ecb;
+  border-color: #005ecb;
+  transform: scale(1.03);
+}
+
+.ctaButton.secondary {
+  background-color: transparent;
+  color: #007AFF;
+  border-color: #007AFF;
+}
+
+.ctaButton.secondary:hover {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #005ecb;
+  border-color: #005ecb;
+  transform: scale(1.03);
 }
 
 .statsContainer {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-@media (min-width: 768px) {
-  .statsContainer {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  background: none;
+  box-shadow: none;
 }
 
 .statItem {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  min-width: 160px;
   text-align: center;
 }
 
 .statNumber {
-  font-size: 2.25rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #2563eb;
+  margin-bottom: 0.3rem;
 }
 
 .statLabel {
-  color: var(--color-text-secondary);
+  color: #444950;
+  font-size: 1.08rem;
 }
 
+/* .experience uses .section and .section.alternate-bg */
 .experience {
-  background-color: var(--color-form-bg);
+  /* background-color: var(--color-form-bg); */ /* Handled by .section.alternate-bg */
 }
 
+/* .sectionTitle (local) uses global .section-title */
 .sectionTitle {
+  /* font-size: 1.875rem; */ /* Slightly smaller than global, keep if specific */
   font-size: 1.875rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--color-text);
+  /* font-weight: 700; */
+  /* text-align: center; */
+  /* margin-bottom: 3rem; */
+  /* color: var(--color-text); */
 }
 
 .accordionItem {
   margin-bottom: 1.5rem;
 }
 
+/* .accordionButton can be a variation of .content-card or a new global component style */
 .accordionButton {
   width: 100%;
   display: flex;
@@ -201,16 +252,19 @@
   }
 }
 
+/* .card uses .content-card */
 .card {
-  background-color: var(--color-bg-card);
+  /* background-color: var(--color-bg-card); */
+  /* border-radius: 0.5rem; */ /* Different from global, keep if specific */
   border-radius: 0.5rem;
+  /* padding: 1.5rem; */ /* Different from global, keep if specific */
   padding: 1.5rem;
-  box-shadow: 0 1px 2px var(--color-card-shadow);
-  transition: box-shadow 0.3s ease;
+  /* box-shadow: 0 1px 2px var(--color-card-shadow); */
+  /* transition: box-shadow 0.3s ease; */
 }
 
 .card:hover {
-  box-shadow: 0 4px 6px var(--color-card-shadow);
+  /* box-shadow: 0 4px 6px var(--color-card-shadow); */
 }
 
 .cardTitle {
@@ -226,6 +280,7 @@
   color: var(--color-text-secondary);
 }
 
+/* Timeline styles might be very specific, or parts could be global if timeline is a common pattern */
 .timeline {
   display: flex;
   flex-direction: column;
@@ -265,8 +320,9 @@
   gap: 0.25rem;
 }
 
+/* .experiencePreview uses .section and .section.alternate-bg */
 .experiencePreview {
-  background-color: var(--color-form-bg);
+  /* background-color: var(--color-form-bg); */
 }
 
 .experienceGrid {
@@ -276,16 +332,17 @@
   margin-top: 2rem;
 }
 
+/* .experienceCard uses .content-card */
 .experienceCard {
-  background: var(--color-bg-card);
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px var(--color-card-shadow);
-  transition: transform 0.2s ease-in-out;
+  /* background: var(--color-bg-card); */
+  /* border-radius: 8px; */
+  /* padding: 2rem; */
+  /* box-shadow: 0 2px 4px var(--color-card-shadow); */
+  /* transition: transform 0.2s ease-in-out; */
 }
 
 .experienceCard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px); /* Keep if specific hover effect desired */
 }
 
 .experienceCard h3 {
@@ -331,23 +388,26 @@
   margin-top: 3rem;
 }
 
+/* .secondaryButton uses .btn and .btn-secondary */
 .secondaryButton {
-  display: inline-block;
-  padding: 1rem 2rem;
+  /* display: inline-block; */
+  /* padding: 1rem 2rem; */
+  /* font-size: 1.125rem; */ /* Slightly different from global .btn, keep or adjust */
   font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  background-color: transparent;
-  border: 2px solid var(--color-primary);
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  /* font-weight: 600; */
+  /* color: var(--color-primary); */
+  /* background-color: transparent; */
+  /* border: 2px solid var(--color-primary); */
+  /* border-radius: 9999px; */
+  /* text-decoration: none; */
+  /* transition: all 0.3s ease; */
 }
 
+/* .secondaryButton:hover uses .btn-secondary:hover */
 .secondaryButton:hover {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  transform: translateY(-2px);
+  /* background-color: var(--color-primary); */
+  /* color: #ffffff; */
+  /* transform: translateY(-2px); */
 }
 
 .achievementSkills {
@@ -422,7 +482,7 @@
 }
 
 .responsibilityItem {
-  display: contents;
+  display: contents; /* This is a specific layout choice, likely keep */
 }
 
 .responsibilityTitle {
@@ -485,6 +545,10 @@
   pointer-events: none;
 }
 
+/* Dark theme overrides should be in globals.css or specific to components if not covered by variables */
+/* :root[data-theme="dark"] .skillBadge { ... } */
+/* These skillBadge styles appear to be specific to this page's context (achievements) */
+/* vs the .skillBadge in skills/page.module.css. Consider renaming for clarity if they are different */
 :root[data-theme="dark"] .skillBadge {
   background: #23293a;
   color: #f3f4f6;
@@ -494,4 +558,34 @@
 :root[data-theme="dark"] .skillBadge:hover {
   background: #2d3650;
   border-color: var(--color-primary, #60a5fa);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .statsContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .statItem {
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  .heroDescription {
+    font-size: 1.05rem;
+  }
+  .ctaButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
 }

@@ -24,9 +24,11 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-KHWLTHMR" />
       <body className={inter.className}>
         <Header />
-        <FabContact />
-        {children}
-        <Footer />
+        <div className="content-wrapper">
+          <FabContact />
+          {children}
+          <Footer />
+        </div>
         <Analytics />
       </body>
     </html>

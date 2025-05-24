@@ -1,39 +1,42 @@
-.main {
-  min-height: 100vh;
-  padding: 2rem;
-  background-color: var(--color-bg-main, #f8f9fa);
-}
+/* .main is handled by main tag with global styles. Remove if HTML structure matches */
+/* .skills (as a page wrapper) can be replaced by main tag */
 
-.skills {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
+/* .container uses .content-card or is the main content area */
 .container {
-  background-color: var(--color-bg-card, #fff);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-  padding: 2rem;
+  /* background-color: var(--color-bg-card, #fff); */ /* Covered by .content-card */
+  /* border-radius: 12px; */ /* .content-card has 8px, adjust if 12px is crucial */
+  border-radius: 12px; 
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); */ /* Covered by .content-card with var(--color-card-shadow) */
+  /* padding: 2rem; */ /* Covered by .content-card */
 }
 
+/* .title uses .page-title */
 .title {
+  /* font-size: 2.5rem; */ /* Slightly smaller than global .page-title (2.8rem), keep if specific */
   font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--color-text-primary, #1a1a1a);
-  margin-bottom: 2.5rem;
-  text-align: center;
+  /* font-weight: 700; */
+  /* color: var(--color-text-primary, #1a1a1a); */
+  /* margin-bottom: 2.5rem; */ /* .page-title has 0.75rem, .page-header has 3rem. Adjust as needed. */
+  /* text-align: center; */
 }
 
+/* .skillSection uses .section */
 .skillSection {
-  margin-bottom: 2.5rem;
+  /* margin-bottom: 2.5rem; */ /* .section has padding, not margin. Add margin here if needed or use padding on child. */
 }
 
+/* .sectionTitle (local) uses global .section-title */
 .sectionTitle {
+  /* font-size: 1.6rem; */ /* Smaller than global .section-title (2rem), keep if specific */
   font-size: 1.6rem;
+  /* font-weight: 600; */ /* Global .section-title is 700 */
   font-weight: 600;
+  /* color: var(--color-primary, #2563eb); */ /* Global .section-title uses --color-text */
   color: var(--color-primary, #2563eb);
+  /* margin-bottom: 1.5rem; */ /* Global .section-title has 2.5rem */
   margin-bottom: 1.5rem;
   letter-spacing: 0.01em;
+  /* text-align: center; -- global .section-title is centered */
 }
 
 .skillGrid {
@@ -42,15 +45,16 @@
   gap: 1rem;
 }
 
+/* .skillBadge is a specific component style. Keep, or consider if it can be a variation of a global .badge/.tag */
 .skillBadge {
-  background: var(--color-bg, #f8f9fa);
+  background: var(--color-bg, #f8f9fa); /* Uses main bg, consider --color-bg-card or --color-form-bg for badges */
   color: var(--color-text-primary, #1a1a1a);
   border: 1px solid var(--color-border, #e5e7eb);
   border-radius: 8px;
   padding: 0.75rem 1.25rem;
   font-size: 1rem;
   font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); /* Softer shadow than .content-card */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -59,7 +63,7 @@
 }
 
 .skillBadge:hover {
-  background: var(--color-bg-hover, #f0f4fa);
+  background: var(--color-bg-hover, #f0f4fa); /* Consider a global --color-bg-hover */
   border-color: var(--color-primary, #2563eb);
 }
 
@@ -75,11 +79,12 @@
 }
 
 @media (max-width: 768px) {
-  .main {
+  /* .main global styles for padding already exist */
+  /* .main {
     padding: 1rem;
-  }
+  } */
   .container {
-    padding: 1rem;
+    /* padding: 1rem; */ /* Adjust if .content-card padding (2rem) is too much */
   }
   .skillGrid {
     gap: 0.5rem;
@@ -90,33 +95,39 @@
     font-size: 0.95rem;
   }
   .title {
-    font-size: 2rem;
+    /* font-size: 2rem; */
   }
   .sectionTitle {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 }
 
+/* DARK THEME OVERRIDES */
+/* These should be handled by the global dark theme variables where possible */
 :root[data-theme="dark"] .skillBadge {
-  background: #282c34;
-  color: #f3f4f6;
-  border-color: #353a42;
+  /* background: #282c34; */ /* Should map to a variable like var(--color-bg-card) or var(--color-form-bg) */
+  background: #282c34; /* Keeping explicit for now if it must be different from card/form bg */
+  /* color: #f3f4f6; */ /* Covered by var(--color-text) */
+  /* border-color: #353a42; */ /* Covered by var(--color-border) */
 }
 
 :root[data-theme="dark"] .skillBadge:hover {
+  /* background: #313846; */ /* Needs a dark theme --color-bg-hover or keep override */
   background: #313846;
-  border-color: var(--color-primary, #60a5fa);
+  /* border-color: var(--color-primary, #60a5fa); */ /* Covered by var(--color-primary) */
 }
 
 :root[data-theme="dark"] .skillTitle {
-  color: #fff;
+  /* color: #fff; */ /* Covered by var(--color-text) */
 }
 
 :root[data-theme="dark"] .sectionTitle,
 :root[data-theme="dark"] .title {
-  color: #60a5fa;
+  /* color: #60a5fa; */ /* Global titles use --color-text, this page uses --color-primary for section titles */
+  /* If this is intentional, the local .sectionTitle color override should remain. */
+  /* For .title, if it's using .page-title, it will be --color-text. */
 }
 
 :root[data-theme="dark"] .skillDescription {
-  color: #a1a1aa;
+  /* color: #a1a1aa; */ /* Covered by var(--color-text-secondary) */
 }
