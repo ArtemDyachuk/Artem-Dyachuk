@@ -93,17 +93,19 @@ body {
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-.content-wrapper {
+main {
   flex: 1 0 auto;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 65px;
+  padding: 1rem;
+  background: var(--color-bg);
   display: flex;
   flex-direction: column;
-}
-
-/* Ensure the main content area within the wrapper can grow */
-.content-wrapper > main {
-  flex-grow: 1;
+  justify-content: flex-start;
 }
 
 * {
@@ -159,13 +161,6 @@ a:hover {
 
 .nav-link:hover {
   color: var(--color-primary);
-}
-
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  margin-top: 65px;
-  padding: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
