@@ -13,7 +13,7 @@ export default function Home() {
       // imageUrl: `/images/projects/${project.id}.jpg`, // Assuming images follow this naming convention
       altText: `${project.title} - ${project.productDescription}`,
       description: project.productDescription,
-      caseStudyUrl: `/portfolio/${project.id}`
+      caseStudyUrl: `/my-work/${project.id}`
     }));
 
   return (

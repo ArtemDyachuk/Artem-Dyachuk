@@ -49,7 +49,7 @@ export default function Header() {
   };
 
   const navigationLinks = [
-    { href: "/portfolio", label: "My Work" },
+    { href: "/my-work", label: "My Work" },
     { href: "/achievements", label: "Achievements" },
     { href: "/experience", label: "Experience" },
     { href: "/skills", label: "Skills" },

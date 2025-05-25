@@ -24,7 +24,7 @@ export default function PortfolioPage() {
       <h1 className={styles.pageTitle}>Portfolio</h1>
       <div className={styles.projectsList}>
         {projects.map((project) => (
-          <Link href={`/portfolio/${project.id}`} key={project.id} className={styles.projectCard}>
+          <Link href={`/my-work/${project.id}`} key={project.id} className={styles.projectCard}>
             <h2 className={styles.projectTitle}>{project.title}</h2>
             <div className={styles.contentRow}>
               <div className={`${styles.contentBlock} ${styles.descriptionBlock}`}>

@@ -37,7 +37,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className={styles.content}>
         <h3 className={styles.title}>{project.title}</h3>
         <p className={styles.description}>{project.description}</p>
-        <Link href={`/portfolio/${project.id}`} className={styles.link}>
+        <Link href={`/my-work/${project.id}`} className={styles.link}>
           View Case Study
         </Link>
       </div>
