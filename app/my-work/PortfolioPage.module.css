@@ -20,11 +20,40 @@
   gap: 3rem;
 }
 
+.projectWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .projectCard {
   background: none;
   box-shadow: none;
   padding: 0;
   border-radius: 0;
+}
+
+.ctaContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.ctaButton {
+  background: #0033cc;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid #0033cc;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: #0033cc;
+  transform: translateY(-2px);
 }
 
 .projectTitle {

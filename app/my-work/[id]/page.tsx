@@ -4,13 +4,15 @@ import skillsData from "@/app/data/skills.json";
 import styles from "./ProjectDetail.module.css";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Breadcrumbs from "@/app/components/navigation/breadcrumbs/Breadcrumbs";
+import ProjectNavigation from "@/app/components/navigation/project-navigation/ProjectNavigation";
 
 type Params = Promise<{ id: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { id } = await params;
   const project = portfolioData.find((p) => p.id === parseInt(id));
-  
+
   if (!project) {
     return {
       title: 'Project Not Found',
@@ -52,8 +54,14 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
   const matchedSkills = skillsData.filter((skill) => project.skillIds.includes(skill.id));
 
+  const breadcrumbItems = [
+    { label: "My Work", href: "/my-work" },
+    { label: project.title }
+  ];
+
   return (
-    <div className={styles.wrapper} style={{ marginTop: 65 }}>
+    <div className={styles.wrapper}>
+      <Breadcrumbs items={breadcrumbItems} />
       {project.mainImage && project.mainImage !== "" && (
         <div className={styles.mainImageWrapper}>
           <Image
@@ -112,6 +120,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
           </div>
         </section>
       </div>
+      <ProjectNavigation currentProjectId={project.id} />
     </div>
   );
 } 

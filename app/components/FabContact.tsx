@@ -1,4 +1,7 @@
+'use client';
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./FabContact.module.css";
 
 function MailIcon() {
@@ -12,6 +15,13 @@ function MailIcon() {
 }
 
 export default function FabContact() {
+  const pathname = usePathname();
+  
+  // Don't render the FAB on the contact page
+  if (pathname === '/contact') {
+    return null;
+  }
+
   return (
     <Link href="/contact" className={styles.fab} aria-label="Contact Me">
       <MailIcon />
