@@ -18,6 +18,23 @@
     }
   },
   "summary": "Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Backed by a strong foundation as a Full-Stack Web Developer, I have developed and guided software solutions that power core marketing infrastructure, supporting over $1 billion in annual revenue. My expertise spans from technical implementation to strategic leadership, consistently delivering innovative solutions, optimizing operational efficiency, and effectively leading cross-functional teams.",
+  "philosophy": {
+    "intro": "My approach to Product Management is built on these core principles:",
+    "principles": [
+      {
+        "title": "Bridging Technology and Strategy",
+        "description": "I leverage deep technical expertise to build impactful digital solutions that align directly with strategic business goals and deliver measurable results, such as supporting significant revenue and achieving substantial cost savings."
+      },
+      {
+        "title": "Data-Informed, User-Focused",
+        "description": "I champion the use of analytics, A/B testing, and user feedback to drive continuous improvement, optimize user experiences, and ensure products solve meaningful problems effectively, leading to enhanced engagement and campaign effectiveness."
+      },
+      {
+        "title": "Collaborative Execution & Efficiency",
+        "description": "I believe in fostering strong cross-functional partnerships  with marketing, IT, sales, and vendors to streamline development, spark innovation, and tackle complex challenges with efficient, scalable solutions that improve operational flexibility and productivity."
+      }
+    ]
+  },
   "keyStrengths": [
     "Full-Stack Development",
     "Product Strategy",

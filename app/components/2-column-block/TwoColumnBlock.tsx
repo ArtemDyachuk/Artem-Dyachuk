@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './TwoColumnBlock.module.css';
+import DownloadResumeButton from '../resume/download/DownloadResumeButton';
 
 interface WorkHistoryItem {
   yearRange: string;
@@ -12,6 +13,8 @@ interface TwoColumnBlockProps {
   imageAlt?: string;
   name: string;
   intro: string;
+  location?: string;
+  showResumeButton?: boolean;
   workHistory?: WorkHistoryItem[];
 }
 
@@ -20,6 +23,8 @@ export default function TwoColumnBlock({
   imageAlt = '',
   name,
   intro,
+  location,
+  showResumeButton = false,
   workHistory,
 }: TwoColumnBlockProps) {
 
@@ -40,6 +45,12 @@ export default function TwoColumnBlock({
       <div className={styles.rightCol}>
         <h1 className={styles.name}>{name}</h1>
         <p className={styles.intro}>{intro}</p>
+        {location && <p className={styles.location}>{location}</p>}
+        {showResumeButton && (
+          <div className={styles.resumeSection}>
+            <DownloadResumeButton variant="primary" size="medium" />
+          </div>
+        )}
         <div className={styles.workHistorySection}>
           <h2 className={styles.workHistoryTitle}>Where I&rsquo;ve Worked</h2>
           <ul className={styles.workHistoryList}>

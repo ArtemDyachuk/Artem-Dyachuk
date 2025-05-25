@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import aboutData from "../data/about.json";
 import companiesData from "../data/companies.json";
 import TwoColumnBlock from "../components/2-column-block/TwoColumnBlock";
-import DownloadResumeButton from "../components/resume/download/DownloadResumeButton";
+import Philosophy from "../components/philosophy/Philosophy";
 
 export const metadata: Metadata = {
   title: 'About',
@@ -36,28 +36,21 @@ export default function About() {
         imageUrl={aboutData.personalInfo.profileImage}
         imageAlt={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
         name={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
-        intro={aboutData.personalInfo.currentRole}
+        intro={aboutData.personalInfo.currentRole + " at " + aboutData.personalInfo.currentCompany}
+        location={aboutData.personalInfo.location}
+        showResumeButton={true}
         workHistory={workHistory}
+      />
+      <Philosophy 
+        intro={aboutData.philosophy.intro}
+        principles={aboutData.philosophy.principles}
       />
       <section className={styles.about}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>
-              {aboutData.personalInfo.firstName} {aboutData.personalInfo.lastName}
-            </h1>
-            <h2 className={styles.subtitle}>
-              {aboutData.personalInfo.currentRole} at {aboutData.personalInfo.currentCompany}
-            </h2>
-            <p className={styles.location}>{aboutData.personalInfo.location}</p>
-            
-            {/* Download Resume Button */}
-            <div className={styles.resumeSection}>
-              <DownloadResumeButton variant="primary" size="medium" />
-            </div>
-          </div>
-
           <div className={styles.content}>
             <div className={styles.overview}>
+
+              <h2 className={styles.subtitle}>About Me</h2>
               <p className={styles.summary}>{aboutData.summary}</p>
 
               <div className={styles.education}>
