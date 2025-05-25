@@ -4,8 +4,9 @@ import styles from "./ProjectDetail.module.css";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
-  const project = portfolioData.find((p) => p.id === parseInt(params.id));
+export default async function ProjectPage({ params }: { params: { id: string } }) {
+  const { id } = params;
+  const project = portfolioData.find((p) => p.id === parseInt(id));
   if (!project) notFound();
 
   const matchedSkills = skillsData.filter((skill) => project.skillIds.includes(skill.id));
