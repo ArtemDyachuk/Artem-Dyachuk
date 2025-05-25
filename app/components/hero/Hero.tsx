@@ -9,19 +9,11 @@ const Hero = () => {
         <div className={styles.heroContent}>
           <div className={styles.avatarContainer}>
             <Image
-              src="/avatars/artem-dyachuk-xs.webp"
+              src="/avatars/artem-dyachuk-xs-crop.webp"
               alt="Artem Dyachuk"
               width={150}
               height={150}
               className={styles.avatar}
-              priority
-            />
-            <Image
-              src="/avatars/artem-dyachuk-xl.webp"
-              alt="Artem Dyachuk"
-              width={150}
-              height={150}
-              className={styles.avatarHighRes}
               priority
             />
           </div>

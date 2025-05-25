@@ -30,7 +30,7 @@ export default function PortfolioPage() {
               <div className={`${styles.contentBlock} ${styles.descriptionBlock}`}>
                 <h3 className={styles.blockTitle}>About</h3>
                 <p>{project.productDescription || project.challenge}</p>
-                <div className={styles.placeholderImage}></div>
+                {/* <div className={styles.placeholderImage}></div> */}
               </div>
 
               <div className={`${styles.contentBlock} ${styles.impactBlock}`}>
