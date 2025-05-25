@@ -3,12 +3,12 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--color-bg-card);
+  background-color: var(--color-nav-bg);
   backdrop-filter: blur(5px);
-  box-shadow: 0 1px 3px var(--color-card-shadow);
-  /* border-bottom: 1px solid var(--color-border); */
+  box-shadow: none;
   z-index: 10000;
   height: 65px;
+  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -18,40 +18,48 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-nav-text);
   text-decoration: none;
   transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .logo:hover {
-  color: var(--color-primary-hover);
+  color: var(--color-nav-text-hover);
 }
 
 .links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .link {
-  color: var(--color-text-secondary);
+  color: var(--color-nav-text);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   position: relative;
+  opacity: 0.8;
 }
 
 .link:hover {
-  color: var(--color-primary);
+  opacity: 1;
+  color: var(--color-nav-text);
 }
 
 .link.active {
-  color: var(--color-primary);
+  opacity: 1;
+  color: var(--color-nav-text);
 }
 
 .link.active::after {
@@ -60,15 +68,9 @@
   bottom: -4px;
   left: 0;
   right: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  border-radius: 2px;
-}
-
-.themeToggleWrapper {
-  margin-left: 2rem;
-  display: flex;
-  align-items: center;
+  height: 1px;
+  background-color: var(--color-nav-text);
+  border-radius: 1px;
 }
 
 .hamburger {
@@ -77,104 +79,137 @@
   border: none;
   cursor: pointer;
   padding: 0.5rem;
-  margin-left: 1rem;
-  z-index: 10001;
-  position: relative;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  background: var(--color-nav-text);
 }
 
 @media (max-width: 768px) {
   .hamburger {
     display: block;
   }
-  .links,
-  .themeToggleWrapper {
+
+  .links {
     display: none;
   }
 }
 
-.drawerOverlay {
+/* Simple Mobile Drawer */
+.mobileDrawer {
   position: fixed;
-  inset: 0;
-  background: transparent;
-  z-index: 9998;
+  top: 65px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-nav-bg);
+  z-index: 9999;
   opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
-  transition: opacity 0.3s;
 }
 
-.drawerOverlay.open {
+.mobileDrawer.open {
   opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
 }
 
-.drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 80vw;
-  max-width: 320px;
-  background: var(--color-bg-card);
-  box-shadow: -2px 0 12px rgba(0,0,0,0.18);
-  z-index: 9999;
+.mobileDrawer.closing {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: none;
+  pointer-events: none;
+}
+
+.drawerContent {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-}
-
-.drawerOverlay.open .drawer {
-  transform: translateX(0);
-}
-
-.drawerLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.drawerThemeToggle {
-  margin-top: auto;
-  display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  gap: 30px;
 }
 
+.drawerLink {
+  color: var(--color-nav-text);
+  text-decoration: none;
+  font-size: 38px;
+  font-weight: 300;
+  font-family: 'Georgia', serif;
+  transition: opacity 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.drawerLink:hover {
+  opacity: 0.7;
+}
+
+.socialIcons {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.socialIcon {
+  color: var(--color-nav-text);
+  font-size: 1.8rem;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
+}
+
+.socialIcon:hover {
+  opacity: 1;
+}
+
+/* Hamburger Icon */
 .hamburgerIcon {
   display: inline-block;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   position: relative;
 }
 
 .bar {
   display: block;
   position: absolute;
-  left: 4px;
+  left: 0;
   width: 24px;
-  height: 3px;
-  background: #2563eb;
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s, top 0.3s, background 0.3s;
+  height: 2px;
+  background: var(--color-nav-text);
+  border-radius: 1px;
+  transition: all 0.3s ease;
 }
 
 .bar:nth-child(1) {
-  top: 8px;
+  top: 6px;
 }
+
 .bar:nth-child(2) {
-  top: 15px;
+  top: 12px;
 }
+
 .bar:nth-child(3) {
-  top: 22px;
+  top: 18px;
 }
 
 .barTopOpen {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
+
 .barMidOpen {
   opacity: 0;
 }
+
 .barBotOpen {
-  transform: translateY(-7px) rotate(-45deg);
-} 
+  transform: translateY(-6px) rotate(-45deg);
+}

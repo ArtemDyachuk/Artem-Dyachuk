@@ -3,7 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import contactsData from "../../../data/contacts.json";
 import styles from "./Header.module.css";
+
+const github = contactsData.contacts.find(c => c.linkType === "GitHub");
+const linkedin = contactsData.contacts.find(c => c.linkType === "LinkedIn");
+const email = contactsData.contacts.find(c => c.type === "email");
 
 function HamburgerIcon({ open, ...props }: { open: boolean;[key: string]: unknown }) {
   return (
@@ -18,135 +25,126 @@ function HamburgerIcon({ open, ...props }: { open: boolean;[key: string]: unknow
 export default function Header() {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const drawerRef = useRef<HTMLDivElement>(null);
-  const hamburgerRef = useRef<HTMLButtonElement>(null);
 
-  // Add/remove drawer-open class to body
+  // Prevent body scroll when drawer is open
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      if (drawerOpen) {
-        document.body.classList.add("drawer-open");
-      } else {
-        document.body.classList.remove("drawer-open");
-      }
+    if (drawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
     }
-    // Cleanup on unmount
     return () => {
-      if (typeof document !== "undefined") {
-        document.body.classList.remove("drawer-open");
-      }
+      document.body.style.overflow = "";
     };
   }, [drawerOpen]);
 
-  // Close drawer on ESC or click outside (but not on hamburger)
-  useEffect(() => {
-    if (!drawerOpen) return;
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setDrawerOpen(false);
-    }
-    function handleClick(e: MouseEvent) {
-      if (
-        drawerRef.current &&
-        !drawerRef.current.contains(e.target as Node) &&
-        hamburgerRef.current &&
-        !hamburgerRef.current.contains(e.target as Node)
-      ) {
-        setDrawerOpen(false);
-      }
-    }
-    document.addEventListener("keydown", handleKey);
-    document.addEventListener("mousedown", handleClick);
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, [drawerOpen]);
+  // Handle internal navigation - close instantly
+  const handleInternalNavigation = () => {
+    setIsClosing(true);
+    setDrawerOpen(false);
+    // Reset closing state after a brief moment
+    setTimeout(() => setIsClosing(false), 50);
+  };
+
+  const navigationLinks = [
+    { href: "/portfolio", label: "My Work" },
+    { href: "/achievements", label: "Achievements" },
+    { href: "/experience", label: "Experience" },
+    { href: "/skills", label: "Skills" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+  ];
 
   return (
-    <nav className={styles.navigation}>
-      <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
-          Artem Dyachuk
-        </Link>
-        <button
-          className={styles.hamburger}
-          aria-label={drawerOpen ? "Close menu" : "Open menu"}
-          aria-expanded={drawerOpen}
-          aria-controls="mobile-drawer"
-          ref={hamburgerRef}
-          onClick={() => setDrawerOpen((open) => !open)}
-        >
-          <HamburgerIcon open={drawerOpen} />
-        </button>
-        <div className={styles.links}>
-          <Link
-            href="/experience"
-            className={`${styles.link} ${pathname === "/experience" ? styles.active : ""}`}
-          >
-            Experience
+    <>
+      <nav className={styles.navigation}>
+        <div className={styles.container}>
+          <Link href="/" className={styles.logo} onClick={handleInternalNavigation}>
+            Artem Dyachuk
           </Link>
-          <Link
-            href="/achievements"
-            className={`${styles.link} ${pathname === "/achievements" ? styles.active : ""}`}
+
+          {/* Desktop Links */}
+          <div className={styles.links}>
+            {navigationLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.link} ${pathname === link.href ? styles.active : ""}`}
+                onClick={handleInternalNavigation}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            className={styles.hamburger}
+            aria-label={drawerOpen ? "Close menu" : "Open menu"}
+            onClick={() => setDrawerOpen(!drawerOpen)}
           >
-            Achievements
-          </Link>
-          <Link
-            href="/skills"
-            className={`${styles.link} ${pathname === "/skills" ? styles.active : ""}`}
-          >
-            Skills
-          </Link>
-          <Link
-            href="/portfolio"
-            className={`${styles.link} ${pathname === "/portfolio" ? styles.active : ""}`}
-          >
-            Portfolio
-          </Link>
-          <Link
-            href="/about"
-            className={`${styles.link} ${pathname === "/about" ? styles.active : ""}`}
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className={`${styles.link} ${pathname === "/contact" ? styles.active : ""}`}
-          >
-            Contact
-          </Link>
+            <HamburgerIcon open={drawerOpen} />
+          </button>
         </div>
-      </div>
-      {/* Drawer overlay */}
+      </nav>
+
+      {/* Mobile Drawer */}
       <div
-        className={`${styles.drawerOverlay} ${drawerOpen ? styles.open : ""}`}
-        aria-hidden={!drawerOpen}
+        className={`${styles.mobileDrawer} ${drawerOpen ? styles.open : ""} ${isClosing ? styles.closing : ""}`}
+        ref={drawerRef}
       >
-        <div
-          className={`${styles.drawer}`}
-          id="mobile-drawer"
-          ref={drawerRef}
-          tabIndex={-1}
-        >
-          <div className={styles.drawerLinks}>
-            <Link href="/about" className={styles.link} onClick={() => setDrawerOpen(false)}>
-              About
+        <div className={styles.drawerContent}>
+          {/* Mobile Navigation Links */}
+          {navigationLinks.map((link) => (
+            <Link
+              key={`mobile-${link.href}`}
+              href={link.href}
+              className={styles.drawerLink}
+              onClick={handleInternalNavigation}
+            >
+              {link.label}
             </Link>
-            <Link href="/skills" className={styles.link} onClick={() => setDrawerOpen(false)}>
-              Skills
-            </Link>
-            <Link href="/experience" className={styles.link} onClick={() => setDrawerOpen(false)}>
-              Experience
-            </Link>
-            <Link href="/achievements" className={styles.link} onClick={() => setDrawerOpen(false)}>
-              Achievements
-            </Link>
-            <Link href="/contact" className={styles.link} onClick={() => setDrawerOpen(false)}>
-              Contact
-            </Link>
+          ))}
+
+          {/* Social Icons */}
+          <div className={styles.socialIcons}>
+            {linkedin && (
+              <Link
+                href={linkedin.value}
+                className={styles.socialIcon}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin size={24} />
+              </Link>
+            )}
+            {github && (
+              <Link
+                href={github.value}
+                className={styles.socialIcon}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <FaGithub size={24} />
+              </Link>
+            )}
+            {email && (
+              <Link
+                href="/contact"
+                className={styles.socialIcon}
+                aria-label="Email"
+                onClick={handleInternalNavigation}
+              >
+                <MdEmail size={24} />
+              </Link>
+            )}
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 } 

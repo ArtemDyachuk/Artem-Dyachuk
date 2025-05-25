@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "../page.module.css";
+import styles from "./page.module.css";
 import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
 import skillsData from "../data/skills.json";
@@ -104,9 +104,10 @@ export default function Experience() {
                       <ul className={styles.responsibilitiesList}>
                         {company.jobDuties.map((duty, index) => (
                           <li key={index} className={styles.responsibilityItem}>
-                            <span className={styles.checkmark}>✓</span>
-                            <span className={styles.responsibilityTitle}>{duty.title}:</span>
-                            <span className={styles.responsibilityDescription}>{duty.description}</span>
+                            <div className={styles.responsibilityContent}>
+                              <div className={styles.responsibilityTitle}>{duty.title}</div>
+                              <div className={styles.responsibilityDescription}>{duty.description}</div>
+                            </div>
                           </li>
                         ))}
                       </ul>
@@ -122,11 +123,14 @@ export default function Experience() {
                                 <div className={styles.achievementDescription}>{achievement.description}</div>
                                 {achievement.skills && achievement.skills.length > 0 && (
                                   <div className={styles.achievementSkills}>
-                                    {achievement.skills.map((skillId) => (
-                                      <span key={skillId} className={styles.skillBadge}>
-                                        {skillMap.get(skillId)}
-                                      </span>
-                                    ))}
+                                    <div className={styles.skillsLabel}>Demonstrates skills:</div>
+                                    <div className={styles.skillBadges}>
+                                      {achievement.skills.map((skillId) => (
+                                        <span key={skillId} className={styles.skillBadge}>
+                                          {skillMap.get(skillId)}
+                                        </span>
+                                      ))}
+                                    </div>
                                   </div>
                                 )}
                               </div>

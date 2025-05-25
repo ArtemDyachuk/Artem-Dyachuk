@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5rem 1rem 3rem 1rem;
+  padding: 3rem 1rem 3rem 1rem;
   text-align: center;
   border-radius: 0 0 32px 32px;
   background: none;
@@ -56,9 +56,60 @@
 .heroTitle {
   font-size: 3.8rem;
   font-weight: 800;
-  color: #23272a;
   margin-bottom: 1.2rem;
   letter-spacing: -1.5px;
+  background: linear-gradient(
+    90deg,
+    #ff6b9d 0%,
+    #c44569 15%,
+    #6c5ce7 30%,
+    #74b9ff 45%,
+    #00cec9 60%,
+    #55a3ff 75%,
+    #a29bfe 90%,
+    #fd79a8 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: siriGlow 4s ease-in-out infinite;
+  position: relative;
+}
+
+.heroTitle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 107, 157, 0.3) 0%,
+    rgba(196, 69, 105, 0.3) 15%,
+    rgba(108, 92, 231, 0.3) 30%,
+    rgba(116, 185, 255, 0.3) 45%,
+    rgba(0, 206, 201, 0.3) 60%,
+    rgba(85, 163, 255, 0.3) 75%,
+    rgba(162, 155, 254, 0.3) 90%,
+    rgba(253, 121, 168, 0.3) 100%
+  );
+  background-size: 300% 100%;
+  border-radius: 12px;
+  filter: blur(20px);
+  animation: siriGlow 4s ease-in-out infinite;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@keyframes siriGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .heroSubtitle {
@@ -106,6 +157,7 @@
 .ctaButton:hover {
   background-color: #005ecb;
   border-color: #005ecb;
+  color: #ffffff !important;
   transform: scale(1.03);
 }
 
@@ -126,9 +178,11 @@
   box-shadow: none;
 }
 
+
+
 .secondaryButton:hover {
   background-color: rgba(0, 122, 255, 0.1);
-  color: #005ecb;
+  color: #005ecb !important;
   border-color: #005ecb;
   transform: scale(1.03);
 }
@@ -203,7 +257,37 @@
 
 /* Dark Theme Overrides */
 :root[data-theme="dark"] .heroTitle {
-  color: #f0f0f0;
+  background: linear-gradient(
+    90deg,
+    #ff8fab 0%,
+    #d63384 15%,
+    #8b7cf8 30%,
+    #89cdf1 45%,
+    #20e3d2 60%,
+    #6bb6ff 75%,
+    #b8b5ff 90%,
+    #ff9ff3 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme="dark"] .heroTitle::before {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 143, 171, 0.4) 0%,
+    rgba(214, 51, 132, 0.4) 15%,
+    rgba(139, 124, 248, 0.4) 30%,
+    rgba(137, 205, 241, 0.4) 45%,
+    rgba(32, 227, 210, 0.4) 60%,
+    rgba(107, 182, 255, 0.4) 75%,
+    rgba(184, 181, 255, 0.4) 90%,
+    rgba(255, 159, 243, 0.4) 100%
+  );
+  background-size: 300% 100%;
+  opacity: 0.8;
 }
 
 :root[data-theme="dark"] .heroSubtitle {
@@ -223,6 +307,7 @@
 :root[data-theme="dark"] .ctaButton:hover {
   background-color: #004a9e;
   border-color: #004a9e;
+  color: #ffffff !important;
 }
 
 :root[data-theme="dark"] .secondaryButton {
@@ -232,7 +317,7 @@
 
 :root[data-theme="dark"] .secondaryButton:hover {
   background-color: rgba(119, 179, 241, 0.1);
-  color: #5c99e0;
+  color: #5c99e0 !important;
   border-color: #5c99e0;
 }
 

@@ -1,9 +1,25 @@
 import styles from "./page.module.css";
 import aboutData from "../data/about.json";
+import companiesData from "../data/companies.json";
+import TwoColumnBlock from "../components/2-column-block/TwoColumnBlock";
 
 export default function About() {
+
+  const workHistory = companiesData.map((company) => ({
+    yearRange: company.startDate + " - " + (company.endDate || "Present"),
+    title: company.jobTitle,
+    company: company.name
+  }));
+
   return (
     <main className={styles.main}>
+      <TwoColumnBlock
+        imageUrl={aboutData.personalInfo.profileImage}
+        imageAlt={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
+        name={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
+        intro={aboutData.personalInfo.currentRole}
+        workHistory={workHistory}
+      />
       <section className={styles.about}>
         <div className={styles.container}>
           <div className={styles.header}>
