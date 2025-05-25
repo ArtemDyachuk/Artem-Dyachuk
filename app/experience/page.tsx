@@ -6,6 +6,12 @@ import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
 import skillsData from "../data/skills.json";
 
+// Note: Since this is a client component, we need to export metadata from a separate file
+// or convert this to a server component. For now, I'll add it here but it won't work in client components.
+// You'll need to either:
+// 1. Convert this to a server component, or
+// 2. Create a separate layout.tsx file in the experience folder
+
 interface Achievement {
   id: number;
   companyId: string;

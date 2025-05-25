@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import portfolioData from "@/app/data/portfolio.json";
 import styles from "./PortfolioPage.module.css"; // We'll create this CSS module next
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: 'My Work & Portfolio',
+  description: 'Explore Artem Dyachuk\'s portfolio of digital products and software solutions. Projects supporting $1B+ in annual revenue including custom CMS development, corporate websites, and marketing integrations.',
+  openGraph: {
+    title: 'Portfolio - Artem Dyachuk\'s Digital Products & Solutions',
+    description: 'Explore Artem Dyachuk\'s portfolio of digital products and software solutions. Projects supporting $1B+ in annual revenue including custom CMS development, corporate websites, and marketing integrations.',
+    url: 'https://artemdyachuk.com/my-work',
+  },
+  twitter: {
+    title: 'Portfolio - Artem Dyachuk\'s Digital Products & Solutions',
+    description: 'Explore Artem Dyachuk\'s portfolio of digital products and software solutions supporting $1B+ in annual revenue.',
+  },
+  alternates: {
+    canonical: '/my-work',
+  },
+};
 
 interface Project {
   id: number;

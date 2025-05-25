@@ -72,7 +72,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${styles.link} ${pathname === link.href ? styles.active : ""}`}
+                className={`${styles.link} ${pathname === link.href ? styles.active : ""} ${link.href === '/contact' ? styles.ctaButton : ""}`}
                 onClick={handleInternalNavigation}
               >
                 {link.label}
@@ -102,7 +102,7 @@ export default function Header() {
             <Link
               key={`mobile-${link.href}`}
               href={link.href}
-              className={styles.drawerLink}
+              className={`${styles.drawerLink} ${link.href === '/contact' ? styles.ctaButtonMobile : ""}`}
               onClick={handleInternalNavigation}
             >
               {link.label}

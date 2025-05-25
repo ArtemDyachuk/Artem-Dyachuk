@@ -23,6 +23,12 @@
   color: var(--color-text-secondary);
 }
 
+.resumeSection {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
 .tabs {
   display: flex;
   justify-content: center;

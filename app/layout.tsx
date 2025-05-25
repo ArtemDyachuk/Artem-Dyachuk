@@ -21,8 +21,54 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Artem Dyachuk - Product Manager | Full-Stack Developer",
-  description: "Product Manager & Full-Stack Developer with over a decade of experience transforming digital marketing efforts and product landscapes.",
+  title: {
+    template: '%s | Artem Dyachuk',
+    default: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+  },
+  description: "Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Full-Stack Web Developer supporting over $1 billion in annual revenue.",
+  authors: [{ name: 'Artem Dyachuk' }],
+  creator: 'Artem Dyachuk',
+  publisher: 'Artem Dyachuk',
+  metadataBase: new URL('https://artemdyachuk.com'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://artemdyachuk.com',
+    siteName: 'Artem Dyachuk Portfolio',
+    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+    description: 'Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Full-Stack Web Developer supporting over $1 billion in annual revenue.',
+    images: [
+      {
+        url: '/avatars/artem-dyachuk-xs.webp',
+        width: 400,
+        height: 400,
+        alt: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+    description: 'Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes.',
+    images: ['/avatars/artem-dyachuk-xs.webp'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  // verification: {
+  //   google: 'your-google-verification-code', // Replace with actual verification code when available
+  // },
 };
 
 export default function RootLayout({

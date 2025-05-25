@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
 import styles from "./page.module.css";
 import skillsData from "../data/skills.json";
+
+export const metadata: Metadata = {
+  title: 'Skills & Expertise',
+  description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, React, Next.js, Node.js, Digital Marketing, System Architecture, and more.',
+  openGraph: {
+    title: 'Skills & Expertise - Artem Dyachuk',
+    description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, React, Next.js, Node.js, Digital Marketing, System Architecture, and more.',
+    url: 'https://artemdyachuk.com/skills',
+  },
+  twitter: {
+    title: 'Skills & Expertise - Artem Dyachuk',
+    description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, and more.',
+  },
+  alternates: {
+    canonical: '/skills',
+  },
+};
 
 interface Skill {
   id: number;

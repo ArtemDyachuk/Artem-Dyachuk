@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import portfolioData from "@/app/data/portfolio.json";
 import skillsData from "@/app/data/skills.json";
 import styles from "./ProjectDetail.module.css";
@@ -5,6 +6,44 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 
 type Params = Promise<{ id: string }>;
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { id } = await params;
+  const project = portfolioData.find((p) => p.id === parseInt(id));
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+      description: 'The requested project could not be found.',
+    };
+  }
+
+  return {
+    title: `${project.title} - ${project.companyName}`,
+    description: `${project.productDescription} - ${project.role} project at ${project.companyName} (${project.year}). ${project.challenge.substring(0, 100)}...`,
+    openGraph: {
+      title: `${project.title} - ${project.companyName}`,
+      description: `${project.productDescription} - ${project.role} project at ${project.companyName}.`,
+      url: `https://artemdyachuk.com/my-work/${project.id}`,
+      images: project.mainImage ? [
+        {
+          url: project.mainImage,
+          width: 700,
+          height: 320,
+          alt: project.title,
+        }
+      ] : [],
+    },
+    twitter: {
+      title: `${project.title} - ${project.companyName}`,
+      description: `${project.productDescription} - ${project.role} project at ${project.companyName}.`,
+      images: project.mainImage ? [project.mainImage] : [],
+    },
+    alternates: {
+      canonical: `/my-work/${project.id}`,
+    },
+  };
+}
 
 export default async function ProjectPage({ params }: { params: Params }) {
   const { id } = await params;
