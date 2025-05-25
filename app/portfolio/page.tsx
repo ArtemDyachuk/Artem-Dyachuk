@@ -1,8 +1,9 @@
 import portfolioData from "@/app/data/portfolio.json";
 import styles from "./PortfolioPage.module.css"; // We'll create this CSS module next
+import Link from "next/link";
 
 interface Project {
-  id: string;
+  id: number;
   title: string;
   productDescription: string;
   companyName: string;
@@ -23,7 +24,7 @@ export default function PortfolioPage() {
       <h1 className={styles.pageTitle}>Portfolio</h1>
       <div className={styles.projectsList}>
         {projects.map((project) => (
-          <div key={project.id} className={styles.projectCard}>
+          <Link href={`/portfolio/${project.id}`} key={project.id} className={styles.projectCard}>
             <h2 className={styles.projectTitle}>{project.title}</h2>
             <div className={styles.contentRow}>
               <div className={`${styles.contentBlock} ${styles.descriptionBlock}`}>
@@ -58,7 +59,7 @@ export default function PortfolioPage() {
                 )}
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

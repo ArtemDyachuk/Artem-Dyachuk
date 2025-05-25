@@ -1,0 +1,138 @@
+.wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem 1.5rem;
+  background: none;
+}
+
+.mainImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 320px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  object-fit: cover;
+  background: #f5f5f5;
+}
+
+.headerBlock {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #23272f;
+  margin-bottom: 0.5rem;
+}
+
+.meta {
+  color: #6c6f7b;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.description {
+  color: #444;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.sections section {
+  border-left: 3px solid #e5e7eb;
+  padding-left: 1.2rem;
+}
+
+.sections h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #23272f;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.sections p, .sections ul {
+  color: #444;
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.sections ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.sections li {
+  margin-bottom: 0.3rem;
+  line-height: 1.6;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.skillCard {
+  background: #f7f8fa;
+  border-radius: 8px;
+  padding: 0.8rem 1.1rem;
+  min-width: 140px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.skillTitle {
+  font-weight: 600;
+  color: #23272f;
+  font-size: 1rem;
+}
+
+.skillType {
+  font-size: 0.92rem;
+  color: #6c6f7b;
+  margin-bottom: 0.2rem;
+}
+
+.skillDescription {
+  font-size: 0.92rem;
+  color: #888;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 1.2rem 0.2rem 2rem 0.2rem;
+  }
+  .mainImage {
+    max-height: 180px;
+  }
+  .sections section {
+    padding-left: 0.7rem;
+  }
+  .skillsList {
+    gap: 0.5rem;
+  }
+  .skillCard {
+    min-width: 110px;
+    padding: 0.6rem 0.7rem;
+  }
+} 

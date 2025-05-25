@@ -1,11 +1,19 @@
 [
   {
-    "id": "proj_001",
+    "id": 1,
     "title": "Custom CMS (ARC) Development",
     "productDescription": "A bespoke Content Management System (ARC) built to power corporate websites and marketing operations, offering enhanced flexibility and internal control.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
+    "mainImage": "",
+    "images": [
+      {
+        "url": "",
+        "order": "",
+        "alt": ""
+      }
+    ],
     "role": "Digital Product Manager (Product Lead)",
     "year": "2023–2024",
     "challenge": "Reduce dependency on third-party vendors, enhance internal content management capabilities, and provide a scalable platform to support core marketing operations.",
@@ -32,12 +40,20 @@
     ]
   },
   {
-    "id": "proj_002",
+    "id": 2,
     "title": "Corporate Websites Platform Development",
     "productDescription": "A suite of high-performance corporate websites designed to drive lead generation and enhance user engagement for Brightland Homes.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
+    "mainImage": "",
+    "images": [
+      {
+        "url": "",
+        "order": "",
+        "alt": ""
+      }
+    ],
     "role": "Digital Product Manager",
     "year": "2023–2024",
     "challenge": "Develop new corporate websites that effectively support marketing operations, improve user engagement, and achieve high performance standards.",
@@ -64,12 +80,20 @@
     ]
   },
   {
-    "id": "proj_003",
+    "id": 3,
     "title": "Digital TV Signage Platform",
     "productDescription": "A modernized digital TV signage platform for sales centers, featuring interactive content, lead capture, and centralized management tools.",
     "companyId": "gehan",
     "companyName": "Gehan Homes (now Brightland Homes)",
     "featured": true,
+    "mainImage": "",
+    "images": [
+      {
+        "url": "",
+        "order": "",
+        "alt": ""
+      }
+    ],
     "role": "Web Specialist (acting as Product Manager)",
     "year": "2022",
     "challenge": "Overhaul an outdated, unstable TV signage platform reliant on obsolete technology and expensive hardware, which limited feature development and incurred high costs.",
@@ -97,7 +121,7 @@
     ]
   },
   {
-    "id": "proj_004",
+    "id": 4,
     "title": "Marketing Data & Integration Hub",
     "productDescription": "An integrated data hub connecting various marketing and sales platforms (HubSpot, Zillow, etc.) to enable dynamic advertising, unified reporting, and streamlined data workflows.",
     "companyId": "brightland",
@@ -130,12 +154,20 @@
     ]
   },
   {
-    "id": "proj_005",
+    "id": 5,
     "title": "HubSpot Programmable CRM Modules",
     "productDescription": "A set of custom-developed programmable modules and objects within HubSpot CRM, designed to automate marketing tasks and streamline internal workflows.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
+    "mainImage": "",
+    "images": [
+      {
+        "url": "",
+        "order": "",
+        "alt": ""
+      }
+    ],
     "role": "Digital Product Manager",
     "year": "2023–Present",
     "challenge": "Improve marketing team efficiency by streamlining repetitive tasks and enhancing CRM functionalities within HubSpot.",

@@ -1,12 +1,16 @@
 import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 import styles from './ProjectCard.module.css';
 
 export interface Project {
-  id: string;
+  id: number;
   title: string;
-  imageUrl?: string;
-  altText: string;
+  mainImage?: string;
+  images?: {
+    url?: string;
+    order?: number;
+    alt?: string;
+  };
   description: string;
   caseStudyUrl: string;
 }
@@ -18,11 +22,11 @@ interface ProjectCardProps {
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <article className={styles.card}>
-      {project.imageUrl && (
+      {project.mainImage && (
         <div className={styles.imageContainer}>
           <Image
-            src={project.imageUrl}
-            alt={project.altText}
+            src={project.mainImage}
+            alt={project.title + " main image"}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={styles.image}
@@ -33,9 +37,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       <div className={styles.content}>
         <h3 className={styles.title}>{project.title}</h3>
         <p className={styles.description}>{project.description}</p>
-        {/* <Link href={project.caseStudyUrl} className={styles.link}>
+        <Link href={`/portfolio/${project.id}`} className={styles.link}>
           View Case Study
-        </Link> */}
+        </Link>
       </div>
     </article>
   );
