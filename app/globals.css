@@ -476,3 +476,12 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
+/* Reduce transform animations on touch devices to prevent scroll interference */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .content-card:hover,
+  [class*="card"]:hover {
+    transform: none !important;
+  }
+}

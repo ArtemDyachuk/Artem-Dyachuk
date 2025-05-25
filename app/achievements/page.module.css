@@ -9,24 +9,25 @@
   background-color: var(--color-bg);
 } */
 
-/* .container can be main tag or .section-content-wrapper if inside a full-width section */
+.main {
+  max-width: none !important;
+  width: 100% !important;
+}
+
 .container {
-  max-width: 1200px; /* Matches var(--max-width) */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem; /* Matches main padding */
+  padding: 0 1rem;
 }
 
 /* .title uses .page-title (or .page-header > .page-title) */
 .title {
-  /* font-size: 2.5rem; */ /* Slightly smaller than global .page-title (2.8rem) */
   font-size: 2.5rem;
-  /* font-weight: 700; */
-  /* color: var(--color-text); */
-  /* text-align: center; */
-  /* margin-bottom: 3rem; */ /* .page-title has 0.75rem, .page-header has 3rem */
+  margin-bottom: 2rem;
 }
 
 .achievementsList {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -35,26 +36,27 @@
 /* .companyGroup can be seen as a type of .content-card, especially the header part. */
 /* The collapsible nature makes it a more complex component. */
 .companyGroup {
+  width: 100%;
   background: var(--color-bg-card);
-  border-radius: 8px; /* Matches .content-card */
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--color-card-shadow); /* Matches .content-card */
+  box-shadow: var(--color-card-shadow);
 }
 
 .companyHeader {
   width: 100%;
-  padding: 1.5rem; /* .content-card has 2rem, this is slightly less */
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--color-bg-card); /* Redundant if .companyGroup has it and no border */
+  background: var(--color-bg-card);
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .companyHeader:hover {
-  background-color: var(--color-form-bg); /* Or a specific hover variable */
+  background-color: var(--color-form-bg);
 }
 
 .companyHeader.expanded {
@@ -105,21 +107,23 @@
 }
 
 .achievementsColumn {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: var(--color-form-bg); /* Inside the .companyGroup card, uses form-bg */
+  background: var(--color-form-bg);
+  box-sizing: border-box;
 }
 
 /* .achievement can be a variation of .content-card or a nested card style */
 .achievement {
   background: var(--color-bg-card);
-  border-radius: 6px; /* .content-card is 8px */
-  padding: 0.75rem; /* .content-card is 2rem, this is much smaller */
+  border-radius: 6px;
+  padding: 0.75rem;
   position: relative;
   transition: transform 0.2s ease;
-  box-shadow: 0 1px 3px var(--color-card-shadow); /* Slightly different shadow definition, though var could be same */
+  box-shadow: 0 1px 3px var(--color-card-shadow);
 }
 
 .achievement:hover {
@@ -129,7 +133,7 @@
 .achievementTitle {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text-secondary); /* Not --color-text or --color-primary */
+  color: var(--color-text-secondary);
   margin: 0 0 0.25rem 0;
 }
 

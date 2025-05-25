@@ -34,7 +34,7 @@ export default function Achievements() {
     if (achievementsByCompany.length > 0) {
       setExpandedCompany(achievementsByCompany[0].id);
     }
-  }, [achievementsByCompany]); // Only run on mount
+  }, []); // Only run on mount
 
   const toggleCompany = (companyId: string) => {
     setExpandedCompany(expandedCompany === companyId ? null : companyId);
@@ -89,9 +89,9 @@ export default function Achievements() {
                       {company.startDate} - {company.endDate || "Present"}
                     </span>
                   </div>
-                  <span className={styles.achievementCount}>
+                  {/* <span className={styles.achievementCount}>
                     {company.achievements.length} Achievements
-                  </span>
+                  </span> */}
                   <span className={styles.expandIcon}>
                     {expandedCompany === company.id ? "−" : "+"}
                   </span>

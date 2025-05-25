@@ -35,6 +35,7 @@ export default function Header() {
     } else {
       document.body.style.overflow = "";
     }
+    
     return () => {
       document.body.style.overflow = "";
     };

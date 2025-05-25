@@ -50,6 +50,20 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Reduce hover effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .accordionItem:hover {
+    transform: none;
+    box-shadow: var(--color-card-shadow);
+  }
+  
+  .responsibilityItem:hover,
+  .achievementItem:hover {
+    transform: none;
+    background: var(--color-form-bg);
+  }
+}
+
 .accordionButton {
   width: 100%;
   padding: 1.5rem 2rem;
