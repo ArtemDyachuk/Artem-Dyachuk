@@ -35,14 +35,14 @@ function AchievementsContent() {
     // Get featured achievements (from company's achievements array) in the exact order specified
     const featuredAchievements = company.achievements
       ? company.achievements
-          .map(achievementId => 
-            allCompanyAchievements.find(achievement => achievement.id === achievementId)
-          )
-          .filter(achievement => achievement !== undefined) as Achievement[]
+        .map(achievementId =>
+          allCompanyAchievements.find(achievement => achievement.id === achievementId)
+        )
+        .filter(achievement => achievement !== undefined) as Achievement[]
       : [];
 
     // Get other achievements (excluding featured ones)
-    const otherAchievements = allCompanyAchievements.filter(achievement => 
+    const otherAchievements = allCompanyAchievements.filter(achievement =>
       !company.achievements?.includes(achievement.id)
     );
 
@@ -68,7 +68,7 @@ function AchievementsContent() {
 
   const toggleCompany = (companyId: string) => {
     setExpandedCompany(expandedCompany === companyId ? null : companyId);
-    
+
     // Clear URL parameter when user manually toggles company
     if (targetCompanyId) {
       router.replace('/achievements', { scroll: false });
@@ -104,11 +104,14 @@ function AchievementsContent() {
       <section className={styles.achievements}>
         <div className={styles.container}>
           <h1 className={styles.title}>Key Achievements</h1>
+          <p className={styles.pageSummary}>
+            This page showcases a comprehensive list of my key achievements, organized by company. Discover impactful contributions in product strategy, technical development, and performance optimization that demonstrate a consistent record of delivering measurable results.
+          </p>
 
           <div className={styles.achievementsList}>
             {achievementsByCompany.map((company) => (
-              <div 
-                key={company.id} 
+              <div
+                key={company.id}
                 className={styles.companyGroup}
               >
                 <button
@@ -133,10 +136,10 @@ function AchievementsContent() {
                     {/* Link to Experience Page */}
                     <div className={styles.experienceLink}>
                       <Link href={`/experience?company=${company.id}`} className={styles.experienceButton}>
-                        More about my role at this company
+                        More about my role at this position
                       </Link>
                     </div>
-                    
+
                     {/* Featured Achievements Section */}
                     {company.featuredAchievements.length > 0 && (
                       <>
@@ -182,6 +185,9 @@ export default function Achievements() {
         <section className={styles.achievements}>
           <div className={styles.container}>
             <h1 className={styles.title}>Key Achievements</h1>
+            <p className={styles.pageSummary}>
+              Discover the measurable impact I&apos;ve made throughout my career. From driving $1B+ in annual revenue to achieving significant cost savings, these achievements showcase my ability to deliver transformative results across product management and software development initiatives.
+            </p>
             <div>Loading...</div>
           </div>
         </section>

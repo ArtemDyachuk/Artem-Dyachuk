@@ -6,7 +6,6 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
-import skillsData from "../data/skills.json";
 
 // Note: Since this is a client component, we need to export metadata from a separate file
 // or convert this to a server component. For now, I'll add it here but it won't work in client components.
@@ -40,34 +39,23 @@ interface Company {
   achievements: number[];
 }
 
-interface Skill {
-  id: number;
-  title: string;
-  type: string;
-  description: string;
-  order: number;
-}
+
 
 function ExperienceContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const targetCompanyId = searchParams.get('company');
-  
+
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const toggleAccordion = (id: string) => {
     setActiveAccordion(activeAccordion === id ? null : id);
-    
+
     // Clear URL parameter when user manually toggles accordion
     if (targetCompanyId) {
       router.replace('/experience', { scroll: false });
     }
   };
-
-  // Map skill ID to title for quick lookup
-  const skillMap = new Map<number, string>(
-    (skillsData as Skill[]).map((skill) => [skill.id, skill.title])
-  );
 
   // Sort companies by start date (most recent first)
   const sortedCompanies = [...(companiesData as Company[])].sort(
@@ -93,11 +81,14 @@ function ExperienceContent() {
       <section className={styles.experience}>
         <div className={styles.container}>
           <h1 className={styles.sectionTitle}>Professional Experience</h1>
+          <p className={styles.pageSummary}>
+            Explore my career journey, from foundational e-commerce and digital marketing roles to Technical Product Management. Each position details key responsibilities and impactful achievements, highlighting my blend of technical expertise and strategic leadership.
+          </p>
           {sortedCompanies.map((company) => {
             const companyAchievements = getCompanyAchievements(company);
             return (
-              <div 
-                key={company.id} 
+              <div
+                key={company.id}
                 className={styles.accordionItem}
               >
                 <button
@@ -154,18 +145,6 @@ function ExperienceContent() {
                                 <div className={styles.achievementTitle}>{achievement.title}</div>
 
                                 <div className={styles.achievementDescription}>{achievement.description}</div>
-                                {achievement.skills && achievement.skills.length > 0 && (
-                                  <div className={styles.achievementSkills}>
-                                    <div className={styles.skillsLabel}>Demonstrates skills:</div>
-                                    <div className={styles.skillBadges}>
-                                      {achievement.skills.map((skillId) => (
-                                        <span key={skillId} className={styles.skillBadge}>
-                                          {skillMap.get(skillId)}
-                                        </span>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
                               </div>
                             </li>
                           ))}
@@ -173,6 +152,9 @@ function ExperienceContent() {
                         <div className={styles.viewMoreLink}>
                           <Link href={`/achievements?company=${company.id}`} className={styles.viewMoreButton}>
                             View More Achievements
+                          </Link>
+                          <Link href="/skills" className={styles.viewMoreButton}>
+                            Learn more about my skills
                           </Link>
                         </div>
                       </div>
@@ -195,6 +177,9 @@ export default function Experience() {
         <section className={styles.experience}>
           <div className={styles.container}>
             <h1 className={styles.sectionTitle}>Professional Experience</h1>
+            <p className={styles.pageSummary}>
+              Explore my professional journey spanning over a decade of building impactful digital solutions. From full-stack development to product management, I&apos;ve consistently delivered results that drive business growth and operational efficiency across multiple industries.
+            </p>
             <div>Loading...</div>
           </div>
         </section>

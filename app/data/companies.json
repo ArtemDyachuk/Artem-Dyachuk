@@ -6,7 +6,7 @@
     "endDate": null,
     "current": true,
     "location": "Addison, TX",
-    "jobTitle": "Technical Product Manager",
+    "jobTitle": "Digital Product Manager",
     "jobDuties": [
       {
         "title": "Product Strategy & Vision ($1B+ Platforms)",
@@ -50,7 +50,7 @@
   },
   {
     "id": "gehan",
-    "name": "Brightland Homes (formerly Gehan Homes)",
+    "name": "Brightland Homes",
     "startDate": "October 2020",
     "endDate": "February 2023",
     "current": false,

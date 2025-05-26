@@ -15,7 +15,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -23,7 +23,24 @@
 /* .title uses .page-title (or .page-header > .page-title) */
 .title {
   font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
   margin-bottom: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pageSummary {
+  font-size: 20px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  font-weight: 400;
+  text-align: center;
 }
 
 .achievementsList {
@@ -240,40 +257,20 @@
 /* Experience Link */
 .experienceLink {
   margin-bottom: 1rem;
-  text-align: center;
+  text-align: left;
 }
 
 .experienceButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--color-bg-card);
   color: var(--color-primary);
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  border: 2px solid var(--color-primary);
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
 }
 
 .experienceButton:hover {
-  background: var(--color-primary);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.experienceButton:active {
-  transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-  .experienceButton {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-  }
+  color: var(--color-primary-hover);
+  text-decoration: underline;
 }
 
 /* No specific dark theme overrides here that aren't covered by variables like var(--color-bg-card), var(--color-form-bg) etc. */

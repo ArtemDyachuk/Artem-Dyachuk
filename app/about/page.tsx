@@ -36,7 +36,7 @@ export default function About() {
         imageUrl={aboutData.personalInfo.profileImage}
         imageAlt={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
         name={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
-        intro={aboutData.personalInfo.currentRole + " at " + aboutData.personalInfo.currentCompany}
+        intro={aboutData.personalInfo.currentRole}
         location={aboutData.personalInfo.location}
         showResumeButton={true}
         workHistory={workHistory}

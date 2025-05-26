@@ -34,7 +34,25 @@ const skillsByType = (skillsData as Skill[]).reduce((acc: Record<string, Skill[]
   return acc;
 }, {});
 
-const sortedTypes = Object.keys(skillsByType).sort((a, b) => a.localeCompare(b));
+const sortedTypes = Object.keys(skillsByType).sort((a, b) => {
+  const priorityOrder = ["Product Management", "Technical Expertise", "Digital Marketing"];
+  const aIndex = priorityOrder.indexOf(a);
+  const bIndex = priorityOrder.indexOf(b);
+
+  // If both are in priority list, sort by their priority order
+  if (aIndex !== -1 && bIndex !== -1) {
+    return aIndex - bIndex;
+  }
+
+  // If only a is in priority list, a comes first
+  if (aIndex !== -1) return -1;
+
+  // If only b is in priority list, b comes first
+  if (bIndex !== -1) return 1;
+
+  // If neither is in priority list, sort alphabetically
+  return a.localeCompare(b);
+});
 
 export default function Skills() {
   return (
@@ -42,6 +60,9 @@ export default function Skills() {
       <section className={styles.skills}>
         <div className={styles.container}>
           <h1 className={styles.title}>Skills & Expertise</h1>
+          <p className={styles.pageSummary}>
+            This page outlines my core professional competencies, categorized for clarity. It reflects a deep expertise in Technical Product Management, hands-on Full-Stack Development, strategic Digital Marketing, and comprehensive E-commerce Management, accumulated throughout my career.
+          </p>
 
           {sortedTypes.map((type) => {
             // Sort by order (as number), then by title

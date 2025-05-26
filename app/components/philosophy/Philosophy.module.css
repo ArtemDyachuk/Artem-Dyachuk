@@ -4,7 +4,7 @@
   border-radius: 18px;
   box-shadow: var(--color-card-shadow);
   margin: 2rem auto;
-  max-width: 1200px;
+  max-width: var(--max-width);
 }
 
 .container {

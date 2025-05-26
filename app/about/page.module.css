@@ -1,6 +1,13 @@
 .container {
   border-radius: 12px;
 }
+
+.about {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
 .header {
   text-align: center;
   margin-bottom: 2rem;
