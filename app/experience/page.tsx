@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import styles from "./page.module.css";
 import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
@@ -46,11 +48,20 @@ interface Skill {
   order: number;
 }
 
-export default function Experience() {
+function ExperienceContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const targetCompanyId = searchParams.get('company');
+  
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
 
   const toggleAccordion = (id: string) => {
     setActiveAccordion(activeAccordion === id ? null : id);
+    
+    // Clear URL parameter when user manually toggles accordion
+    if (targetCompanyId) {
+      router.replace('/experience', { scroll: false });
+    }
   };
 
   // Map skill ID to title for quick lookup
@@ -62,6 +73,13 @@ export default function Experience() {
   const sortedCompanies = [...(companiesData as Company[])].sort(
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   );
+
+  // Handle URL parameter for auto-expanding specific company (only on initial load)
+  useEffect(() => {
+    if (targetCompanyId && sortedCompanies.find(c => c.id === targetCompanyId)) {
+      setActiveAccordion(targetCompanyId);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Get achievements for a company
   const getCompanyAchievements = (company: Company) => {
@@ -78,7 +96,10 @@ export default function Experience() {
           {sortedCompanies.map((company) => {
             const companyAchievements = getCompanyAchievements(company);
             return (
-              <div key={company.id} className={styles.accordionItem}>
+              <div 
+                key={company.id} 
+                className={styles.accordionItem}
+              >
                 <button
                   onClick={() => toggleAccordion(company.id)}
                   className={`${styles.accordionButton} ${activeAccordion === company.id ? styles.active : ""}`}
@@ -149,6 +170,11 @@ export default function Experience() {
                             </li>
                           ))}
                         </ul>
+                        <div className={styles.viewMoreLink}>
+                          <Link href={`/achievements?company=${company.id}`} className={styles.viewMoreButton}>
+                            View More Achievements
+                          </Link>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -159,5 +185,22 @@ export default function Experience() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function Experience() {
+  return (
+    <Suspense fallback={
+      <main className={styles.main}>
+        <section className={styles.experience}>
+          <div className={styles.container}>
+            <h1 className={styles.sectionTitle}>Professional Experience</h1>
+            <div>Loading...</div>
+          </div>
+        </section>
+      </main>
+    }>
+      <ExperienceContent />
+    </Suspense>
   );
 } 

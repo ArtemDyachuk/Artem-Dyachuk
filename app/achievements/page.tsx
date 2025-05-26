@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import Link from "next/link";
 import styles from "./page.module.css";
 import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
@@ -14,7 +16,11 @@ interface Achievement {
   skills: number[];
 }
 
-export default function Achievements() {
+function AchievementsContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const targetCompanyId = searchParams.get('company');
+
   // Sort companies by start date (most recent first)
   const sortedCompanies = [...companiesData].sort(
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
@@ -48,86 +54,44 @@ export default function Achievements() {
     };
   });
 
-  // Always expand the first company on initial load
+  // Expand company based on URL parameter or default to first company
   const [expandedCompany, setExpandedCompany] = useState<string | null>(null);
+
   useEffect(() => {
-    if (achievementsByCompany.length > 0) {
+    if (targetCompanyId && achievementsByCompany.find(c => c.id === targetCompanyId)) {
+      setExpandedCompany(targetCompanyId);
+    } else if (achievementsByCompany.length > 0) {
+      // Default to first company if no target specified
       setExpandedCompany(achievementsByCompany[0].id);
     }
-  }, []); // Only run on mount
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggleCompany = (companyId: string) => {
     setExpandedCompany(expandedCompany === companyId ? null : companyId);
+    
+    // Clear URL parameter when user manually toggles company
+    if (targetCompanyId) {
+      router.replace('/achievements', { scroll: false });
+    }
   };
 
-  // Track expanded achievements
-  const [expandedAchievements, setExpandedAchievements] = useState<{ [key: number]: boolean }>({});
-  // Track which achievements are overflowing
-  const [overflowing, setOverflowing] = useState<{ [key: number]: boolean }>({});
   // Track expanded "Other Achievements" sections by company
   const [expandedOtherSections, setExpandedOtherSections] = useState<{ [key: string]: boolean }>({});
-  // Refs for each achievement description
-  const descriptionRefs = useRef<{ [key: number]: HTMLParagraphElement | null }>({});
-
-  const toggleAchievement = (id: number) => {
-    setExpandedAchievements((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
 
   const toggleOtherSection = (companyId: string) => {
     setExpandedOtherSections((prev) => ({ ...prev, [companyId]: !prev[companyId] }));
   };
 
-  // Check if a description is overflowing
-  const checkOverflow = () => {
-    const newOverflowing: { [key: number]: boolean } = {};
-    Object.entries(descriptionRefs.current).forEach(([id, el]) => {
-      if (el && el.scrollHeight > el.clientHeight + 1) {
-        newOverflowing[Number(id)] = true;
-      }
-    });
-    setOverflowing(newOverflowing);
-  };
-
-  useEffect(() => {
-    checkOverflow();
-    window.addEventListener("resize", checkOverflow);
-    return () => window.removeEventListener("resize", checkOverflow);
-  }, [expandedCompany]);
-
   // Helper function to render achievement items
   const renderAchievement = (achievement: Achievement) => {
-    const expanded = expandedAchievements[achievement.id];
     return (
       <div key={achievement.id} className={styles.achievement}>
         <h3 className={styles.achievementTitle}>
           {achievement.title}
         </h3>
-        <p
-          ref={el => { descriptionRefs.current[achievement.id] = el; }}
-          className={
-            expanded
-              ? styles.achievementDescriptionExpanded
-              : styles.achievementDescriptionClamped
-          }
-        >
+        <p className={styles.achievementDescriptionExpanded}>
           {achievement.description}
         </p>
-        {overflowing[achievement.id] && !expanded && (
-          <button
-            style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
-            onClick={() => toggleAchievement(achievement.id)}
-          >
-            Read More
-          </button>
-        )}
-        {expanded && (
-          <button
-            style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
-            onClick={() => toggleAchievement(achievement.id)}
-          >
-            Show Less
-          </button>
-        )}
         <span className={styles.achievementYear}>
           {achievement.year}
         </span>
@@ -143,7 +107,10 @@ export default function Achievements() {
 
           <div className={styles.achievementsList}>
             {achievementsByCompany.map((company) => (
-              <div key={company.id} className={styles.companyGroup}>
+              <div 
+                key={company.id} 
+                className={styles.companyGroup}
+              >
                 <button
                   className={`${styles.companyHeader} ${expandedCompany === company.id ? styles.expanded : ""
                     }`}
@@ -163,6 +130,13 @@ export default function Achievements() {
 
                 {expandedCompany === company.id && (
                   <div className={styles.achievementsColumn}>
+                    {/* Link to Experience Page */}
+                    <div className={styles.experienceLink}>
+                      <Link href={`/experience?company=${company.id}`} className={styles.experienceButton}>
+                        More about my role at this company
+                      </Link>
+                    </div>
+                    
                     {/* Featured Achievements Section */}
                     {company.featuredAchievements.length > 0 && (
                       <>
@@ -198,5 +172,22 @@ export default function Achievements() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function Achievements() {
+  return (
+    <Suspense fallback={
+      <main className={styles.main}>
+        <section className={styles.achievements}>
+          <div className={styles.container}>
+            <h1 className={styles.title}>Key Achievements</h1>
+            <div>Loading...</div>
+          </div>
+        </section>
+      </main>
+    }>
+      <AchievementsContent />
+    </Suspense>
   );
 } 
