@@ -1,359 +1,282 @@
 [
   {
     "id": 1,
-    "title": "HTML",
-    "type": "Web Development",
-    "description": "Building blocks for web pages and applications.",
-    "order": 9
+    "title": "Product Vision & Strategy",
+    "type": "Product Management",
+    "description": "Defining product vision, strategy, and roadmaps.",
+    "order": 1
   },
   {
     "id": 2,
-    "title": "CSS",
-    "type": "Web Development",
-    "description": "Styling web content for user-friendly interfaces.",
-    "order": 10
-  },
-  {
-    "id": 3,
-    "title": "JavaScript",
-    "type": "Web Development",
-    "description": "Powers interactive and dynamic web experiences.",
-    "order": 6
+    "title": "Product Lifecycle Management",
+    "type": "Product Management",
+    "description": "Managing products from ideation to launch and iteration.",
+    "order": 2
   },
   {
     "id": 4,
-    "title": "React",
-    "type": "Web Development",
-    "description": "Building modern, efficient user interfaces for web apps.",
-    "order": 4
-  },
-  {
-    "id": 5,
-    "title": "Next.js",
-    "type": "Web Development",
-    "description": "Framework for building high-performance React applications.",
-    "order": 5
-  },
-  {
-    "id": 6,
-    "title": "Node.js",
-    "type": "Web Development",
-    "description": "Backend development for scalable applications and APIs.",
+    "title": "Data-Driven Decision Making",
+    "type": "Product Management",
+    "description": "Using data and KPIs to inform product decisions.",
     "order": 3
   },
   {
-    "id": 7,
-    "title": "Express (Node.js Framework)",
-    "type": "Web Development",
-    "description": "Web application framework for Node.js, used for building APIs.",
-    "order": 11
+    "id": 3,
+    "title": "Agile/Scrum Leadership",
+    "type": "Product Management",
+    "description": "Leading development using Agile/Scrum methodologies.",
+    "order": 4
   },
   {
     "id": 8,
-    "title": "PHP",
-    "type": "Web Development",
-    "description": "Server-side scripting, often with WordPress projects.",
-    "order": 16
+    "title": "Cross-Functional Leadership",
+    "type": "Product Management",
+    "description": "Leading and collaborating with diverse teams effectively.",
+    "order": 5
   },
   {
     "id": 9,
-    "title": "Nest.js",
-    "type": "Web Development",
-    "description": "Building efficient, scalable server-side applications with Node.js.",
-    "order": 17
-  },
-  {
-    "id": 10,
-    "title": "MongoDB",
-    "type": "Web Development",
-    "description": "NoSQL database for flexible data storage, e.g., inventory systems.",
-    "order": 12
+    "title": "Stakeholder Communication",
+    "type": "Product Management",
+    "description": "Communicating effectively with stakeholders and executives.",
+    "order": 6
   },
   {
     "id": 11,
-    "title": "MySQL",
-    "type": "Web Development",
-    "description": "Relational database for structured data in web applications.",
-    "order": 13
-  },
-  {
-    "id": 12,
-    "title": "WordPress",
-    "type": "Web Development",
-    "description": "CMS for websites; developed custom modules and managed sites.",
-    "order": 15
-  },
-  {
-    "id": 13,
-    "title": "Magento",
-    "type": "E-commerce",
-    "description": "E-commerce platform for online stores; managed corporate sites.",
-    "order": 2
-  },
-  {
-    "id": 14,
-    "title": "Shopify",
-    "type": "E-commerce",
-    "description": "E-commerce platform; used for sales channel expansion.",
-    "order": 1
-  },
-  {
-    "id": 15,
-    "title": "Git",
-    "type": "Web Development",
-    "description": "Version control for tracking code changes and collaboration.",
+    "title": "Project Management (JIRA)",
+    "type": "Product Management",
+    "description": "Managing projects, priorities, and backlogs using tools like JIRA.",
     "order": 7
   },
   {
-    "id": 16,
-    "title": "JIRA",
+    "id": 7,
+    "title": "Market & Competitive Analysis",
     "type": "Product Management",
-    "description": "Project management and issue tracking for software development.",
-    "order": 4
+    "description": "Researching market trends and competitor landscape.",
+    "order": 8
   },
   {
-    "id": 17,
-    "title": "HubSpot (CRM & CMS)",
-    "type": "Digital Marketing",
-    "description": "Platform for CRM, marketing automation, and CMS; extensive customization.",
-    "order": 2
-  },
-  {
-    "id": 18,
-    "title": "Google Analytics (including GA4)",
-    "type": "Digital Marketing",
-    "description": "Web analytics for tracking user behavior and site performance.",
-    "order": 3
-  },
-  {
-    "id": 19,
-    "title": "AWS",
-    "type": "Web Development",
-    "description": "Cloud computing services for infrastructure and applications.",
-    "order": 14
-  },
-  {
-    "id": 20,
-    "title": "Heroku",
-    "type": "Web Development",
-    "description": "Platform as a Service (PaaS) for deploying web applications.",
-    "order": 18
-  },
-  {
-    "id": 21,
-    "title": "Vercel",
-    "type": "Web Development",
-    "description": "Platform for deploying frontend frameworks and static sites.",
-    "order": 19
-  },
-  {
-    "id": 22,
-    "title": "Adobe Photoshop",
-    "type": "Digital Marketing",
-    "description": "Image editing for promotional content and marketing materials.",
+    "id": 6,
+    "title": "Business Case Development",
+    "type": "Product Management",
+    "description": "Creating business cases with cost-benefit/ROI analysis.",
     "order": 9
   },
   {
-    "id": 23,
-    "title": "Full-Stack Development",
-    "type": "Web Development",
-    "description": "End-to-end web application development (frontend and backend).",
-    "order": 2
-  },
-  {
-    "id": 24,
-    "title": "Product Strategy",
+    "id": 5,
+    "title": "UX Strategy & A/B Testing",
     "type": "Product Management",
-    "description": "Defining product vision, goals, and roadmaps aligned with business.",
-    "order": 1
-  },
-  {
-    "id": 25,
-    "title": "Technical Leadership",
-    "type": "Leadership & Soft Skills",
-    "description": "Guiding development teams and architecting technical solutions.",
-    "order": 2
-  },
-  {
-    "id": 26,
-    "title": "Cross-functional Collaboration",
-    "type": "Leadership & Soft Skills",
-    "description": "Working effectively with diverse teams (marketing, IT, sales, execs).",
-    "order": 1
-  },
-  {
-    "id": 27,
-    "title": "Cost Optimization",
-    "type": "Product Management",
-    "description": "Identifying and implementing significant cost-saving measures.",
-    "order": 3
-  },
-  {
-    "id": 28,
-    "title": "Digital Marketing Strategy & Execution",
-    "type": "Digital Marketing",
-    "description": "Planning and running digital campaigns, SEO, PPC, and lead gen.",
-    "order": 1
-  },
-  {
-    "id": 29,
-    "title": "System Architecture",
-    "type": "Web Development",
-    "description": "Designing scalable and robust software and web architectures.",
-    "order": 1
-  },
-  {
-    "id": 30,
-    "title": "Project Management",
-    "type": "Product Management",
-    "description": "Leading projects through the full lifecycle for timely delivery.",
-    "order": 2
-  },
-  {
-    "id": 31,
-    "title": "API Development & Integration",
-    "type": "Web Development",
-    "description": "Building and connecting APIs for data sync and enhanced features.",
-    "order": 8
-  },
-  {
-    "id": 32,
-    "title": "Performance Optimization",
-    "type": "Web Development",
-    "description": "Improving website speed, efficiency, and user engagement.",
-    "order": 20
-  },
-  {
-    "id": 33,
-    "title": "E-commerce Management",
-    "type": "E-commerce",
-    "description": "Managing online sales, optimizing listings, and expanding channels.",
-    "order": 3
-  },
-  {
-    "id": 34,
-    "title": "SEO (Search Engine Optimization)",
-    "type": "Digital Marketing",
-    "description": "Improving website visibility in search results.",
-    "order": 4
-  },
-  {
-    "id": 35,
-    "title": "PPC (Pay-Per-Click) Campaigns",
-    "type": "Digital Marketing",
-    "description": "Managing paid search advertising campaigns.",
-    "order": 8
-  },
-  {
-    "id": 36,
-    "title": "Data Analysis & Reporting",
-    "type": "Data & Analytics",
-    "description": "Interpreting data to inform decisions and track performance.",
-    "order": 1
-  },
-  {
-    "id": 37,
-    "title": "Email Marketing",
-    "type": "Digital Marketing",
-    "description": "Creating/managing email campaigns; HubSpot custom modules.",
-    "order": 5
-  },
-  {
-    "id": 38,
-    "title": "Vendor Management",
-    "type": "Product Management",
-    "description": "Managing relationships and contracts with external vendors.",
-    "order": 7
-  },
-  {
-    "id": 39,
-    "title": "Problem Solving",
-    "type": "Leadership & Soft Skills",
-    "description": "Analyzing issues and developing effective solutions.",
-    "order": 3
-  },
-  {
-    "id": 40,
-    "title": "Communication Skills",
-    "type": "Leadership & Soft Skills",
-    "description": "Clearly conveying info to technical & non-technical audiences.",
-    "order": 4
-  },
-  {
-    "id": 41,
-    "title": "Adaptability",
-    "type": "Leadership & Soft Skills",
-    "description": "Adjusting effectively to changing environments.",
-    "order": 5
-  },
-  {
-    "id": 42,
-    "title": "Mentorship & Team Leadership",
-    "type": "Leadership & Soft Skills",
-    "description": "Guiding and developing team members; leading project teams.",
-    "order": 6
-  },
-  {
-    "id": 43,
-    "title": "QA Testing Methodologies",
-    "type": "Product Management",
-    "description": "Ensuring software quality through systematic testing.",
-    "order": 6
-  },
-  {
-    "id": 44,
-    "title": "A/B Testing",
-    "type": "Digital Marketing",
-    "description": "Comparing variations to optimize marketing and product features.",
-    "order": 6
-  },
-  {
-    "id": 45,
-    "title": "Market Research",
-    "type": "Product Management",
-    "description": "Gathering insights on market trends and user needs.",
-    "order": 5
-  },
-  {
-    "id": 46,
-    "title": "Budget Recommendation & Management",
-    "type": "Product Management",
-    "description": "Planning and overseeing project and operational budgets.",
-    "order": 8
-  },
-  {
-    "id": 47,
-    "title": "Technical Documentation",
-    "type": "Product Management",
-    "description": "Creating clear documentation for technical projects.",
-    "order": 9
-  },
-  {
-    "id": 48,
-    "title": "Multilingual Fluency",
-    "type": "Leadership & Soft Skills",
-    "description": "Fluent in English, Ukrainian, and Russian.",
-    "order": 7
-  },
-  {
-    "id": 49,
-    "title": "Google Ads",
-    "type": "Digital Marketing",
-    "description": "Online advertising for PPC campaigns and dynamic ads.",
-    "order": 7
-  },
-  {
-    "id": 50,
-    "title": "Google Tag Manager",
-    "type": "Digital Marketing",
-    "description": "Managing and deploying marketing tags on websites.",
+    "description": "Defining UX strategy and utilizing A/B testing.",
     "order": 10
   },
   {
-    "id": 51,
-    "title": "Looker Studio (formerly Data Studio)",
-    "type": "Data & Analytics",
-    "description": "Creating custom reports and data visualizations.",
+    "id": 13,
+    "title": "Problem Solving & Crisis Management",
+    "type": "Product Management",
+    "description": "Identifying product/operational issues and managing critical situations.",
+    "order": 11
+  },
+  {
+    "id": 12,
+    "title": "Budget Management & Cost Optimization",
+    "type": "Product Management",
+    "description": "Overseeing product budgets and implementing cost-saving measures.",
+    "order": 12
+  },
+  {
+    "id": 14,
+    "title": "Process Improvement & Standardization",
+    "type": "Product Management",
+    "description": "Streamlining product development processes and standardizing best practices.",
+    "order": 13
+  },
+  {
+    "id": 10,
+    "title": "Vendor Management",
+    "type": "Product Management",
+    "description": "Managing external vendors and partner relationships.",
+    "order": 14
+  },
+  {
+    "id": 15,
+    "title": "Mentorship & Knowledge Sharing",
+    "type": "Product Management",
+    "description": "Mentoring team members and fostering a learning environment within product teams.",
+    "order": 15
+  },
+  {
+    "id": 16,
+    "title": "Multilingual Fluency",
+    "type": "Product Management",
+    "description": "Utilizing multilingual skills (English, Ukrainian, Russian) for effective communication.",
+    "order": 16
+  },
+  {
+    "id": 17,
+    "title": "Full-Stack Development",
+    "type": "Technical Expertise",
+    "description": "Front-end and back-end application development.",
+    "order": 1
+  },
+  {
+    "id": 28,
+    "title": "System Architecture Design",
+    "type": "Technical Expertise",
+    "description": "Architecting scalable client/server solutions and platforms.",
     "order": 2
+  },
+  {
+    "id": 25,
+    "title": "API Development & Integration",
+    "type": "Technical Expertise",
+    "description": "Building and integrating RESTful and custom APIs.",
+    "order": 3
+  },
+  {
+    "id": 27,
+    "title": "Database Management (MongoDB, MySQL)",
+    "type": "Technical Expertise",
+    "description": "Designing, optimizing, and managing NoSQL/SQL databases.",
+    "order": 4
+  },
+  {
+    "id": 18,
+    "title": "JavaScript",
+    "type": "Technical Expertise",
+    "description": "Core language for web interactivity and applications.",
+    "order": 5
+  },
+  {
+    "id": 19,
+    "title": "Node.js (Express, Nest.js)",
+    "type": "Technical Expertise",
+    "description": "Backend JavaScript runtime for scalable applications/APIs.",
+    "order": 6
+  },
+  {
+    "id": 20,
+    "title": "React",
+    "type": "Technical Expertise",
+    "description": "Library for building modern user interfaces.",
+    "order": 7
+  },
+  {
+    "id": 21,
+    "title": "Next.js",
+    "type": "Technical Expertise",
+    "description": "React framework for high-performance applications.",
+    "order": 8
+  },
+  {
+    "id": 30,
+    "title": "DevOps & Cloud (AWS Lambda, Vercel, Heroku)",
+    "type": "Technical Expertise",
+    "description": "Managing infrastructure, deployment, and cloud services.",
+    "order": 9
+  },
+  {
+    "id": 29,
+    "title": "HubSpot API & Customization",
+    "type": "Technical Expertise",
+    "description": "HubSpot API mastery, custom objects, workflows, multi-org.",
+    "order": 10
+  },
+  {
+    "id": 32,
+    "title": "Analytics & Reporting (GA4, GTM, Looker Studio, HotJar)",
+    "type": "Technical Expertise",
+    "description": "Using analytics tools for tracking, analysis, and reporting.",
+    "order": 11
+  },
+  {
+    "id": 31,
+    "title": "CMS Development (Custom ARC, WordPress, Magento)",
+    "type": "Technical Expertise",
+    "description": "Developing and managing content management systems.",
+    "order": 12
+  },
+  {
+    "id": 34,
+    "title": "GIT Version Control",
+    "type": "Technical Expertise",
+    "description": "Managing code versions for stability and collaboration.",
+    "order": 13
+  },
+  {
+    "id": 33,
+    "title": "Front-End Testing & QA Leadership",
+    "type": "Technical Expertise",
+    "description": "Leading QA efforts, web testing, test cases, defect reporting.",
+    "order": 14
+  },
+  {
+    "id": 22,
+    "title": "PHP",
+    "type": "Technical Expertise",
+    "description": "Server-side scripting, often used with WordPress.",
+    "order": 15
+  },
+  {
+    "id": 23,
+    "title": "HTML & CSS",
+    "type": "Technical Expertise",
+    "description": "Fundamental languages for web structure and styling.",
+    "order": 16
+  },
+  {
+    "id": 24,
+    "title": "Bootstrap",
+    "type": "Technical Expertise",
+    "description": "Front-end framework for responsive web design.",
+    "order": 17
+  },
+  {
+    "id": 26,
+    "title": "Third-Party API Integration",
+    "type": "Technical Expertise",
+    "description": "Connecting with services like HubSpot, Zillow, Google Maps.",
+    "order": 18
+  },
+  {
+    "id": 35,
+    "title": "SEO (Search Engine Optimization)",
+    "type": "Digital Marketing",
+    "description": "Improving website visibility in organic search results.",
+    "order": 1
+  },
+  {
+    "id": 36,
+    "title": "SEM (Search Engine Marketing) & PPC",
+    "type": "Digital Marketing",
+    "description": "Managing paid search campaigns and SEM strategy.",
+    "order": 2
+  },
+  {
+    "id": 39,
+    "title": "Email Marketing (MailChimp, HubSpot)",
+    "type": "Digital Marketing",
+    "description": "Managing email campaigns and marketing automation.",
+    "order": 3
+  },
+  {
+    "id": 37,
+    "title": "Social Media Marketing & Advertising",
+    "type": "Digital Marketing",
+    "description": "Executing social media strategies and paid campaigns.",
+    "order": 4
+  },
+  {
+    "id": 38,
+    "title": "Content Marketing Strategy",
+    "type": "Digital Marketing",
+    "description": "Developing and guiding content strategies.",
+    "order": 5
+  },
+  {
+    "id": 40,
+    "title": "E-commerce Management",
+    "type": "E-commerce",
+    "description": "Managing online sales, listings, and e-commerce platforms.",
+    "order": 1
   }
 ]

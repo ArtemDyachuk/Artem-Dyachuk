@@ -20,13 +20,33 @@ export default function Achievements() {
     (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   );
 
-  // Group achievements by company
-  const achievementsByCompany = sortedCompanies.map((company) => ({
-    ...company,
-    achievements: (achievementsData as Achievement[])
+  // Group achievements by company with featured/other separation
+  const achievementsByCompany = sortedCompanies.map((company) => {
+    const allCompanyAchievements = (achievementsData as Achievement[])
       .filter((achievement) => achievement.companyId === company.id)
-      .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0)),
-  }));
+      .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0));
+
+    // Get featured achievements (from company's achievements array) in the exact order specified
+    const featuredAchievements = company.achievements
+      ? company.achievements
+          .map(achievementId => 
+            allCompanyAchievements.find(achievement => achievement.id === achievementId)
+          )
+          .filter(achievement => achievement !== undefined) as Achievement[]
+      : [];
+
+    // Get other achievements (excluding featured ones)
+    const otherAchievements = allCompanyAchievements.filter(achievement => 
+      !company.achievements?.includes(achievement.id)
+    );
+
+    return {
+      ...company,
+      featuredAchievements,
+      otherAchievements,
+      allAchievements: allCompanyAchievements // Keep for backward compatibility if needed
+    };
+  });
 
   // Always expand the first company on initial load
   const [expandedCompany, setExpandedCompany] = useState<string | null>(null);
@@ -44,11 +64,17 @@ export default function Achievements() {
   const [expandedAchievements, setExpandedAchievements] = useState<{ [key: number]: boolean }>({});
   // Track which achievements are overflowing
   const [overflowing, setOverflowing] = useState<{ [key: number]: boolean }>({});
+  // Track expanded "Other Achievements" sections by company
+  const [expandedOtherSections, setExpandedOtherSections] = useState<{ [key: string]: boolean }>({});
   // Refs for each achievement description
   const descriptionRefs = useRef<{ [key: number]: HTMLParagraphElement | null }>({});
 
   const toggleAchievement = (id: number) => {
     setExpandedAchievements((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleOtherSection = (companyId: string) => {
+    setExpandedOtherSections((prev) => ({ ...prev, [companyId]: !prev[companyId] }));
   };
 
   // Check if a description is overflowing
@@ -67,6 +93,47 @@ export default function Achievements() {
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
   }, [expandedCompany]);
+
+  // Helper function to render achievement items
+  const renderAchievement = (achievement: Achievement) => {
+    const expanded = expandedAchievements[achievement.id];
+    return (
+      <div key={achievement.id} className={styles.achievement}>
+        <h3 className={styles.achievementTitle}>
+          {achievement.title}
+        </h3>
+        <p
+          ref={el => { descriptionRefs.current[achievement.id] = el; }}
+          className={
+            expanded
+              ? styles.achievementDescriptionExpanded
+              : styles.achievementDescriptionClamped
+          }
+        >
+          {achievement.description}
+        </p>
+        {overflowing[achievement.id] && !expanded && (
+          <button
+            style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
+            onClick={() => toggleAchievement(achievement.id)}
+          >
+            Read More
+          </button>
+        )}
+        {expanded && (
+          <button
+            style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
+            onClick={() => toggleAchievement(achievement.id)}
+          >
+            Show Less
+          </button>
+        )}
+        <span className={styles.achievementYear}>
+          {achievement.year}
+        </span>
+      </div>
+    );
+  };
 
   return (
     <main className={styles.main}>
@@ -89,9 +156,6 @@ export default function Achievements() {
                       {company.startDate} - {company.endDate || "Present"}
                     </span>
                   </div>
-                  {/* <span className={styles.achievementCount}>
-                    {company.achievements.length} Achievements
-                  </span> */}
                   <span className={styles.expandIcon}>
                     {expandedCompany === company.id ? "−" : "+"}
                   </span>
@@ -99,45 +163,33 @@ export default function Achievements() {
 
                 {expandedCompany === company.id && (
                   <div className={styles.achievementsColumn}>
-                    {company.achievements.map((achievement) => {
-                      const expanded = expandedAchievements[achievement.id];
-                      return (
-                        <div key={achievement.id} className={styles.achievement}>
-                          <h3 className={styles.achievementTitle}>
-                            {achievement.title}
-                          </h3>
-                          <p
-                            ref={el => { descriptionRefs.current[achievement.id] = el; }}
-                            className={
-                              expanded
-                                ? styles.achievementDescriptionExpanded
-                                : styles.achievementDescriptionClamped
-                            }
-                          >
-                            {achievement.description}
-                          </p>
-                          {overflowing[achievement.id] && !expanded && (
-                            <button
-                              style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
-                              onClick={() => toggleAchievement(achievement.id)}
-                            >
-                              Read More
-                            </button>
-                          )}
-                          {expanded && (
-                            <button
-                              style={{ fontSize: "0.85rem", padding: 0, background: "none", border: "none", color: "var(--color-primary)", cursor: "pointer", marginBottom: "0.5rem" }}
-                              onClick={() => toggleAchievement(achievement.id)}
-                            >
-                              Show Less
-                            </button>
-                          )}
-                          <span className={styles.achievementYear}>
-                            {achievement.year}
+                    {/* Featured Achievements Section */}
+                    {company.featuredAchievements.length > 0 && (
+                      <>
+                        <h4 className={styles.sectionTitle}>Featured Achievements</h4>
+                        {company.featuredAchievements.map(renderAchievement)}
+                      </>
+                    )}
+
+                    {/* Other Achievements Section */}
+                    {company.otherAchievements.length > 0 && (
+                      <>
+                        <button
+                          className={styles.otherSectionHeader}
+                          onClick={() => toggleOtherSection(company.id)}
+                        >
+                          <h4 className={styles.sectionTitle}>Other Achievements ({company.otherAchievements.length})</h4>
+                          <span className={styles.expandIcon}>
+                            {expandedOtherSections[company.id] ? "−" : "+"}
                           </span>
-                        </div>
-                      );
-                    })}
+                        </button>
+                        {expandedOtherSections[company.id] && (
+                          <div className={styles.otherAchievementsContent}>
+                            {company.otherAchievements.map(renderAchievement)}
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
                 )}
               </div>

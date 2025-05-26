@@ -1,192 +1,243 @@
 [
   {
     "id": 1,
-    "title": "Custom CMS (ARC) Development",
-    "productDescription": "A bespoke Content Management System (ARC) built to power corporate websites and marketing operations, offering enhanced flexibility and internal control.",
+    "title": "Enterprise Custom CMS (ARC) & Backend Platform",
+    "productDescription": "A bespoke, multi-tenant headless Content Management System (ARC) and backend platform, including a custom inventory database, built to power corporate websites and streamline marketing operations for a $1B+ revenue company.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
     "mainImage": "",
-    "images": [
-      {
-        "url": "",
-        "order": "",
-        "alt": ""
-      }
-    ],
-    "role": "Digital Product Manager (Product Lead)",
-    "year": "2023–2024",
-    "challenge": "Reduce dependency on third-party vendors, enhance internal content management capabilities, and provide a scalable platform to support core marketing operations.",
-    "action": "Led a team of overseas developers through the full product lifecycle, from roadmap creation to launch. Oversaw the architecture and development of the custom Content Management System (ARC).",
+    "images": [],
+    "role": "Technical Product Manager (Product Lead & Key Developer)",
+    "year": "2023-Present",
+    "challenge": "Reduce dependency on third-party vendors, enhance internal content management capabilities, centralize inventory data, improve website performance, and provide a scalable platform for core marketing operations.",
+    "action": "Led product strategy and Agile delivery. Spearheaded the full lifecycle from ideation and blueprinting to hands-on development (Node.js for backend components, Next.js for admin interfaces) and launch. Managed overseas developers and directly contributed to coding, system architecture, and database design (MongoDB).",
     "results": [
-      "Launched a robust CMS supporting marketing operations for a company with over $1 billion in annual revenue.",
-      "Enhanced lead generation and website traffic through improved platform scalability.",
-      "Minimized third-party vendor dependency, improving operational flexibility."
+      "Launched robust CMS & backend supporting $1B+ annual revenue.",
+      "Delivered core project 30% under budget, saving $75K.",
+      "Minimized third-party vendor dependency (e.g., for inventory data via BDX), improving operational flexibility and control.",
+      "Enabled dynamic and customized feeds for key marketing platforms (HubSpot, Zillow, Facebook).",
+      "Improved data flexibility and streamlined development of new tools reliant on centralized inventory."
     ],
     "keyFeatures": [
-      "Custom content modeling and management",
-      "Third-party feed integration capabilities",
-      "Scalable multi-site architecture"
+      "Custom multi-tenant headless CMS architecture (ARC)",
+      "Integrated MongoDB-based inventory database",
+      "Advanced API for integrations and dynamic content delivery",
+      "Dynamic content modeling and management capabilities",
+      "Scalable backend infrastructure"
     ],
     "skillIds": [
-      24,
-      30,
-      25,
-      23,
-      29,
+      1,
+      2,
+      3,
       6,
-      31,
-      16
+      8,
+      10,
+      12,
+      16,
+      18,
+      19,
+      21,
+      22,
+      24,
+      25,
+      27,
+      28,
+      30
     ]
   },
   {
     "id": 2,
-    "title": "Corporate Websites Platform Development",
-    "productDescription": "A suite of high-performance corporate websites designed to drive lead generation and enhance user engagement for Brightland Homes.",
+    "title": "Corporate Websites Front-End Platform (Next.js)",
+    "productDescription": "A suite of high-performance, responsive corporate websites built with Next.js, leveraging the ARC headless CMS to drive lead generation and enhance user engagement for Brightland Homes.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
     "mainImage": "",
-    "images": [
-      {
-        "url": "",
-        "order": "",
-        "alt": ""
-      }
-    ],
-    "role": "Digital Product Manager",
-    "year": "2023–2024",
-    "challenge": "Develop new corporate websites that effectively support marketing operations, improve user engagement, and achieve high performance standards.",
-    "action": "Spearheaded the development and launch of multiple custom corporate websites, focusing on UI/UX, technical implementation, and performance optimization strategies, often integrated with the ARC CMS.",
+    "images": [],
+    "role": "Technical Product Manager (Product Lead & Key Developer)",
+    "year": "2023-Present",
+    "challenge": "Develop new corporate websites that effectively support marketing operations, significantly improve user engagement and technical performance, and seamlessly integrate with the new ARC headless CMS.",
+    "action": "Spearheaded the development and launch of multiple custom corporate websites using Next.js. Focused on UI/UX, hands-on technical implementation, performance optimization (static site generation, revalidation logic), and SEO.",
     "results": [
-      "Doubled PageSpeed Insights scores (e.g., 30 to 60 points for a key site).",
-      "Increased user engagement time by 40% on redesigned websites.",
+      "Improved PageSpeed Insights from 30 to 60-99 points.",
+      "Increased user engagement time by 40% and overall user count by approx. 30%.",
+      "Boosted organic search clicks by 2x by resolving SEO issues post-launch.",
       "Contributed to the platform infrastructure supporting over $1 billion in annual revenue."
     ],
     "keyFeatures": [
+      "High-performance Next.js front-end architecture",
+      "Dynamic content driven by ARC headless CMS",
+      "Optimized for speed (Static Site Generation, Revalidation)",
       "Responsive and mobile-first design",
-      "Dynamic content driven by ARC CMS",
-      "Optimized for speed and user experience"
+      "Enhanced SEO structure and implementation"
     ],
     "skillIds": [
-      24,
-      30,
-      32,
-      23,
+      1,
+      2,
       4,
       5,
-      3,
-      18
+      8,
+      11,
+      12,
+      14,
+      19,
+      21,
+      23,
+      27,
+      28,
+      30,
+      32
     ]
   },
   {
     "id": 3,
-    "title": "Digital TV Signage Platform",
-    "productDescription": "A modernized digital TV signage platform for sales centers, featuring interactive content, lead capture, and centralized management tools.",
+    "title": "Digital TV Signage Platform Transformation (Next.js)",
+    "productDescription": "A modernized digital TV signage platform for sales centers, featuring a custom-built Next.js website, interactive content, lead capture, and centralized management, integrated with a cost-effective hardware solution.",
     "companyId": "gehan",
-    "companyName": "Gehan Homes (now Brightland Homes)",
+    "companyName": "Brightland Homes (formerly Gehan Homes)",
     "featured": true,
     "mainImage": "",
-    "images": [
-      {
-        "url": "",
-        "order": "",
-        "alt": ""
-      }
-    ],
-    "role": "Web Specialist (acting as Product Manager)",
+    "images": [],
+    "role": "Web Specialist (acting as Product Manager & Lead Developer)",
     "year": "2022",
     "challenge": "Overhaul an outdated, unstable TV signage platform reliant on obsolete technology and expensive hardware, which limited feature development and incurred high costs.",
-    "action": "Researched and proposed a cost-effective mini PC solution. Rebuilt the TV signage website from scratch with modern architecture. Implemented QR code lead capture and admin tools for cross-selling. Architected hardware configurations for 150 touchscreen devices.",
+    "action": "Architected a cost-effective mini-PC hardware solution. Rebuilt the TV signage website from scratch using Next.js, implementing QR code lead capture and admin tools for cross-selling. Designed hardware configurations for 150+ touchscreen devices.",
     "results": [
-      "Saved $300,000 in hardware costs by switching to mini PCs.",
+      "Avoided $300,000 in hardware replacement costs.",
       "Boosted lead generation by 8% through new website functionalities.",
-      "Eliminated previous hardware limitations, enabling new feature development and enhancing sales team capabilities."
+      "Eliminated previous hardware limitations, enabling new feature development.",
+      "Enhanced sales team capabilities with interactive tools."
     ],
     "keyFeatures": [
-      "Web-based content management",
+      "Custom Next.js web application for TV display",
       "Interactive touchscreen capabilities",
-      "QR code lead capture",
-      "Cross-community content selling tools"
+      "QR code lead capture integration",
+      "Centralized admin tools for content management & cross-selling"
     ],
     "skillIds": [
-      27,
-      24,
-      30,
+      1,
+      2,
+      8,
+      12,
+      16,
+      19,
       23,
-      25,
-      39,
+      27,
+      28,
       29,
-      43
+      37
     ]
   },
   {
     "id": 4,
-    "title": "Marketing Data & Integration Hub",
-    "productDescription": "An integrated data hub connecting various marketing and sales platforms (HubSpot, Zillow, etc.) to enable dynamic advertising, unified reporting, and streamlined data workflows.",
-    "companyId": "brightland",
-    "companyName": "Brightland Homes / Gehan Homes",
-    "role": "Digital Product Manager / Web Specialist",
-    "year": "2020–Present",
-    "challenge": "Streamline marketing/sales operations by enabling seamless data flow between critical platforms, improve reporting accuracy, and enhance dynamic advertising.",
-    "action": "Engineered and implemented robust REST APIs (Node.js Express) to integrate key systems including HubSpot, Zillow, Realtor.com, Facebook (Dynamic Ads), Google Ads, and GA4. Mastered HubSpot API for advanced data manipulations.",
-    "results": [
-      "Enhanced lead generation (e.g., +10% from specific dynamic landing page integrations).",
-      "Enabled dynamic advertising capabilities and synchronized data seamlessly.",
-      "Streamlined marketing workflows and provided advanced reporting."
-    ],
-    "keyFeatures": [
-      "Custom REST API development",
-      "HubSpot CRM/CMS deep integration",
-      "Real-time data synchronization",
-      "Dynamic Ad feed creation"
-    ],
-    "skillIds": [
-      31,
-      6,
-      7,
-      17,
-      29,
-      36,
-      28,
-      49,
-      18
-    ]
-  },
-  {
-    "id": 5,
-    "title": "HubSpot Programmable CRM Modules",
-    "productDescription": "A set of custom-developed programmable modules and objects within HubSpot CRM, designed to automate marketing tasks and streamline internal workflows.",
+    "title": "ARC Connect - Multi-Org HubSpot & AWS Integration Hub",
+    "productDescription": "A custom Node.js application (ARC Connect) serving as a central hub for complex API integrations, specifically enabling multi-organization HubSpot support within the ARC CMS, leveraging AWS for scalability and automated data sharing.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
     "featured": true,
     "mainImage": "",
-    "images": [
-      {
-        "url": "",
-        "order": "",
-        "alt": ""
-      }
+    "images": [],
+    "role": "Technical Product Manager",
+    "year": "2024",
+    "challenge": "Enable the ARC CMS to support multiple distinct HubSpot organizations, requiring sophisticated data association, formatting, and synchronization across different accounts while maintaining system efficiency and scalability.",
+    "action": "Architected and implemented ARC Connect (Node.js, Express), integrating it into the existing ARC infrastructure. Developed custom workflows and connections to manage data associations and formatting. Utilized AWS services for robust and scalable data handling.",
+    "results": [
+      "Successfully integrated multiple HubSpot accounts with a unified setup within ARC.",
+      "Enhanced product catalog and lead synchronization to support multiple organizations.",
+      "Improved overall system efficiency and scalability for multi-org operations.",
+      "Streamlined marketing and sales operations through automated data flow."
     ],
-    "role": "Digital Product Manager",
-    "year": "2023–Present",
-    "challenge": "Improve marketing team efficiency by streamlining repetitive tasks and enhancing CRM functionalities within HubSpot.",
-    "action": "Designed and developed programmable CRM modules and custom objects within HubSpot, including fully custom-coded programmable email modules for dynamic content and personalization. Automated inventory pricing emails.",
+    "keyFeatures": [
+      "Custom Node.js REST API development for integration",
+      "Multi-organization HubSpot integration architecture",
+      "Automated data sharing and synchronization workflows",
+      "AWS-backed infrastructure for scalability",
+      "Deep HubSpot API utilization (OAuth 2.0, Custom Objects)"
+    ],
+    "skillIds": [
+      10,
+      16,
+      17,
+      19,
+      20,
+      21,
+      23,
+      28,
+      30
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Southern Impression (SI) Homes WordPress Website",
+    "productDescription": "A new, performant, and secure WordPress website built from scratch for Southern Impression Homes, a subsidiary of Brightland Homes, as part of a strategic reorganization.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes (for Southern Impression Homes)",
+    "featured": false,
+    "mainImage": "",
+    "images": [],
+    "role": "Technical Product Manager (Sole Developer)",
+    "year": "2024",
+    "challenge": "Rapidly develop and launch a new, independent web presence for a subsidiary, ensuring high performance, security, and alignment with specific business needs following a reorganization.",
+    "action": "Solely designed, developed, and launched the new WordPress website from scratch. Focused on custom theme development, performance optimization (achieving significant Lighthouse score improvements), security best practices, and integrating specific tracking and business requirements for SI Homes.",
+    "results": [
+      "Successfully launched a new, fully functional website for the subsidiary.",
+      "Improved Lighthouse performance scores from a baseline of 6/25 (on previous attempts/placeholder) to 80-99.",
+      "Delivered a secure and effective online presence tailored to the subsidiary's needs."
+    ],
+    "keyFeatures": [
+      "Custom WordPress theme and plugin development",
+      "Performance-optimized architecture",
+      "Enhanced security measures",
+      "Tailored content structure for subsidiary needs"
+    ],
+    "skillIds": [
+      8,
+      9,
+      13,
+      14,
+      15,
+      22,
+      23,
+      27,
+      30,
+      32
+    ]
+  },
+  {
+    "id": 6,
+    "title": "HubSpot Advanced CRM Customizations & Automation Suite",
+    "productDescription": "A suite of custom-developed programmable modules, custom objects, and automated workflows within HubSpot CRM, designed to significantly enhance marketing team efficiency and campaign effectiveness.",
+    "companyId": "brightland",
+    "companyName": "Brightland Homes",
+    "featured": false,
+    "mainImage": "",
+    "images": [],
+    "role": "Technical Product Manager",
+    "year": "2023-Present",
+    "challenge": "Improve marketing team productivity and campaign personalization by streamlining repetitive tasks, enhancing CRM data utilization, and automating key marketing workflows within HubSpot.",
+    "action": "Designed and actively implemented advanced CRM customizations including programmable email modules for dynamic content, custom objects for nuanced data management, custom workflow actions (e.g., phone formatting, name capitalization), and API-based reporting solutions (e.g., 'Meetings by Community' reports).",
     "results": [
       "Boosted marketing productivity by 15% (measured by campaign efficiency).",
       "Optimized marketing team time by 10% via automation (e.g., inventory pricing emails).",
-      "Streamlined designer workflows and improved overall marketing team output."
+      "Streamlined designer workflows and improved overall marketing team output.",
+      "Achieved $700/month savings from automated phone formatting workflows."
     ],
     "keyFeatures": [
-      "HubSpot custom objects for dynamic content",
+      "HubSpot custom objects for advanced data modeling",
       "Custom-coded programmable email modules",
-      "Workflow automation for marketing tasks"
+      "Automated workflows for marketing and data tasks",
+      "API-based custom reporting solutions"
     ],
     "skillIds": [
-      17,
-      37,
-      3,
-      28
+      20,
+      16,
+      8,
+      10,
+      4,
+      23,
+      28,
+      30
     ]
   }
 ]

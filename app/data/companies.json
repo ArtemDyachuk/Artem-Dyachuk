@@ -2,76 +2,90 @@
   {
     "id": "brightland",
     "name": "Brightland Homes",
-    "startDate": "March 2023",
+    "startDate": "February 2023",
     "endDate": null,
     "current": true,
     "location": "Addison, TX",
-    "jobTitle": "Digital Product Manager",
+    "jobTitle": "Technical Product Manager",
     "jobDuties": [
       {
-        "title": "Product Development & Strategy",
-        "description": "Oversee end-to-end development and strategic management of digital products (software tools, websites, platforms)."
+        "title": "Product Strategy & Vision ($1B+ Platforms)",
+        "description": "Defines product vision and strategy for digital assets supporting $1B+ annual revenue; leads Agile delivery."
       },
       {
-        "title": "Lifecycle & Feature Management",
-        "description": "Define robust product strategies, strategically prioritize features, and oversee the web development lifecycle."
+        "title": "Full Lifecycle & Budget Management",
+        "description": "Manages full product lifecycle for enterprise CMS/websites, including budget oversight and cost optimization (e.g., 30% under budget on major projects)."
       },
       {
-        "title": "Solution Architecture & Research",
-        "description": "Architect scalable client-side and server-side solutions and conduct thorough market research."
+        "title": "Data-Driven Requirements & Roadmap",
+        "description": "Conducts market research, defines complex requirements using data/KPIs, owns feature prioritization and roadmap execution."
       },
       {
-        "title": "Product Operations",
-        "description": "Steer day-to-day product operations including QA, content updates, feature enhancements, and bug resolution."
+        "title": "Operations, QA & System Transitions",
+        "description": "Oversees product operations, maintenance, QA, system transitions (e.g., GA4 migration), and data migrations."
       },
       {
-        "title": "Vision & Marketing Alignment",
-        "description": "Craft compelling long-term and short-term product visions to bolster marketing efforts."
+        "title": "Leadership & Technical Design",
+        "description": "Leads cross-functional collaboration, stakeholder/vendor management, directs Agile methodologies, and leads technical design (system architecture, tech stack upgrades like Next.js/ARC, multi-org HubSpot)."
+      },
+      {
+        "title": "Hands-On Full-Stack Development",
+        "description": "Actively develops applications/APIs, advanced CRM/Marketing Automation solutions (HubSpot), sales/internal tooling (image optimizer, dynamic offers sync), and optimizes code (revalidation logic)."
+      },
+      {
+        "title": "Process Improvement & Mentorship",
+        "description": "Drives continuous improvement, process standardization (JIRA for feedback/issues), and mentorship."
       }
     ],
     "achievements": [
-      2,
-      3,
+      1,
       4,
+      3,
       5,
-      6,
-      7,
-      8
+      10,
+      2,
+      15,
+      6
     ]
   },
   {
     "id": "gehan",
-    "name": "Brightland Homes",
+    "name": "Brightland Homes (formerly Gehan Homes)",
     "startDate": "October 2020",
-    "endDate": "March 2023",
+    "endDate": "February 2023",
     "current": false,
     "location": "Addison, TX",
     "jobTitle": "Web Specialist",
     "jobDuties": [
       {
-        "title": "Website & Campaign Management",
-        "description": "Managed corporate websites and executed impactful digital marketing campaigns to drive lead generation."
+        "title": "Website Management & Full-Stack Development",
+        "description": "Executed end-to-end website management (development, redesigns, maintenance, content, performance monitoring using Google Analytics, GTM, Looker Studio, HotJar) and full-stack development (HTML, CSS, JS, Node.js, Next.js)."
       },
       {
-        "title": "Content & Platform Optimization",
-        "description": "Maintained and optimized website content, executed targeted SEO and PPC campaigns, and managed diverse lead generation platforms."
+        "title": "Digital Marketing Technical Execution",
+        "description": "Provided technical execution for digital marketing campaigns (SEO, PPC setup) and email marketing enhancements (dynamic modules)."
       },
       {
-        "title": "Integrations & Vendor Liaison",
-        "description": "Oversaw critical CRM integrations, rigorously evaluated new digital platforms for strategic adoption, and skillfully managed external vendors."
+        "title": "CRM Integration & HubSpot API Mastery",
+        "description": "Managed lead generation platforms, CRM integrations (HubSpot), developed custom marketing tools, API/feeds (Facebook, Zillow, HubSpot), and mastered HubSpot API (OAuth 2.0, Custom Objects, API reports)."
       },
       {
-        "title": "Functional Enhancements & Collaboration",
-        "description": "Significantly enhanced website functionality, SEO, and online reputation, fostering close collaboration with sales, IT, and marketing teams."
+        "title": "System Architecture & Database Design",
+        "description": "Designed new inventory databases (MongoDB, BDX XML), architected system solutions (TV signage platform, custom CRM blueprinting), and implemented GIT version control."
+      },
+      {
+        "title": "Project Ownership & Strategic Initiatives (Growth to PM)",
+        "description": "Progressively took product ownership for web projects: roadmap creation, feasibility evaluation, leading custom website/CMS development, and managing technical aspects of rebranding/acquisition integrations."
       }
     ],
     "achievements": [
-      1,
-      9,
-      10,
-      11,
-      12,
-      13
+      26,
+      38,
+      33,
+      31,
+      30,
+      37,
+      41
     ]
   },
   {
@@ -84,26 +98,32 @@
     "jobTitle": "Digital Marketing Specialist",
     "jobDuties": [
       {
-        "title": "Marketing-Driven Web Development",
-        "description": "Focused on marketing-driven web development in a fast-paced startup environment, leveraging WordPress, JavaScript, PHP, and MySQL."
+        "title": "Digital Campaign Strategy & Execution",
+        "description": "Planned and executed digital marketing campaigns (Email, Social Media, PPC, Content, Affiliates), exceeding quarterly revenue goals by up to 40%."
       },
       {
-        "title": "Custom Module Development",
-        "description": "Developed custom WordPress modules, streamlined workflows between marketing and development teams."
+        "title": "SEO/SEM & Paid Advertising Management (>$100K Budget)",
+        "description": "Implemented SEO strategies (boosting conversion 34%, revenue 17%), managed SEM, external agencies, and administered paid ad campaigns (>$100K budget), increasing social ad conversion 136%."
       },
       {
-        "title": "User Behavior Analysis",
-        "description": "Utilized Google Analytics, Google Ads, and Tag Manager to analyze user behavior for campaign optimization."
+        "title": "Marketing-Focused Web Development (WordPress, PHP, JS)",
+        "description": "Performed WordPress development (JavaScript, PHP), server-side coding (PHP, MySQL), custom module development, and responsive web design (HTML, CSS, Bootstrap)."
       },
       {
-        "title": "QA & Feature Proposal",
-        "description": "Conducted meticulous manual web testing and proposed innovative features based on reporting metrics and user feedback."
+        "title": "CRO, Analytics, Reporting & Technical Marketing Ops",
+        "description": "Owned Conversion Rate Optimization (CRO) efforts, including A/B testing (VWO), managed KPIs, data analysis, reporting (Google Analytics, Looker Studio), campaign tagging (GTM), and MySQL database (1M+ leads) for segmentation."
+      },
+      {
+        "title": "Workflow Optimization & Project Leadership",
+        "description": "Optimized marketing/dev workflows (sped delivery 10%), led QA for website redesigns, supported 5 new product launches, and implemented MS Sharepoint Intranet."
       }
     ],
     "achievements": [
-      14,
-      15,
-      16
+      42,
+      53,
+      46, 
+      48,
+      43
     ]
   },
   {
@@ -116,53 +136,50 @@
     "jobTitle": "E-Commerce Manager",
     "jobDuties": [
       {
-        "title": "E-commerce Platform Management",
-        "description": "Drove substantial e-commerce growth by optimizing product listings and managing corporate Magento websites and web stores."
+        "title": "E-commerce Platform & Sales Growth Management (259% Growth)",
+        "description": "Managed corporate Magento website/web-store, driving 259% sales growth in 3 months through listing optimization."
       },
       {
-        "title": "CRM Strategy Oversight",
-        "description": "Oversaw comprehensive CRM strategies across Amazon, Magento, and other e-commerce platforms."
+        "title": "Multi-Platform CRM Strategy & Data-Driven Operations",
+        "description": "Developed/executed CRM strategy (Amazon, Magento); conducted daily data analysis (Pricing, Inventory, Ads, Shipping, ODR, Sales) improving operational efficiency by 20%."
       },
       {
-        "title": "Data-Driven Performance Analysis",
-        "description": "Conducted daily data analysis of pricing, inventory, advertising, and shipping performance using Google Analytics and Data Studio."
+        "title": "Advanced Product Listing, PPC Optimization & New Product Launches",
+        "description": "Created advanced eBay listings (HTML/CSS), reduced PPC cost per click by 20%, and launched new products on various e-commerce platforms."
       }
     ],
     "achievements": [
-      17,
-      18
+      54,
+      56,
+      55
     ]
   },
   {
     "id": "ufeelgood",
-    "name": "Ufeelgood LLC",
+    "name": "Ufeelgood LLC / Crystal Logistics LLC",
     "startDate": "July 2015",
     "endDate": "February 2018",
     "current": false,
     "location": "Stanhope, NJ",
-    "jobTitle": "E-Commerce Manager (Full-Time 2015-2017, Part-Time 2017-2018)",
+    "jobTitle": "E-Commerce Manager",
     "jobDuties": [
       {
-        "title": "Multi-Channel Sales Management",
-        "description": "Successfully expanded sales channels to Amazon EU, eBay, Walmart, Newegg, Shopify, and Magento."
+        "title": "Sales Channel Expansion & SEO Strategy (30% YoY Growth)",
+        "description": "Expanded sales channels (Amazon EU, eBay, Walmart, etc.) achieving 30% YoY revenue growth; developed SEO strategies boosting visibility 18%."
       },
       {
-        "title": "SEO & Marketing Strategy",
-        "description": "Developed SEO-focused marketing strategies that boosted product visibility."
+        "title": "Financial Performance Reporting & Customer Experience",
+        "description": "Handled financial/sales tax accounting, KPI collection, and improved customer experience (95% satisfaction) through efficient inquiry handling and email campaigns."
       },
       {
-        "title": "Financial Performance Reporting",
-        "description": "Managed financial performance using Google Analytics and Data Studio for reporting, ensuring accurate sales tax and metrics reporting."
-      },
-      {
-        "title": "Customer Experience Enhancement",
-        "description": "Improved customer experience by efficiently handling inquiries."
+        "title": "New Product Introduction Management",
+        "description": "Managed new product introductions across multiple e-commerce platforms."
       }
     ],
     "achievements": [
-      19,
-      20,
-      21
+      57,
+      58,
+      59
     ]
   },
   {
@@ -175,20 +192,20 @@
     "jobTitle": "Front-End Testing",
     "jobDuties": [
       {
-        "title": "Quality Assurance Testing",
-        "description": "Provided technical assistance in testing and modified quality testing processes."
+        "title": "QA Process Improvement & Test Case Development",
+        "description": "Provided technical assistance in testing, actively modified quality testing processes, and wrote test cases."
       },
       {
-        "title": "Defect Reporting & Tracking",
-        "description": "Meticulously evaluated and reported software defects via JIRA."
+        "title": "Defect Management & Reporting (JIRA)",
+        "description": "Evaluated and meticulously reported software defects and change requests via JIRA, contributing to 25% reduction in defect resolution time."
       },
       {
-        "title": "Test Plan Coordination",
-        "description": "Coordinated with development teams to create and execute comprehensive test plans, scenarios, and cases."
+        "title": "Development Team Coordination for Testing",
+        "description": "Coordinated effectively with development teams to create and execute comprehensive test plans, scenarios, and cases."
       }
     ],
     "achievements": [
-      22
+      60
     ]
   }
 ]

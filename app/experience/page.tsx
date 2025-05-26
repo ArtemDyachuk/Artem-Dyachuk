@@ -64,10 +64,10 @@ export default function Experience() {
   );
 
   // Get achievements for a company
-  const getCompanyAchievements = (companyId: string) => {
+  const getCompanyAchievements = (company: Company) => {
     return (achievementsData as Achievement[])
-      .filter(achievement => achievement.companyId === companyId)
-      .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0));
+      .filter(achievement => company.achievements.includes(achievement.id))
+      .sort((a, b) => company.achievements.indexOf(a.id) - company.achievements.indexOf(b.id));
   };
 
   return (
@@ -76,7 +76,7 @@ export default function Experience() {
         <div className={styles.container}>
           <h1 className={styles.sectionTitle}>Professional Experience</h1>
           {sortedCompanies.map((company) => {
-            const companyAchievements = getCompanyAchievements(company.id);
+            const companyAchievements = getCompanyAchievements(company);
             return (
               <div key={company.id} className={styles.accordionItem}>
                 <button
@@ -126,6 +126,12 @@ export default function Experience() {
                             <li key={achievement.id} className={styles.achievementItem}>
                               <span className={styles.checkmark}>✓</span>
                               <div className={styles.achievementContent}>
+
+                                {/* Useful for managing what's included in the list */}
+                                {/* <div className={styles.achievementTitle}>{achievement.id}</div> */}
+
+                                <div className={styles.achievementTitle}>{achievement.title}</div>
+
                                 <div className={styles.achievementDescription}>{achievement.description}</div>
                                 {achievement.skills && achievement.skills.length > 0 && (
                                   <div className={styles.achievementSkills}>

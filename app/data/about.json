@@ -2,7 +2,7 @@
   "personalInfo": {
     "firstName": "Artem",
     "lastName": "Dyachuk",
-    "currentRole": "Digital Product Manager",
+    "currentRole": "Technical Product Manager",
     "currentCompany": "Brightland Homes",
     "location": "Addison, TX",
     "profileImage": "/avatars/artem-dyachuk-xs.webp",
@@ -17,83 +17,83 @@
       "year": 2016
     }
   },
-  "summary": "Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Backed by a strong foundation as a Full-Stack Web Developer, I have developed and guided software solutions that power core marketing infrastructure, supporting over $1 billion in annual revenue. My expertise spans from technical implementation to strategic leadership, consistently delivering innovative solutions, optimizing operational efficiency, and effectively leading cross-functional teams.",
+  "summary": "Results-oriented Technical Product Manager with a robust Full-Stack Web Developer foundation and over a decade of experience transforming digital marketing and product landscapes. Currently guiding software solutions powering core marketing infrastructure for a $1B+ annual revenue company. Distinguished by a unique blend of deep technical expertise (full-stack development, system architecture, hands-on coding) and sharp strategic business acumen, consistently delivering innovative solutions, driving substantial cost savings, optimizing efficiency, and leading cross-functional teams effectively.",
   "philosophy": {
-    "intro": "My approach to Product Management is built on these core principles:",
+    "intro": "My approach as a Technical Product Manager is rooted in:",
     "principles": [
       {
-        "title": "Bridging Technology and Strategy",
-        "description": "I leverage deep technical expertise to build impactful digital solutions that align directly with strategic business goals and deliver measurable results, such as supporting significant revenue and achieving substantial cost savings."
+        "title": "Strategic Technical Execution",
+        "description": "Leveraging deep full-stack development expertise to architect and directly contribute to impactful digital solutions that are tightly aligned with strategic business objectives and deliver measurable results, including significant revenue support and cost efficiencies."
       },
       {
-        "title": "Data-Informed, User-Focused",
-        "description": "I champion the use of analytics, A/B testing, and user feedback to drive continuous improvement, optimize user experiences, and ensure products solve meaningful problems effectively, leading to enhanced engagement and campaign effectiveness."
+        "title": "Data-Driven, User-Obsessed Innovation",
+        "description": "Championing the use of analytics, A/B testing, and user feedback to drive continuous product improvement, optimize user experiences, and ensure solutions solve meaningful problems effectively, leading to enhanced engagement and tangible business outcomes."
       },
       {
-        "title": "Collaborative Execution & Efficiency",
-        "description": "I believe in fostering strong cross-functional partnerships  with marketing, IT, sales, and vendors to streamline development, spark innovation, and tackle complex challenges with efficient, scalable solutions that improve operational flexibility and productivity."
+        "title": "Collaborative Leadership & Agile Delivery",
+        "description": "Fostering strong partnerships across marketing, IT, sales, and engineering to streamline development, spark innovation, and tackle complex challenges with efficient, scalable solutions delivered through Agile methodologies."
       }
     ]
   },
   "keyStrengths": [
-    "Full-Stack Development",
-    "Product Strategy",
-    "Technical Leadership",
-    "Cross-functional Collaboration",
-    "Cost Optimization",
-    "Digital Marketing",
-    "System Architecture",
-    "Project Management",
-    "Revenue Growth Support",
-    "Process Optimization",
-    "Vendor Management",
-    "Data-Driven Decision Making"
+    "Technical Product Management",
+    "Full-Stack Web Development",
+    "Product Strategy & Vision",
+    "System Architecture Design",
+    "API Development & Integration",
+    "Agile/Scrum Leadership",
+    "Data-Driven Decision Making",
+    "Cross-Functional Collaboration",
+    "Cost Optimization & Budget Management",
+    "Digital Marketing Strategy",
+    "E-commerce Management",
+    "Process Improvement"
   ],
   "technicalSkills": {
     "frontend": [
-      "HTML",
-      "CSS",
       "JavaScript",
       "React",
       "Next.js",
+      "HTML",
+      "CSS",
       "Bootstrap"
     ],
     "backend": [
-      "Node.js",
-      "Express",
-      "PHP",
-      "Nest.js",
-      "CommonJS"
+      "Node.js (Express, Nest.js)",
+      "PHP"
     ],
     "databases": [
       "MongoDB",
-      "MySQL",
-      "SFTP (for inventory databases)"
+      "MySQL"
     ],
-    "frameworks_platforms_cms": [
-      "WordPress",
-      "Magento",
-      "Shopify",
-      "HubSpot CMS"
-    ],
-    "tools_technologies": [
-      "Git",
-      "JIRA",
-      "HubSpot API",
-      "Google Analytics (GA4)",
-      "Google Ads",
-      "Google Tag Manager",
-      "Looker Studio (formerly Data Studio)",
+    "cloud_devops": [
+      "AWS (Lambda)",
       "Vercel",
       "Heroku",
-      "Mailchimp",
-      "VWO Testing",
-      "BDX XML feeds",
-      "Mongoose"
+      "GIT Version Control"
     ],
-    "cloud": [
-      "AWS (proficient)",
-      "Heroku (preferred for backend simplicity)"
+    "cms_platforms": [
+      "Custom CMS Development (ARC)",
+      "WordPress",
+      "Magento",
+      "HubSpot CMS",
+      "Duda"
+    ],
+    "marketing_crm_tools": [
+      "HubSpot (API Mastery, Custom Objects, Workflows, Multi-Org)",
+      "Google Analytics (GA4)",
+      "Google Tag Manager",
+      "Looker Studio (formerly Data Studio)",
+      "Google Ads",
+      "MailChimp",
+      "HotJar",
+      "VWO Testing",
+      "JIRA"
+    ],
+    "other_technologies": [
+      "REST APIs",
+      "SFTP",
+      "BDX XML feeds"
     ]
   },
   "certifications": [
@@ -103,28 +103,32 @@
   ],
   "careerHighlights": [
     {
-      "title": "Revenue-Supporting Software Leadership",
-      "description": "As Digital Product Manager at Brightland Homes, spearheaded the development of a custom CMS (ARC) and pivotal corporate websites supporting over $1 billion in annual revenue."
+      "title": "Led Product Strategy for $1B+ Revenue Platforms",
+      "description": "At Brightland Homes, directed product strategy and Agile delivery for web platforms (Custom CMS ARC, Corporate Websites) vital to over $1 billion in annual revenue, driving UX improvements and significant cost savings."
     },
     {
-      "title": "Major Cost Savings Initiatives",
-      "description": "Achieved $300,000 savings from a 2022 TV signage platform transformation, $50,000 annually via Google Maps API optimization, $40,000 by leading in-house development, and $30,000 annually from reduced vendor dependency."
+      "title": "Delivered Enterprise CMS 30% Under Budget ($75K Savings)",
+      "description": "Spearheaded the full lifecycle of the ARC Custom CMS and Website project, delivering it 30% under budget, realizing $75,000 in total savings."
     },
     {
-      "title": "User Engagement & Performance Boost",
-      "description": "Doubled PageSpeed Insights scores from 30 to 60 points and increased user engagement time by 40% for a custom corporate website."
+      "title": "TV Signage Platform Transformation ($300K Hardware Cost Avoidance)",
+      "description": "As Web Specialist at Gehan Homes, architected and delivered a TV signage platform solution avoiding $300,000 in hardware costs and boosting lead generation by 8%."
     },
     {
-      "title": "Marketing Productivity and Lead Generation",
-      "description": "Improved marketing productivity by 15% through strategic HubSpot CRM enhancements and increased leads by 10% via expertly crafted integrations and dynamic landing pages."
+      "title": "Multi-Org HubSpot Integration & Automation (ARC Connect)",
+      "description": "Architected and implemented ARC Connect for multi-organization HubSpot integrations with AWS, enhancing system efficiency, scalability, and automating complex data sharing."
     },
     {
-      "title": "Full-Stack Technical Expertise & Integrations",
-      "description": "Engineered robust integrations with HubSpot, Zillow, Realtor.com, Facebook, and Google Ads using Node.js Express, significantly enhancing lead generation and data synchronization."
+      "title": "Significant Operational Cost Reductions & Performance Gains",
+      "description": "Achieved substantial annual savings through Google Maps API optimization ($50K), revalidation logic optimization (~$3K), HubSpot automation ($700/month), and API/DB optimizations (~$7K). Simultaneously boosted website performance (PageSpeed 60-99, +40% engagement)."
     },
     {
-      "title": "E-commerce Growth Success",
-      "description": "Drove a 259% sales increase within the first three months at Avacomtech Inc. by optimizing product listings. Expanded sales channels at Ufeelgood LLC, increasing revenue by an average of 30% year-over-year."
+      "title": "SEO-Driven Growth & Marketing Tech Implementation at NewBlue Inc.",
+      "description": "Boosted website conversion by 34% and revenue by 17% via SEO. Increased lead collection by ~180% and traffic by 40% through integrated digital marketing and hands-on WordPress development."
+    },
+    {
+      "title": "E-commerce Sales & Operational Success (Avacomtech & Ufeelgood)",
+      "description": "Drove 259% sales growth in 3 months at Avacomtech through listing optimization. Achieved 30% YoY revenue growth at Ufeelgood by expanding sales channels and SEO."
     }
   ]
 }
