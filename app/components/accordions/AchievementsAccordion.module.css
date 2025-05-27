@@ -1,0 +1,238 @@
+.achievementsList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Spacing between company groups */
+  }
+  
+  /* .companyGroup can be seen as a type of .content-card, especially the header part. */
+  /* The collapsible nature makes it a more complex component. */
+  .companyGroup {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden; /* Ensures border radius is respected by children */
+    background-color: var(--color-bg-card);
+    box-shadow: var(--color-card-shadow);
+  }
+  
+  .companyHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-bg);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .companyHeader:hover {
+    background-color: var(--color-border);
+  }
+  
+  .companyHeader.expanded {
+    background-color: var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .companyInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .companyName {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.25rem 0;
+  }
+  
+  .companyJobTitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .companyYears {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+  
+  .achievementCount {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    background: var(--color-form-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px; /* Pill badge style */
+  }
+  
+  .expandIcon {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+  
+  .achievementsColumn {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: var(--color-bg-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-sizing: border-box;
+  }
+  
+  /* .achievement can be a variation of .content-card or a nested card style */
+  .achievement {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-bg);
+    position: relative; /* For year positioning */
+    margin-bottom: 1rem; /* Space between individual achievements */
+    transition: transform 0.2s ease;
+  }
+  
+  .achievement:hover {
+    transform: translateY(-2px);
+  }
+  
+  .achievementTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .achievementDescriptionClamped {
+    font-size: 0.95rem;
+    margin: 0 0 0.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  
+  .achievementDescriptionExpanded {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+  
+  .achievementYear {
+    font-size: 0.85rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    display: inline-block; /* To fit content */
+  }
+  
+  .sectionTitle {
+    font-size: 1.2rem; 
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block;
+  }
+  
+  .experienceLink {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .experienceButton {
+    color: var(--color-link);
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+  }
+  
+  .experienceButton:hover {
+    color: var(--color-link-hover);
+  }
+  
+  .otherSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0; /* Reduced padding */
+    background-color: transparent; /* No background */
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    margin-top: 1rem; /* Space above this section */
+    border-bottom: 1px solid var(--color-border); /* Subtle separator */
+  }
+  
+  .otherSectionHeader .sectionTitle {
+    margin: 0; /* Reset margin for the title within the button */
+    border-bottom: none; /* Remove border from title as button itself has one or could have */
+    font-size: 1.1rem; /* Slightly smaller */
+    /* Color will be inherited from .sectionTitle, which uses var(--color-text) */
+  }
+  
+  .otherSectionHeader .expandIcon {
+    font-size: 1.5rem; /* Slightly smaller icon */
+    color: var(--color-text-secondary); /* Less prominent color */
+  }
+  
+  .otherSectionHeader:hover .expandIcon {
+    color: var(--color-primary);
+  }
+  
+  .otherAchievementsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1rem; /* Space above the content when expanded */
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .companyHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .achievementCount {
+      align-self: flex-start;
+    }
+  
+    .expandIcon {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+  
+    .achievementsColumn {
+      padding: 1rem;
+      gap: 1rem;
+    }
+  } 

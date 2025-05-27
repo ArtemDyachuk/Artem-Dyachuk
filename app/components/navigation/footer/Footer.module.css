@@ -58,6 +58,30 @@
   opacity: 0.8;
 }
 
+.privacyLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.privacyLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.sitemapLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.sitemapLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 @media (max-width: 600px) {
   .icon {
     width: 18px;

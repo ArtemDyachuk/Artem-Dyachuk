@@ -8,7 +8,6 @@ import ExperienceAccordion from "../components/accordions/ExperienceAccordion";
 export const metadata: Metadata = {
   title: "Professional Experience | Artem Dyachuk - Technical Product Manager & Full-Stack Developer",
   description: "Explore Artem Dyachuk's 10+ years of professional experience in technical product management, full-stack development, and digital transformation. From e-commerce platforms to enterprise solutions, discover key achievements and responsibilities across multiple industries.",
-  keywords: "technical product manager, full-stack developer, software engineering, product management, digital transformation, e-commerce, web development, team leadership, agile development, technical strategy",
   authors: [{ name: "Artem Dyachuk" }],
   creator: "Artem Dyachuk",
   publisher: "Artem Dyachuk",

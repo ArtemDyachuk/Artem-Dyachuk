@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Enterprise Custom CMS (ARC) & Backend Platform",
+    "title": "Enterprise Custom CMS & Backend Platform",
     "productDescription": "A bespoke, multi-tenant headless Content Management System (ARC) and backend platform, including a custom inventory database, built to power corporate websites and streamline marketing operations for a $1B+ revenue company.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
@@ -48,7 +48,7 @@
   },
   {
     "id": 2,
-    "title": "Corporate Websites Front-End Platform (Next.js)",
+    "title": "Corporate Front-End Websites",
     "productDescription": "A suite of high-performance, responsive corporate websites built with Next.js, leveraging the ARC headless CMS to drive lead generation and enhance user engagement for Brightland Homes.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
@@ -92,7 +92,7 @@
   },
   {
     "id": 3,
-    "title": "Digital TV Signage Platform Transformation (Next.js)",
+    "title": "Digital TouchscreenTV Signage",
     "productDescription": "A modernized digital TV signage platform for sales centers, featuring a custom-built Next.js website, interactive content, lead capture, and centralized management, integrated with a cost-effective hardware solution.",
     "companyId": "gehan",
     "companyName": "Brightland Homes",
@@ -131,7 +131,7 @@
   },
   {
     "id": 4,
-    "title": "ARC Connect - Multi-Org HubSpot & AWS Integration Hub",
+    "title": "Multi-Org HubSpot API Integration Hub",
     "productDescription": "A custom Node.js application (ARC Connect) serving as a central hub for complex API integrations, specifically enabling multi-organization HubSpot support within the ARC CMS, leveraging AWS for scalability and automated data sharing.",
     "companyId": "brightland",
     "companyName": "Brightland Homes",
@@ -169,7 +169,7 @@
   },
   {
     "id": 5,
-    "title": "Southern Impression (SI) Homes WordPress Website",
+    "title": "Subsidiary Corporate WordPress Website",
     "productDescription": "A new, performant, and secure WordPress website built from scratch for Southern Impression Homes, a subsidiary of Brightland Homes, as part of a strategic reorganization.",
     "companyId": "brightland",
     "companyName": "Brightland Homes (for Southern Impression Homes)",

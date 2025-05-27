@@ -32,7 +32,7 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.copyright}>
-        © {new Date().getFullYear()} Artem Dyachuk.
+        © {new Date().getFullYear()} Artem Dyachuk. <a href="/privacy-policy" className={styles.privacyLink}>Privacy Policy</a> | <a href="/sitemap-page" className={styles.sitemapLink}>Sitemap</a>
       </div>
     </footer>
   );

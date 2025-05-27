@@ -48,6 +48,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly' as const,
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/sitemap-page`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
   ]
   
   // Dynamic project pages

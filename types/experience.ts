@@ -22,4 +22,10 @@ export interface Company {
   jobTitle: string;
   jobDuties: JobDuty[];
   achievements: number[];
+}
+
+export interface CompanyWithProcessedAchievements extends Company {
+  featuredAchievements: Achievement[];
+  otherAchievements: Achievement[];
+  allAchievements: Achievement[]; // Kept for backward compatibility if needed
 } 
