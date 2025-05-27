@@ -6,40 +6,13 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import companiesData from "../data/companies.json";
 import achievementsData from "../data/achievements.json";
+import { Achievement, Company } from "@/types";
 
 // Note: Since this is a client component, we need to export metadata from a separate file
 // or convert this to a server component. For now, I'll add it here but it won't work in client components.
 // You'll need to either:
 // 1. Convert this to a server component, or
 // 2. Create a separate layout.tsx file in the experience folder
-
-interface Achievement {
-  id: number;
-  companyId: string;
-  title: string;
-  description: string;
-  year: string;
-  skills: number[];
-}
-
-interface JobDuty {
-  title: string;
-  description: string;
-}
-
-interface Company {
-  id: string;
-  name: string;
-  startDate: string;
-  endDate: string | null;
-  current: boolean;
-  location: string;
-  jobTitle: string;
-  jobDuties: JobDuty[];
-  achievements: number[];
-}
-
-
 
 function ExperienceContent() {
   const searchParams = useSearchParams();
