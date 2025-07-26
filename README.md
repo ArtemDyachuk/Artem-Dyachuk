@@ -1,29 +1,94 @@
-# Artem Dyachuk – Product Manager Portfolio
+# Artem Dyachuk — Product Manager Portfolio
 
-Welcome to the source code for my personal portfolio website: [artemdyachuk.com](https://www.artemdyachuk.com)
+This repository powers my personal portfolio at [artemdyachuk.com](https://www.artemdyachuk.com).
 
-This site showcases my career, product philosophy, selected projects, and personal story as a **Technical Product Manager**. Built with **Next.js**, the portfolio highlights my ability to define product strategy, drive execution, and collaborate cross-functionally — with a touch of hands-on development.
-
----
-
-## 🧭 Purpose
-
-This portfolio is more than just an online resume. It reflects:
-
-- My career journey and professional milestones
-- Selected work and product decisions I've led
-- My approach to product management and problem-solving
-- Clean, performant, and modern front-end implementation
+Built with **Next.js** and deployed using **Static Site Generation (SSG)** via Vercel, this site presents my product management experience, technical skills, and career highlights.
 
 ---
 
-## 🛠️ Tech Stack
+## 🎯 Purpose
 
-- **Framework:** [Next.js](https://nextjs.org/)
-- **Styling:** CSS Modules (or Tailwind/SCSS if used — edit as appropriate)
-- **Deployment:** Vercel
-- **Content Management:** Markdown / Static Content (or CMS, if applicable)
+This site serves as:
+
+- A digital representation of my career as a Technical Product Manager
+- A place to share select product decisions and accomplishments
+- A showcase of clean, performance-focused implementation
+- A reflection of my philosophy on product design and strategy
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org/) with Static Site Generation (SSG)
+- **Styling:** CSS Modules *(or Tailwind/SCSS — adjust as needed)*
+- **Deployment:** [Vercel](https://vercel.com/)
+- **Content:** Static Markdown or JSON *(if applicable)*
 
 ---
 
 ## 📁 Project Structure
+
+/components     → Reusable React components
+/pages          → Route-based content using Next.js
+/public         → Static assets
+/styles         → CSS modules or global styles
+/utils          → Utility functions
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository and run the development server:
+
+```bash
+git clone https://github.com/your-username/portfolio.git
+cd portfolio
+npm install
+npm run dev
+
+Visit http://localhost:3000 to view it in your browser.
+
+To build for production:
+
+npm run build
+npm run start
+
+
+⸻
+
+📦 Deployment
+
+This site is deployed on Vercel with automatic builds from the main branch. It uses static generation to optimize performance and simplify hosting.
+
+⸻
+
+💡 Product Thinking
+
+This project reflects my product mindset:
+	•	Simple, fast, and intentional UX
+	•	Credible storytelling through structure and tone
+	•	Every section has a clear user goal
+	•	Performance and clarity prioritized over visual clutter
+
+⸻
+
+🔍 SEO & Best Practices
+	•	Optimized with next/image for responsive image delivery
+	•	Clean URL structure and metadata tags
+	•	Accessible, mobile-friendly, and fast-loading
+	•	Potential additions: sitemap.xml, robots.txt, Open Graph tags
+
+⸻
+
+📫 Contact
+
+Want to collaborate or connect?
+Reach out via LinkedIn or through the contact form on the site.
+
+⸻
+
+📄 License
+
+This project is open-sourced under the MIT License.
+
+---
