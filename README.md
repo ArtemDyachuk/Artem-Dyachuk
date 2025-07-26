@@ -20,7 +20,7 @@ This site serves as:
 ## 🛠 Tech Stack
 
 - **Framework:** [Next.js](https://nextjs.org/) with Static Site Generation (SSG)
-- **Styling:** CSS Modules *(or Tailwind/SCSS — adjust as needed)*
+- **Styling:** CSS Modules
 - **Deployment:** [Vercel](https://vercel.com/)
 - **Content:** Static Markdown, React JSX or JSON
 - **Databsae:** MongoDB
@@ -61,7 +61,8 @@ npm run start
 
 ## 📦 Deployment
 
-This site is deployed on Vercel with automatic builds from the main branch. It uses static generation to optimize performance and simplify hosting.
+This site is deployed on Vercel with automatic builds from the main branch.<br/>
+It uses static generation to optimize performance and simplify hosting.
 
 ---
 
