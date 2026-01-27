@@ -51,10 +51,7 @@ export async function POST(request: Request) {
       );
     }
     
-    console.log("HubSpot configuration loaded:", {
-      portalId: portalId.substring(0, 4) + "...",
-      formGuid: formGuid.substring(0, 4) + "...",
-    });
+    // Configuration loaded successfully (no need to log in production)
 
     const body = await request.json();
     const { firstname, email, lastname, message } = body;
@@ -123,49 +120,14 @@ export async function POST(request: Request) {
       });
     }
 
-    // Get referer from request headers for page URI
-    const referer = request.headers.get("referer") || "https://artemdyachuk.com/contact";
-    const origin = request.headers.get("origin");
-    const host = request.headers.get("host");
-    
-    console.log("Request headers:", {
-      referer,
-      origin,
-      host,
-      userAgent: request.headers.get("user-agent")?.substring(0, 50),
-    });
-
-    // HubSpot may reject submissions if context fields aren't configured as form fields
-    // Try without context first - if that works, we know context is the issue
+    // HubSpot rejects submissions if context fields (pageUri, pageName) are included
+    // but not configured as form fields. Only send fields array.
     const payload = {
       fields,
-      // Temporarily removing context to test if it's causing silent rejection
-      // context: {
-      //   pageUri: referer,
-      //   pageName: "Contact Page",
-      // },
     };
-    
-    // Log field values (masked for privacy)
-    console.log("Payload fields:", fields.map(f => ({
-      name: f.name,
-      valueLength: f.value?.length || 0,
-      hasValue: !!f.value && f.value.trim() !== "",
-      objectTypeId: f.objectTypeId,
-    })));
-    
-    console.log("Full payload being sent:", JSON.stringify(payload, null, 2));
 
     // Submit to HubSpot using unauthenticated endpoint
     const hubspotUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
-    
-    console.log("Submitting to HubSpot:", {
-      url: hubspotUrl.replace(portalId, "PORTAL_ID").replace(formGuid, "FORM_GUID"),
-      fieldsCount: fields.length,
-      hasEmail: !!fields.find(f => f.name === "email"),
-      hasFirstname: !!fields.find(f => f.name === "firstname"),
-      payload: JSON.stringify(payload, null, 2),
-    });
 
     const response = await fetch(hubspotUrl, {
       method: "POST",
@@ -177,18 +139,22 @@ export async function POST(request: Request) {
 
     const responseData = await response.json();
     
-    // Log full HubSpot response for debugging
-    console.log("HubSpot API Response:", JSON.stringify({
-      status: response.status,
-      statusText: response.statusText,
-      hasErrors: !!responseData.errors,
-      errors: responseData.errors,
-      inlineMessage: responseData.inlineMessage,
-      redirectUri: responseData.redirectUri,
-      submittedAt: responseData.submittedAt,
-      portalId: responseData.portalId,
-      fullResponse: responseData,
-    }, null, 2));
+    // Log HubSpot response for debugging (only log errors in production)
+    if (!response.ok || (responseData.errors && responseData.errors.length > 0)) {
+      console.error("HubSpot API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        errors: responseData.errors,
+        responseData,
+      });
+    } else if (isDevelopment) {
+      console.log("HubSpot API Response:", {
+        status: response.status,
+        hasErrors: !!responseData.errors,
+        inlineMessage: responseData.inlineMessage,
+        redirectUri: responseData.redirectUri,
+      });
+    }
 
     if (!response.ok) {
       console.error("HubSpot API HTTP error:", {
