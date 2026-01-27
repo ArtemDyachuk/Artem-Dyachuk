@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     openGraph: {
       title: `${project.title} - ${project.companyName}`,
       description: `${project.productDescription} - ${project.role} project at ${project.companyName}.`,
-      url: `https://artemdyachuk.com/my-work/${project.id}`,
+      url: `https://www.artemdyachuk.com/my-work/${project.id}`,
       images: project.mainImage ? [
         {
           url: project.mainImage,

@@ -4,11 +4,11 @@ import skillsData from "../data/skills.json";
 
 export const metadata: Metadata = {
   title: 'Skills & Expertise',
-  description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, React, Next.js, Node.js, Digital Marketing, System Architecture, and more.',
+  description: 'Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.',
   openGraph: {
     title: 'Skills & Expertise - Artem Dyachuk',
-    description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, React, Next.js, Node.js, Digital Marketing, System Architecture, and more.',
-    url: 'https://artemdyachuk.com/skills',
+    description: 'Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.',
+    url: 'https://www.artemdyachuk.com/skills',
   },
   twitter: {
     title: 'Skills & Expertise - Artem Dyachuk',
@@ -61,7 +61,7 @@ export default function Skills() {
         <div className={styles.container}>
           <h1 className={styles.title}>Skills & Expertise</h1>
           <p className={styles.pageSummary}>
-            This page outlines my core professional competencies, categorized for clarity. It reflects a deep expertise in Technical Product Management, hands-on Full-Stack Development, strategic Digital Marketing, and comprehensive E-commerce Management, accumulated throughout my career.
+            This page outlines my core professional competencies as a Lead Software Engineer and Technical Product Manager. It reflects deep expertise in cloud architecture, software engineering, full-stack development (React, Next.js, Node.js), technical product management, IoT solutions, and DevOps practices, accumulated throughout my 6+ year career.
           </p>
 
           {sortedTypes.map((type) => {

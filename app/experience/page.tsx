@@ -7,14 +7,14 @@ import ExperienceAccordion from "../components/accordions/ExperienceAccordion";
 
 export const metadata: Metadata = {
   title: "Professional Experience | Artem Dyachuk - Lead Software Engineer & Product Manager",
-  description: "Explore Artem Dyachuk's 6+ years of professional experience in software engineering, technical product management, and full-stack development. From e-commerce platforms to enterprise solutions, discover key achievements and responsibilities across multiple industries.",
+  description: "Professional experience of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. 6+ years in cloud architecture, software engineering, full-stack development, and technical product management. Experience includes IoT solutions, cloud infrastructure, and enterprise software at AT&T, Brightland Homes, and other companies.",
   authors: [{ name: "Artem Dyachuk" }],
   creator: "Artem Dyachuk",
   publisher: "Artem Dyachuk",
   openGraph: {
     title: "Professional Experience | Artem Dyachuk - Technical Product Manager",
-    description: "6+ years of experience in software engineering, technical product management, and full-stack development. Explore key achievements across e-commerce, enterprise solutions, and digital transformation projects.",
-    url: "https://artemdyachuk.com/experience",
+    description: "6+ years of experience in cloud architecture, software engineering, technical product management, and full-stack development. Key achievements in IoT solutions, cloud infrastructure, and enterprise software.",
+    url: "https://www.artemdyachuk.com/experience",
     siteName: "Artem Dyachuk - Portfolio",
     type: "website",
     locale: "en_US",
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Professional Experience | Artem Dyachuk",
-    description: "6+ years in software engineering, technical product management, and full-stack development. Key achievements and career journey.",
+    description: "Lead Software Engineer and Technical Product Manager with 6+ years in cloud architecture, software engineering, and full-stack development. Career journey and achievements.",
     creator: "@artemdyachuk",
   },
   alternates: {
-    canonical: "https://artemdyachuk.com/experience",
+    canonical: "https://www.artemdyachuk.com/experience",
   },
   robots: {
     index: true,

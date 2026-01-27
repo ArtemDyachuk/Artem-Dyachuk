@@ -7,11 +7,11 @@ import Philosophy from "../components/philosophy/Philosophy";
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn about Artem Dyachuk, a results-oriented Lead Software Engineer with 6+ years of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
+  description: 'About Artem Dyachuk - Lead Software Engineer and Technical Product Manager in Dallas, Texas. 6+ years of experience in cloud architecture, software engineering, full-stack development, and IoT solutions. Currently at AT&T Connected Solutions.',
   openGraph: {
     title: 'About Artem Dyachuk - Lead Software Engineer & Product Manager',
-    description: 'Learn about Artem Dyachuk, a results-oriented Lead Software Engineer with 6+ years of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
-    url: 'https://artemdyachuk.com/about',
+    description: 'About Artem Dyachuk - Lead Software Engineer and Technical Product Manager in Dallas, Texas. 6+ years of experience in cloud architecture, software engineering, full-stack development, and IoT solutions. Currently at AT&T Connected Solutions.',
+    url: 'https://www.artemdyachuk.com/about',
   },
   twitter: {
     title: 'About Artem Dyachuk - Lead Software Engineer & Product Manager',

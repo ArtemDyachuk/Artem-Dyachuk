@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Portfolio - Artem Dyachuk\'s Digital Products & Solutions',
     description: 'Explore Artem Dyachuk\'s portfolio of digital products and software solutions. Projects supporting $1B+ in annual revenue including custom CMS development, corporate websites, and marketing integrations.',
-    url: 'https://artemdyachuk.com/my-work',
+    url: 'https://www.artemdyachuk.com/my-work',
   },
   twitter: {
     title: 'Portfolio - Artem Dyachuk\'s Digital Products & Solutions',

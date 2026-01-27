@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://artemdyachuk.com/sitemap.xml',
+    sitemap: 'https://www.artemdyachuk.com/sitemap.xml',
   }
 } 

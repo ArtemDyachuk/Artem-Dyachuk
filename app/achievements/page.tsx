@@ -8,11 +8,11 @@ import { processAchievementsForCompanies } from "@/lib/achievements";
 
 export const metadata: Metadata = {
   title: 'Key Achievements | Artem Dyachuk - Product Manager & Software Developer',
-  description: 'Explore Artem Dyachuk\'s measurable achievements: $1B+ revenue platform leadership, $500K+ cost savings, 30% under-budget project delivery, and performance optimizations across product management and software development roles.',
+  description: 'Key achievements of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. $1B+ revenue platform leadership, $500K+ cost savings, cloud architecture implementations, IoT solutions, and software engineering achievements at AT&T, Brightland Homes, and other companies.',
   openGraph: {
     title: 'Key Achievements | Artem Dyachuk - Product Manager & Software Developer',
     description: 'Explore measurable achievements: $1B+ revenue platform leadership, $500K+ cost savings, 30% under-budget delivery, and performance optimizations.',
-    url: 'https://artemdyachuk.com/achievements',
+    url: 'https://www.artemdyachuk.com/achievements',
     siteName: 'Artem Dyachuk Portfolio',
     type: 'website',
     locale: 'en_US',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     creator: '@artemdyachuk',
   },
   alternates: {
-    canonical: 'https://artemdyachuk.com/achievements',
+    canonical: 'https://www.artemdyachuk.com/achievements',
   },
   robots: {
     index: true,

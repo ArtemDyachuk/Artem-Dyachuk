@@ -82,12 +82,11 @@ export async function POST(request: Request) {
     }
 
     // Build HubSpot form submission payload
-    // Using format that matches embedded forms
     // objectTypeId "0-1" is required for contact fields
     interface HubSpotField {
       name: string;
       value: string;
-      objectTypeId?: string;
+      objectTypeId: string;
     }
 
     const fields: HubSpotField[] = [
@@ -138,28 +137,13 @@ export async function POST(request: Request) {
     });
 
     const responseData = await response.json();
-    
-    // Log HubSpot response for debugging (only log errors in production)
-    if (!response.ok || (responseData.errors && responseData.errors.length > 0)) {
-      console.error("HubSpot API error:", {
-        status: response.status,
-        statusText: response.statusText,
-        errors: responseData.errors,
-        responseData,
-      });
-    } else if (isDevelopment) {
-      console.log("HubSpot API Response:", {
-        status: response.status,
-        hasErrors: !!responseData.errors,
-        inlineMessage: responseData.inlineMessage,
-        redirectUri: responseData.redirectUri,
-      });
-    }
 
+    // Handle errors
     if (!response.ok) {
       console.error("HubSpot API HTTP error:", {
         status: response.status,
         statusText: response.statusText,
+        errors: responseData.errors,
         responseData,
       });
       return NextResponse.json(
@@ -171,7 +155,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if there are errors in the response
     if (responseData.errors && responseData.errors.length > 0) {
       console.error("HubSpot form validation errors:", responseData.errors);
       return NextResponse.json(
@@ -183,36 +166,13 @@ export async function POST(request: Request) {
       );
     }
 
-    // HubSpot success indicators:
-    // - redirectUri: present when form has redirect configured
-    // - inlineMessage: can be empty string "" which means success but no custom message
-    // - If inlineMessage is undefined (not present), that's different from empty string
-    // Empty inlineMessage ("") = successful submission, just no custom message configured
-    // undefined inlineMessage = might be an issue, but if no errors, still likely successful
-    const hasRedirectUri = responseData.redirectUri && responseData.redirectUri.trim() !== "";
-    const hasInlineMessage = responseData.inlineMessage !== undefined; // Empty string "" is valid success
-    const hasSuccessIndicator = hasRedirectUri || hasInlineMessage;
-    
-    // If we got 200, no errors, and have success indicators (even empty inlineMessage), it's successful
-    // If no indicators but also no errors, still consider successful (some forms don't configure messages)
-    if (!hasSuccessIndicator) {
-      // No success indicators at all - this is unusual but might still be OK if no errors
-      // Log for investigation but don't fail if there are no errors
-      if (isDevelopment) {
-        console.warn("HubSpot returned 200 with no success indicators (inlineMessage/redirectUri), but no errors either. Assuming success:", {
-          responseData,
-          payload: { fields: fields.length },
-        });
-      }
-    }
-    
-    // If we got here, we have 200 status and no errors - submission is successful
+    // HubSpot returns 200 with empty inlineMessage ("") for successful submissions
+    // If we got here with 200 and no errors, submission was successful
 
     return NextResponse.json(
       {
         success: true,
         message: "Form submitted successfully",
-        hubspotResponse: responseData,
       },
       {
         headers: {

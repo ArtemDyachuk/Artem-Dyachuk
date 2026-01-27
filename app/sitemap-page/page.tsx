@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sitemap - Artem Dyachuk',
     description: 'Complete sitemap of Artem Dyachuk&apos;s portfolio website. Navigate to all pages including work samples, skills, experience, and more.',
-    url: 'https://artemdyachuk.com/sitemap-page',
+    url: 'https://www.artemdyachuk.com/sitemap-page',
   },
   twitter: {
     title: 'Sitemap - Artem Dyachuk',

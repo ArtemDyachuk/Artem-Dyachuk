@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Artem Dyachuk - Lead Software Engineer',
     description: 'Get in touch with Artem Dyachuk, Lead Software Engineer & Product Manager. Available for technical consulting and collaboration.',
-    url: 'https://artemdyachuk.com/contact',
+    url: 'https://www.artemdyachuk.com/contact',
   },
   twitter: {
     title: 'Contact Artem Dyachuk - Lead Software Engineer',

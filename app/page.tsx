@@ -4,19 +4,20 @@ import Hero from './components/hero/Hero';
 import { FeaturedProjects } from './components/featured-products/FeaturedProjects';
 import portfolioData from './data/portfolio.json';
 import aboutData from './data/about.json';
+import contactsData from './data/contacts.json';
 import { Project } from './components/featured-products/ProjectCard';
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
+  description: 'Portfolio of Artem Dyachuk - Lead Software Engineer and Technical Product Manager in Dallas. 6+ years of experience in cloud architecture, full-stack development, IoT solutions, and software engineering. Currently at AT&T Connected Solutions.',
   openGraph: {
     title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
-    description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
-    url: 'https://artemdyachuk.com',
+    description: 'Portfolio of Artem Dyachuk - Lead Software Engineer and Technical Product Manager in Dallas. 6+ years of experience in cloud architecture, full-stack development, IoT solutions, and software engineering. Currently at AT&T Connected Solutions.',
+    url: 'https://www.artemdyachuk.com',
   },
   twitter: {
     title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
-    description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
+    description: 'Portfolio of Artem Dyachuk - Lead Software Engineer and Technical Product Manager in Dallas. 6+ years of experience in cloud architecture, full-stack development, IoT solutions, and software engineering. Currently at AT&T Connected Solutions.',
   },
   alternates: {
     canonical: '/',
@@ -36,6 +37,10 @@ export default function Home() {
     }));
 
   // Structured data for SEO
+  const socialLinks = contactsData.contacts
+    .filter((c) => c.type === "link" && c.linkType)
+    .map((c) => c.value);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -51,16 +56,15 @@ export default function Home() {
     },
     "alumniOf": {
       "@type": "EducationalOrganization",
-      "name": "University",
-      "description": `${aboutData.personalInfo.education.degree} in ${aboutData.personalInfo.education.field}`
+      "name": "Kyiv national university of trade and economics",
+      "description": `${aboutData.personalInfo.education.degree} in ${aboutData.personalInfo.education.field} (${aboutData.personalInfo.education.year})`
     },
     "knowsLanguage": aboutData.personalInfo.languages,
     "skills": aboutData.keyStrengths,
-    "url": "https://artemdyachuk.com",
-    "sameAs": [
-      // Add social media URLs here when available
-    ],
-    "description": aboutData.summary
+    "url": "https://www.artemdyachuk.com",
+    "sameAs": socialLinks.length > 0 ? socialLinks : undefined,
+    "description": aboutData.summary,
+    "email": contactsData.contacts.find((c) => c.type === "email")?.value
   };
 
   return (

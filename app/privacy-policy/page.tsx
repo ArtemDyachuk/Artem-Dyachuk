@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Privacy Policy - Artem Dyachuk',
     description: 'Privacy Policy for Artem Dyachuk&apos;s portfolio website. Learn how we collect, use, and protect your personal information.',
-    url: 'https://artemdyachuk.com/privacy-policy',
+    url: 'https://www.artemdyachuk.com/privacy-policy',
   },
   twitter: {
     title: 'Privacy Policy - Artem Dyachuk',
