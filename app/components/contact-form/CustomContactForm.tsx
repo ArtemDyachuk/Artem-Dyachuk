@@ -1,17 +1,7 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
-import Script from "next/script";
+import { useState, FormEvent } from "react";
 import styles from "./CustomContactForm.module.css";
-
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (callback: () => void) => void;
-      execute: (siteKey: string, options: { action: string }) => Promise<string>;
-    };
-  }
-}
 
 interface FormData {
   firstname: string;
@@ -38,26 +28,6 @@ export default function CustomContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
-
-  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
-  const isDevelopment = process.env.NODE_ENV === "development";
-
-  useEffect(() => {
-    // Check if reCAPTCHA is already loaded
-    if (typeof window !== "undefined" && window.grecaptcha) {
-      setRecaptchaLoaded(true);
-    }
-    
-    // Debug: Log if site key is available (development only)
-    if (isDevelopment) {
-      if (recaptchaSiteKey) {
-        console.log("reCAPTCHA site key configured");
-      } else {
-        console.warn("NEXT_PUBLIC_RECAPTCHA_SITE_KEY not set - reCAPTCHA will be disabled");
-      }
-    }
-  }, [recaptchaSiteKey, isDevelopment]);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -90,47 +60,12 @@ export default function CustomContactForm() {
     setErrors({});
 
     try {
-      // Get reCAPTCHA token if available
-      let recaptchaToken = "";
-      if (recaptchaSiteKey) {
-        if (!recaptchaLoaded) {
-          if (isDevelopment) {
-            console.warn("reCAPTCHA not loaded yet, waiting...");
-          }
-          // Wait a bit for reCAPTCHA to load
-          await new Promise((resolve) => setTimeout(resolve, 500));
-        }
-        
-        if (window.grecaptcha && recaptchaLoaded) {
-          try {
-            recaptchaToken = await window.grecaptcha.execute(recaptchaSiteKey, {
-              action: "submit_contact_form",
-            });
-            if (!recaptchaToken && isDevelopment) {
-              console.error("reCAPTCHA token is empty");
-            }
-          } catch (recaptchaError) {
-            if (isDevelopment) {
-              console.error("reCAPTCHA execution error:", recaptchaError);
-            }
-            // Continue without token if reCAPTCHA fails (will be rejected by server if required)
-          }
-        } else {
-          if (isDevelopment) {
-            console.warn("reCAPTCHA not available:", { recaptchaLoaded, hasGrecaptcha: !!window.grecaptcha });
-          }
-        }
-      }
-
       const response = await fetch("/api/contact/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          recaptchaToken,
-        }),
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();
@@ -179,31 +114,6 @@ export default function CustomContactForm() {
 
   return (
     <>
-      {recaptchaSiteKey && (
-        <Script
-          src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
-          strategy="afterInteractive"
-          onLoad={() => {
-            if (window.grecaptcha) {
-              window.grecaptcha.ready(() => {
-                if (isDevelopment) {
-                  console.log("reCAPTCHA loaded and ready");
-                }
-                setRecaptchaLoaded(true);
-              });
-            } else {
-              if (isDevelopment) {
-                console.error("reCAPTCHA script loaded but grecaptcha not available");
-              }
-            }
-          }}
-          onError={() => {
-            if (isDevelopment) {
-              console.error("Failed to load reCAPTCHA script");
-            }
-          }}
-        />
-      )}
       {submitStatus === "success" ? (
         <div id="form-success" className={styles.successMessage}>
           <div className={styles.successIcon}>✓</div>

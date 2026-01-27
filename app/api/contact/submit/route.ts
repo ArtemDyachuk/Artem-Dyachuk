@@ -2,73 +2,6 @@ import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIP } from "@/lib/rateLimit";
 
 /**
- * Verify reCAPTCHA v3 token with Google
- */
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-  const isDevelopment = process.env.NODE_ENV === "development";
-
-  if (!secretKey) {
-    if (isDevelopment) {
-      console.warn("RECAPTCHA_SECRET_KEY not set, skipping verification");
-    }
-    return true; // Allow submission if reCAPTCHA not configured
-  }
-
-  if (!token) {
-    return false;
-  }
-
-  try {
-    const response = await fetch(
-      `https://www.google.com/recaptcha/api/siteverify`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `secret=${secretKey}&response=${token}`,
-      }
-    );
-
-    const data = await response.json();
-    
-    // Log for debugging (development only)
-    if (!data.success) {
-      if (isDevelopment) {
-        console.error("reCAPTCHA verification failed:", data);
-      }
-      
-      // In development, allow browser-error (localhost issues)
-      if (isDevelopment && data["error-codes"]?.includes("browser-error")) {
-        console.warn("reCAPTCHA browser-error in development - allowing submission");
-        return true;
-      }
-    }
-    
-    // reCAPTCHA v3 returns a score (0.0 to 1.0), 0.3 is the threshold
-    const score = data.score || 0;
-    const isValid = data.success === true && score >= 0.3;
-    
-    if (!isValid && data.success && isDevelopment) {
-      console.warn("reCAPTCHA score too low:", score, "Threshold: 0.3");
-    }
-    
-    return isValid;
-  } catch (error) {
-    if (isDevelopment) {
-      console.error("reCAPTCHA verification error:", error);
-    }
-    // In development, allow on network errors
-    if (isDevelopment) {
-      console.warn("reCAPTCHA network error in development - allowing submission");
-      return true;
-    }
-    return false;
-  }
-}
-
-/**
  * Submit contact form to HubSpot
  * Uses unauthenticated endpoint (works on free accounts)
  */
@@ -112,38 +45,9 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { firstname, email, lastname, message, recaptchaToken } = body;
+    const { firstname, email, lastname, message } = body;
 
-    // Verify reCAPTCHA (skip in development if browser-error occurs)
-    if (process.env.RECAPTCHA_SECRET_KEY) {
-      if (!recaptchaToken) {
-        // In development, allow without token (for testing)
-        if (isDevelopment) {
-          console.warn("reCAPTCHA token missing in development - allowing submission");
-        } else {
-          return NextResponse.json(
-            {
-              success: false,
-              error: "reCAPTCHA verification failed. Please refresh the page and try again.",
-            },
-            { status: 400 }
-          );
-        }
-      } else {
-        const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
-        if (!isValidRecaptcha) {
-          // In development with browser-error, we already handled it in verifyRecaptcha
-          // But if it's a real failure, still block it
-          return NextResponse.json(
-            {
-              success: false,
-              error: "reCAPTCHA verification failed. Please try again.",
-            },
-            { status: 400 }
-          );
-        }
-      }
-    }
+    // reCAPTCHA removed - using rate limiting and HubSpot's built-in spam protection instead
 
     // Validate required fields
     if (!firstname || !email) {

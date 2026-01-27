@@ -201,13 +201,6 @@
   display: none !important;
 }
 
-/* Hide reCAPTCHA badge - v3 works invisibly */
-.contactForm :global(.grecaptcha-badge) {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  display: none !important;
-}
-
 /* Additional form text styling */
 .contactForm :global(.hs-form-description),
 .contactForm :global(.hs-form-required) {
