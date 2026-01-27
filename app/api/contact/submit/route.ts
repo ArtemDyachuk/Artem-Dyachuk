@@ -235,7 +235,7 @@ export async function POST(request: Request) {
       if (isDevelopment) {
         console.warn("HubSpot returned 200 with no success indicators (inlineMessage/redirectUri), but no errors either. Assuming success:", {
           responseData,
-          payload: { fields: fields.length, context: payload.context },
+          payload: { fields: fields.length },
         });
       }
     }
