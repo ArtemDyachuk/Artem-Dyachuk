@@ -23,9 +23,9 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: {
     template: '%s | Artem Dyachuk',
-    default: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+    default: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
   },
-  description: "Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Full-Stack Web Developer supporting over $1 billion in annual revenue.",
+  description: "Results-oriented Lead Software Engineer with 6+ years of experience building impactful digital solutions. Full-Stack Web Developer leading engineering teams at AT&T.",
   authors: [{ name: 'Artem Dyachuk' }],
   creator: 'Artem Dyachuk',
   publisher: 'Artem Dyachuk',
@@ -38,21 +38,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://artemdyachuk.com',
     siteName: 'Artem Dyachuk Portfolio',
-    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
-    description: 'Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes. Full-Stack Web Developer supporting over $1 billion in annual revenue.',
+    title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Results-oriented Lead Software Engineer with 6+ years of experience building impactful digital solutions. Full-Stack Web Developer leading engineering teams at AT&T.',
     images: [
       {
         url: '/avatars/artem-dyachuk-xs.webp',
         width: 400,
         height: 400,
-        alt: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
+        alt: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
-    description: 'Results-oriented Digital Product Manager with over a decade of experience transforming digital marketing efforts and product landscapes.',
+    title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Results-oriented Lead Software Engineer with 6+ years of experience building impactful digital solutions and leading engineering teams.',
     images: ['/avatars/artem-dyachuk-xs.webp'],
   },
   robots: {

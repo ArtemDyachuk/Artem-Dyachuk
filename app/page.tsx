@@ -8,15 +8,15 @@ import { Project } from './components/featured-products/ProjectCard';
 
 export const metadata: Metadata = {
   title: 'Home',
-  description: 'Welcome to Artem Dyachuk\'s portfolio. Digital Product Manager and Full-Stack Developer with over a decade of experience supporting $1B+ in annual revenue through innovative software solutions.',
+  description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
   openGraph: {
-    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
-    description: 'Welcome to Artem Dyachuk\'s portfolio. Digital Product Manager and Full-Stack Developer with over a decade of experience supporting $1B+ in annual revenue through innovative software solutions.',
+    title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
     url: 'https://artemdyachuk.com',
   },
   twitter: {
-    title: 'Artem Dyachuk - Digital Product Manager & Full-Stack Developer',
-    description: 'Welcome to Artem Dyachuk\'s portfolio. Digital Product Manager and Full-Stack Developer with over a decade of experience supporting $1B+ in annual revenue through innovative software solutions.',
+    title: 'Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Welcome to Artem Dyachuk\'s portfolio. Lead Software Engineer & Product Manager with 6+ years of experience designing cloud architectures, building scalable solutions, and leading engineering teams at AT&T.',
   },
   alternates: {
     canonical: '/',

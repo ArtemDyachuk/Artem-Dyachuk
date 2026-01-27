@@ -9,7 +9,9 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   const isDevelopment = process.env.NODE_ENV === "development";
 
   if (!secretKey) {
-    console.warn("RECAPTCHA_SECRET_KEY not set, skipping verification");
+    if (isDevelopment) {
+      console.warn("RECAPTCHA_SECRET_KEY not set, skipping verification");
+    }
     return true; // Allow submission if reCAPTCHA not configured
   }
 
@@ -31,9 +33,11 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
     const data = await response.json();
     
-    // Log for debugging
+    // Log for debugging (development only)
     if (!data.success) {
-      console.error("reCAPTCHA verification failed:", data);
+      if (isDevelopment) {
+        console.error("reCAPTCHA verification failed:", data);
+      }
       
       // In development, allow browser-error (localhost issues)
       if (isDevelopment && data["error-codes"]?.includes("browser-error")) {
@@ -46,13 +50,15 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     const score = data.score || 0;
     const isValid = data.success === true && score >= 0.3;
     
-    if (!isValid && data.success) {
+    if (!isValid && data.success && isDevelopment) {
       console.warn("reCAPTCHA score too low:", score, "Threshold: 0.3");
     }
     
     return isValid;
   } catch (error) {
-    console.error("reCAPTCHA verification error:", error);
+    if (isDevelopment) {
+      console.error("reCAPTCHA verification error:", error);
+    }
     // In development, allow on network errors
     if (isDevelopment) {
       console.warn("reCAPTCHA network error in development - allowing submission");
@@ -67,6 +73,8 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
  * Uses unauthenticated endpoint (works on free accounts)
  */
 export async function POST(request: Request) {
+  const isDevelopment = process.env.NODE_ENV === "development";
+  
   try {
     // Rate limiting
     const clientIP = getClientIP(request);
@@ -107,8 +115,6 @@ export async function POST(request: Request) {
     const { firstname, email, lastname, message, recaptchaToken } = body;
 
     // Verify reCAPTCHA (skip in development if browser-error occurs)
-    const isDevelopment = process.env.NODE_ENV === "development";
-    
     if (process.env.RECAPTCHA_SECRET_KEY) {
       if (!recaptchaToken) {
         // In development, allow without token (for testing)
@@ -220,7 +226,9 @@ export async function POST(request: Request) {
     const responseData = await response.json();
 
     if (!response.ok) {
-      console.error("HubSpot API error:", responseData);
+      if (isDevelopment) {
+        console.error("HubSpot API error:", responseData);
+      }
       return NextResponse.json(
         {
           success: false,
@@ -232,7 +240,9 @@ export async function POST(request: Request) {
 
     // Check if there are errors in the response
     if (responseData.errors && responseData.errors.length > 0) {
-      console.error("HubSpot form errors:", responseData.errors);
+      if (isDevelopment) {
+        console.error("HubSpot form errors:", responseData.errors);
+      }
       return NextResponse.json(
         {
           success: false,
@@ -257,7 +267,9 @@ export async function POST(request: Request) {
       }
     );
   } catch (error) {
-    console.error("Form submission error:", error);
+    if (isDevelopment) {
+      console.error("Form submission error:", error);
+    }
     return NextResponse.json(
       {
         success: false,

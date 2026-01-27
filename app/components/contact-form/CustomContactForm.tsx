@@ -41,6 +41,7 @@ export default function CustomContactForm() {
   const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
 
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "";
+  const isDevelopment = process.env.NODE_ENV === "development";
 
   useEffect(() => {
     // Check if reCAPTCHA is already loaded
@@ -48,13 +49,15 @@ export default function CustomContactForm() {
       setRecaptchaLoaded(true);
     }
     
-    // Debug: Log if site key is available
-    if (recaptchaSiteKey) {
-      console.log("reCAPTCHA site key configured");
-    } else {
-      console.warn("NEXT_PUBLIC_RECAPTCHA_SITE_KEY not set - reCAPTCHA will be disabled");
+    // Debug: Log if site key is available (development only)
+    if (isDevelopment) {
+      if (recaptchaSiteKey) {
+        console.log("reCAPTCHA site key configured");
+      } else {
+        console.warn("NEXT_PUBLIC_RECAPTCHA_SITE_KEY not set - reCAPTCHA will be disabled");
+      }
     }
-  }, [recaptchaSiteKey]);
+  }, [recaptchaSiteKey, isDevelopment]);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -91,7 +94,9 @@ export default function CustomContactForm() {
       let recaptchaToken = "";
       if (recaptchaSiteKey) {
         if (!recaptchaLoaded) {
-          console.warn("reCAPTCHA not loaded yet, waiting...");
+          if (isDevelopment) {
+            console.warn("reCAPTCHA not loaded yet, waiting...");
+          }
           // Wait a bit for reCAPTCHA to load
           await new Promise((resolve) => setTimeout(resolve, 500));
         }
@@ -101,15 +106,19 @@ export default function CustomContactForm() {
             recaptchaToken = await window.grecaptcha.execute(recaptchaSiteKey, {
               action: "submit_contact_form",
             });
-            if (!recaptchaToken) {
+            if (!recaptchaToken && isDevelopment) {
               console.error("reCAPTCHA token is empty");
             }
           } catch (recaptchaError) {
-            console.error("reCAPTCHA execution error:", recaptchaError);
+            if (isDevelopment) {
+              console.error("reCAPTCHA execution error:", recaptchaError);
+            }
             // Continue without token if reCAPTCHA fails (will be rejected by server if required)
           }
         } else {
-          console.warn("reCAPTCHA not available:", { recaptchaLoaded, hasGrecaptcha: !!window.grecaptcha });
+          if (isDevelopment) {
+            console.warn("reCAPTCHA not available:", { recaptchaLoaded, hasGrecaptcha: !!window.grecaptcha });
+          }
         }
       }
 
@@ -177,15 +186,21 @@ export default function CustomContactForm() {
           onLoad={() => {
             if (window.grecaptcha) {
               window.grecaptcha.ready(() => {
-                console.log("reCAPTCHA loaded and ready");
+                if (isDevelopment) {
+                  console.log("reCAPTCHA loaded and ready");
+                }
                 setRecaptchaLoaded(true);
               });
             } else {
-              console.error("reCAPTCHA script loaded but grecaptcha not available");
+              if (isDevelopment) {
+                console.error("reCAPTCHA script loaded but grecaptcha not available");
+              }
             }
           }}
           onError={() => {
-            console.error("Failed to load reCAPTCHA script");
+            if (isDevelopment) {
+              console.error("Failed to load reCAPTCHA script");
+            }
           }}
         />
       )}

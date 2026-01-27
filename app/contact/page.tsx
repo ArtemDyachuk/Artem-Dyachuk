@@ -3,19 +3,18 @@ import type { Metadata } from "next";
 import contactsData from "../data/contacts.json";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import styles from "./page.module.css";
-import DownloadResumeButton from "../components/resume/download/DownloadResumeButton";
 import CustomContactForm from "../components/contact-form/CustomContactForm";
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Get in touch with Artem Dyachuk, Digital Product Manager and Full-Stack Developer. Available for product management opportunities, technical consulting, and collaboration.',
+  description: 'Get in touch with Artem Dyachuk, Lead Software Engineer & Product Manager. Available for technical consulting and collaboration.',
   openGraph: {
-    title: 'Contact Artem Dyachuk - Digital Product Manager',
-    description: 'Get in touch with Artem Dyachuk, Digital Product Manager and Full-Stack Developer. Available for product management opportunities, technical consulting, and collaboration.',
+    title: 'Contact Artem Dyachuk - Lead Software Engineer',
+    description: 'Get in touch with Artem Dyachuk, Lead Software Engineer & Product Manager. Available for technical consulting and collaboration.',
     url: 'https://artemdyachuk.com/contact',
   },
   twitter: {
-    title: 'Contact Artem Dyachuk - Digital Product Manager',
+    title: 'Contact Artem Dyachuk - Lead Software Engineer',
     description: 'Get in touch with Artem Dyachuk for product management opportunities and technical consulting.',
   },
   alternates: {
@@ -65,10 +64,6 @@ export default async function Contact() {
               </ul>
             </div>
           )}
-          
-          <div className={styles.resumeSection}>
-            <DownloadResumeButton variant="primary" size="medium" />
-          </div>
         </div>
       </div>
     </main>

@@ -7,15 +7,15 @@ import Philosophy from "../components/philosophy/Philosophy";
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Learn about Artem Dyachuk, a results-oriented Digital Product Manager with over a decade of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
+  description: 'Learn about Artem Dyachuk, a results-oriented Lead Software Engineer with 6+ years of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
   openGraph: {
-    title: 'About Artem Dyachuk - Digital Product Manager & Developer',
-    description: 'Learn about Artem Dyachuk, a results-oriented Digital Product Manager with over a decade of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
+    title: 'About Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Learn about Artem Dyachuk, a results-oriented Lead Software Engineer with 6+ years of experience. Bachelor\'s in Economics and Management, fluent in English, Ukrainian, and Russian.',
     url: 'https://artemdyachuk.com/about',
   },
   twitter: {
-    title: 'About Artem Dyachuk - Digital Product Manager & Developer',
-    description: 'Learn about Artem Dyachuk, a results-oriented Digital Product Manager with over a decade of experience.',
+    title: 'About Artem Dyachuk - Lead Software Engineer & Product Manager',
+    description: 'Learn about Artem Dyachuk, a results-oriented Lead Software Engineer with 6+ years of experience.',
   },
   alternates: {
     canonical: '/about',
@@ -38,7 +38,7 @@ export default function About() {
         name={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
         intro={aboutData.personalInfo.currentRole}
         location={aboutData.personalInfo.location}
-        showResumeButton={true}
+        showResumeButton={false}
         workHistory={workHistory}
       />
       <Philosophy 

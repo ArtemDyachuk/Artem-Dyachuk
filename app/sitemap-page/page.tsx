@@ -31,7 +31,7 @@ export default function SitemapPage() {
     {
       title: "Home",
       url: "/",
-      description: "Welcome to Artem Dyachuk's portfolio. Digital Product Manager and Full-Stack Developer."
+      description: "Welcome to Artem Dyachuk's portfolio. Lead Software Engineer & Product Manager."
     },
     {
       title: "About",

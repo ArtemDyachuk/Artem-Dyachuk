@@ -201,9 +201,11 @@
   display: none !important;
 }
 
-/* Style reCAPTCHA container */
+/* Hide reCAPTCHA badge - v3 works invisibly */
 .contactForm :global(.grecaptcha-badge) {
-  opacity: 0.8;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
 }
 
 /* Additional form text styling */

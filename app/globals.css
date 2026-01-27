@@ -477,6 +477,24 @@ a:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* Hide reCAPTCHA badge and error notifications - v3 works invisibly */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* Hide reCAPTCHA error notifications (common in development) */
+iframe[src*="recaptcha"],
+iframe[title*="reCAPTCHA"],
+div[data-callback*="recaptcha"] {
+  position: fixed !important;
+  bottom: -9999px !important;
+  right: -9999px !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 /* Reduce transform animations on touch devices to prevent scroll interference */
 @media (hover: none) and (pointer: coarse) {
   .btn:hover,

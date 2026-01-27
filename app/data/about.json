@@ -2,9 +2,9 @@
   "personalInfo": {
     "firstName": "Artem",
     "lastName": "Dyachuk",
-    "currentRole": "Technical Product Manager",
-    "currentCompany": "Brightland Homes",
-    "location": "Addison, TX",
+    "currentRole": "Lead Software Engineer",
+    "currentCompany": "AT&T",
+    "location": "Dallas, TX",
     "profileImage": "/avatars/artem-dyachuk-xs.webp",
     "languages": [
       "English",
@@ -17,9 +17,9 @@
       "year": 2016
     }
   },
-  "summary": "Results-oriented Technical Product Manager with a robust Full-Stack Web Developer foundation and over a decade of experience transforming digital marketing and product landscapes. Currently guiding software solutions powering core marketing infrastructure for a $1B+ annual revenue company. Distinguished by a unique blend of deep technical expertise (full-stack development, system architecture, hands-on coding) and sharp strategic business acumen, consistently delivering innovative solutions, driving substantial cost savings, optimizing efficiency, and leading cross-functional teams effectively.",
+  "summary": "Results-oriented Lead Software Engineer with a robust Full-Stack Web Developer foundation and 6+ years of experience building impactful digital solutions. Currently at AT&T in the Connected Solutions department, I design and implement scalable cloud architectures for IoT and emerging products while developing product management skills. Distinguished by a unique blend of deep technical expertise (cloud architecture, full-stack development, system design, hands-on coding) and strategic business acumen, consistently delivering innovative solutions, optimizing cloud resources, and leading cross-functional teams effectively.",
   "philosophy": {
-    "intro": "My approach as a Technical Product Manager is rooted in:",
+    "intro": "My approach as a Lead Software Engineer & Product Manager is rooted in:",
     "principles": [
       {
         "title": "Strategic Technical Execution",
@@ -36,17 +36,17 @@
     ]
   },
   "keyStrengths": [
+    "Cloud Architecture & Design",
     "Technical Product Management",
     "Full-Stack Web Development",
     "Product Strategy & Vision",
     "System Architecture Design",
+    "DevOps & Infrastructure",
     "API Development & Integration",
     "Agile/Scrum Leadership",
     "Data-Driven Decision Making",
     "Cross-Functional Collaboration",
     "Cost Optimization & Budget Management",
-    "Digital Marketing Strategy",
-    "E-commerce Management",
     "Process Improvement"
   ],
   "technicalSkills": {
@@ -67,7 +67,10 @@
       "MySQL"
     ],
     "cloud_devops": [
-      "AWS (Lambda)",
+      "AWS (Lambda, EC2, S3)",
+      "Kubernetes",
+      "Terraform",
+      "CI/CD Pipelines",
       "Vercel",
       "Heroku",
       "GIT Version Control"

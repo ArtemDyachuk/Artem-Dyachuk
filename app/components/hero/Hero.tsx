@@ -18,9 +18,9 @@ const Hero = () => {
             />
           </div>
           <h1 className={styles.heroTitle}>Artem Dyachuk</h1>
-          <h2 className={styles.heroSubtitle}>Product Manager & Full-Stack Developer</h2>
+          <h2 className={styles.heroSubtitle}>Lead Software Engineer & Product Manager</h2>
           <p className={styles.heroDescription}>
-            As a Product Manager & Full-Stack Developer, I bring 3+ years of dedicated product leadership and over a decade of experience building impactful digital solutions. I thrive on transforming product landscapes and spearheading innovation. At Brightland Homes, my work developing core platforms supports over $1B in annual revenue and achieves significant cost efficiencies through strategic initiatives.
+            As a Lead Software Engineer & Product Manager, I bring 6+ years of experience building impactful digital solutions. I design and implement scalable cloud architectures for IoT and emerging products, combining deep technical expertise with strategic product thinking. Currently at AT&T in the Connected Solutions department, I lead cloud architecture initiatives while developing product management skills through mentorship and hands-on collaboration with cross-functional teams.
           </p>
           <div className={styles.ctaContainer}>
             <Link href="/achievements" className={styles.ctaButton}>
@@ -45,7 +45,7 @@ const Hero = () => {
               <div className={styles.statLabel}>Years in Product Management</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>10+</div>
+              <div className={styles.statNumber}>6+</div>
               <div className={styles.statLabel}>Years Building Digital Solutions</div>
             </div>
           </div>

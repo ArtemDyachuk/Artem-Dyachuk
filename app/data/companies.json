@@ -1,10 +1,43 @@
 [
   {
+    "id": "att",
+    "name": "AT&T",
+    "startDate": "November 2025",
+    "endDate": null,
+    "current": true,
+    "location": "Dallas, TX",
+    "jobTitle": "Lead Software Engineer",
+    "department": "Connected Solutions",
+    "jobDuties": [
+      {
+        "title": "Cloud Architecture & Solution Design",
+        "description": "Design and implement scalable, secure cloud architectures for IoT and emerging products. Provide architectural guidance and technical leadership to product delivery teams."
+      },
+      {
+        "title": "Full-Stack Development & Technical Implementation",
+        "description": "Hands-on development of cloud-based solutions, working with Kubernetes, Terraform, and DevOps tools to build and deploy mission-critical systems."
+      },
+      {
+        "title": "Product Management & Business Strategy",
+        "description": "Collaborate with cross-functional stakeholders to define product requirements, prioritize features, and drive product strategy. Developing product management skills through mentorship and training."
+      },
+      {
+        "title": "Cloud Optimization & Best Practices",
+        "description": "Optimize cloud resource utilization, cost management, and establish governance standards. Monitor and ensure high performance, reliability, and security compliance of cloud environments."
+      },
+      {
+        "title": "Technical Leadership & Collaboration",
+        "description": "Lead technical initiatives as an individual contributor, collaborate with hyperscaler partners, and communicate complex technical concepts to both technical and business stakeholders."
+      }
+    ],
+    "achievements": []
+  },
+  {
     "id": "brightland",
     "name": "Brightland Homes",
     "startDate": "February 2023",
-    "endDate": null,
-    "current": true,
+    "endDate": "August 2025",
+    "current": false,
     "location": "Addison, TX",
     "jobTitle": "Digital Product Manager",
     "jobDuties": [
