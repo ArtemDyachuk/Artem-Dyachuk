@@ -16,22 +16,50 @@
 
 /* .contactContainer can be a .content-card or a specific layout structure */
 .contactContainer {
-  max-width: 900px; /* Specific max-width for this layout */
+  width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
-  gap: 3rem;
+  flex-direction: row;
+  gap: 2rem;
   background: var(--color-bg-card);
   border-radius: 12px; /* .content-card is 8px */
   box-shadow: var(--color-card-shadow);
   padding: 2.5rem 2rem; /* .content-card is 2rem */
-  flex-wrap: wrap;
 }
 
-.contactInfo {
-  flex: 1 1 320px;
+.leftColumn {
+  flex: 0 0 65%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.formDescription {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.formDescription p {
+  margin: 0 0 0.5rem 0;
+}
+
+.formNote {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.rightColumn {
+  flex: 0 0 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .subtitle {
@@ -48,9 +76,10 @@
 
 /* Resume section styles */
 .resumeSection {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
 .infoSection {
@@ -69,9 +98,7 @@
 }
 
 .linksSection {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
+  padding: 0;
 }
 
 .linksTitle {
@@ -79,6 +106,7 @@
   font-weight: 600;
   color: var(--color-primary);
   margin-bottom: 0.75rem;
+  text-align: right;
 }
 
 .linksList {
@@ -92,30 +120,34 @@
 
 .linkItem {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 1.05rem;
-  color: var(--color-text-secondary);
-  gap: 0.25rem;
-}
-
-.linkLabel {
-  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: flex-end;
+  font-size: 1.05rem;
 }
 
 .linkUrl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: var(--color-link);
-  text-decoration: underline;
-  word-break: break-all;
+  text-decoration: none;
   font-size: 1rem;
-  margin-left: 2.1rem; /* Specific to this layout */
+  transition: color 0.2s;
+  flex-direction: row-reverse;
+}
+
+.linkUrl:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+.linkUrl span {
+  color: var(--color-text);
 }
 
 /* .contactForm could be a .content-card with var(--color-form-bg) or remain specific */
 .contactForm {
-  flex: 1 1 320px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -123,6 +155,61 @@
   border-radius: 10px; /* .content-card is 8px */
   padding: 2rem 1.5rem; /* .content-card is 2rem */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); /* Softer than var(--color-card-shadow) */
+}
+
+.contactForm .hs-form-frame {
+  width: 100% !important;
+}
+
+/* HubSpot Form Dark Theme Styling */
+.contactForm :global(.hs-form) {
+  color: var(--color-text) !important;
+}
+
+.contactForm :global(.hs-form-field label) {
+  color: var(--color-text-secondary) !important;
+}
+
+.contactForm :global(.hs-form-field input[type="text"]),
+.contactForm :global(.hs-form-field input[type="email"]),
+.contactForm :global(.hs-form-field textarea) {
+  background-color: var(--color-bg-card) !important;
+  color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+.contactForm :global(.hs-form-field input[type="text"]:focus),
+.contactForm :global(.hs-form-field input[type="email"]:focus),
+.contactForm :global(.hs-form-field textarea:focus) {
+  border-color: var(--color-primary) !important;
+  outline: none !important;
+}
+
+.contactForm :global(.hs-button) {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.contactForm :global(.hs-button:hover) {
+  background-color: var(--color-primary-hover) !important;
+}
+
+/* Hide HubSpot branding footer */
+.contactForm :global(.hs-form-booleancheckbox-display),
+.contactForm :global(.hs-powered-by) {
+  display: none !important;
+}
+
+/* Style reCAPTCHA container */
+.contactForm :global(.grecaptcha-badge) {
+  opacity: 0.8;
+}
+
+/* Additional form text styling */
+.contactForm :global(.hs-form-description),
+.contactForm :global(.hs-form-required) {
+  color: var(--color-text-secondary) !important;
 }
 
 .formGroup {
@@ -191,15 +278,37 @@
   font-size: 14px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .contactContainer {
+    width: 100%;
+    padding: 1.5rem 1rem;
     flex-direction: column;
-    gap: 2rem;
-    padding: 1.5rem 0.5rem;
+  }
+
+  .leftColumn {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .rightColumn {
+    flex: 1 1 100%;
+    width: 100%;
   }
 
   .contactForm {
-    padding: 1.5rem 0.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .resumeSection {
+    border-top: none;
+    padding-top: 0;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
+  }
+
+  .linksSection {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
   }
 }
 
