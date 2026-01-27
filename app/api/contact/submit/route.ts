@@ -170,19 +170,23 @@ export async function POST(request: Request) {
 
     // Build HubSpot form submission payload
     // Using format that matches embedded forms
+    // objectTypeId "0-1" is required for contact fields
     interface HubSpotField {
       name: string;
       value: string;
+      objectTypeId?: string;
     }
 
     const fields: HubSpotField[] = [
       {
         name: "firstname",
         value: firstname.trim(),
+        objectTypeId: "0-1",
       },
       {
         name: "email",
         value: email.trim(),
+        objectTypeId: "0-1",
       },
     ];
 
@@ -191,6 +195,7 @@ export async function POST(request: Request) {
       fields.push({
         name: "lastname",
         value: lastname.trim(),
+        objectTypeId: "0-1",
       });
     }
 
@@ -198,6 +203,7 @@ export async function POST(request: Request) {
       fields.push({
         name: "message",
         value: message.trim(),
+        objectTypeId: "0-1",
       });
     }
 
@@ -225,10 +231,26 @@ export async function POST(request: Request) {
 
     const responseData = await response.json();
 
+    // Log HubSpot response for debugging (both dev and prod temporarily)
+    const logData = {
+      status: response.status,
+      statusText: response.statusText,
+      hasErrors: !!responseData.errors,
+      errors: responseData.errors,
+      inlineMessage: responseData.inlineMessage,
+      redirectUri: responseData.redirectUri,
+      submittedAt: responseData.submittedAt,
+      portalId: responseData.portalId,
+      fullResponse: responseData,
+    };
+    console.log("HubSpot API Response:", JSON.stringify(logData, null, 2));
+
     if (!response.ok) {
-      if (isDevelopment) {
-        console.error("HubSpot API error:", responseData);
-      }
+      console.error("HubSpot API HTTP error:", {
+        status: response.status,
+        statusText: response.statusText,
+        responseData,
+      });
       return NextResponse.json(
         {
           success: false,
@@ -240,9 +262,7 @@ export async function POST(request: Request) {
 
     // Check if there are errors in the response
     if (responseData.errors && responseData.errors.length > 0) {
-      if (isDevelopment) {
-        console.error("HubSpot form errors:", responseData.errors);
-      }
+      console.error("HubSpot form validation errors:", responseData.errors);
       return NextResponse.json(
         {
           success: false,
@@ -251,6 +271,31 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // HubSpot success indicators:
+    // - redirectUri: present when form has redirect configured
+    // - inlineMessage: can be empty string "" which means success but no custom message
+    // - If inlineMessage is undefined (not present), that's different from empty string
+    // Empty inlineMessage ("") = successful submission, just no custom message configured
+    // undefined inlineMessage = might be an issue, but if no errors, still likely successful
+    const hasRedirectUri = responseData.redirectUri && responseData.redirectUri.trim() !== "";
+    const hasInlineMessage = responseData.inlineMessage !== undefined; // Empty string "" is valid success
+    const hasSuccessIndicator = hasRedirectUri || hasInlineMessage;
+    
+    // If we got 200, no errors, and have success indicators (even empty inlineMessage), it's successful
+    // If no indicators but also no errors, still consider successful (some forms don't configure messages)
+    if (!hasSuccessIndicator) {
+      // No success indicators at all - this is unusual but might still be OK if no errors
+      // Log for investigation but don't fail if there are no errors
+      if (isDevelopment) {
+        console.warn("HubSpot returned 200 with no success indicators (inlineMessage/redirectUri), but no errors either. Assuming success:", {
+          responseData,
+          payload: { fields: fields.length, context: payload.context },
+        });
+      }
+    }
+    
+    // If we got here, we have 200 status and no errors - submission is successful
 
     return NextResponse.json(
       {
