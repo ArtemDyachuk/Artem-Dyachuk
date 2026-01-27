@@ -125,14 +125,36 @@ export async function POST(request: Request) {
 
     // Get referer from request headers for page URI
     const referer = request.headers.get("referer") || "https://artemdyachuk.com/contact";
+    const origin = request.headers.get("origin");
+    const host = request.headers.get("host");
+    
+    console.log("Request headers:", {
+      referer,
+      origin,
+      host,
+      userAgent: request.headers.get("user-agent")?.substring(0, 50),
+    });
 
+    // HubSpot may reject submissions if context fields aren't configured as form fields
+    // Try without context first - if that works, we know context is the issue
     const payload = {
       fields,
-      context: {
-        pageUri: referer,
-        pageName: "Contact Page",
-      },
+      // Temporarily removing context to test if it's causing silent rejection
+      // context: {
+      //   pageUri: referer,
+      //   pageName: "Contact Page",
+      // },
     };
+    
+    // Log field values (masked for privacy)
+    console.log("Payload fields:", fields.map(f => ({
+      name: f.name,
+      valueLength: f.value?.length || 0,
+      hasValue: !!f.value && f.value.trim() !== "",
+      objectTypeId: f.objectTypeId,
+    })));
+    
+    console.log("Full payload being sent:", JSON.stringify(payload, null, 2));
 
     // Submit to HubSpot using unauthenticated endpoint
     const hubspotUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
@@ -142,6 +164,7 @@ export async function POST(request: Request) {
       fieldsCount: fields.length,
       hasEmail: !!fields.find(f => f.name === "email"),
       hasFirstname: !!fields.find(f => f.name === "firstname"),
+      payload: JSON.stringify(payload, null, 2),
     });
 
     const response = await fetch(hubspotUrl, {
