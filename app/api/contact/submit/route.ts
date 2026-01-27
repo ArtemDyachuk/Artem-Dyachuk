@@ -119,10 +119,45 @@ export async function POST(request: Request) {
       });
     }
 
-    // HubSpot rejects submissions if context fields (pageUri, pageName) are included
-    // but not configured as form fields. Only send fields array.
+    // Get referer for conversion page tracking
+    const referer = request.headers.get("referer") || "https://www.artemdyachuk.com/contact";
+    
+    // Map URL paths to page titles (matching metadata titles)
+    // HubSpot uses pageName to display a friendly name in conversion page tracking
+    const pageTitleMap: Record<string, string> = {
+      "/": "Artem Dyachuk - Lead Software Engineer & Product Manager",
+      "/contact": "Contact",
+      "/about": "About",
+      "/experience": "Professional Experience",
+      "/skills": "Skills & Expertise",
+      "/achievements": "Key Achievements",
+      "/my-work": "Portfolio",
+    };
+    
+    // Extract pathname from referer URL
+    let pageName = "Contact Page"; // default
+    try {
+      const url = new URL(referer);
+      const pathname = url.pathname;
+      pageName = pageTitleMap[pathname] || pageTitleMap[pathname.replace(/\/$/, "")] || "Contact Page";
+    } catch {
+      // If URL parsing fails, try simple string matching
+      if (referer.includes("/contact")) pageName = "Contact";
+      else if (referer.includes("/about")) pageName = "About";
+      else if (referer.includes("/experience")) pageName = "Professional Experience";
+      else if (referer.includes("/skills")) pageName = "Skills & Expertise";
+      else if (referer.includes("/achievements")) pageName = "Key Achievements";
+      else if (referer.includes("/my-work")) pageName = "Portfolio";
+    }
+    
+    // Include pageUri and pageName in context for conversion page tracking
+    // These are standard context fields that HubSpot accepts
     const payload = {
       fields,
+      context: {
+        pageUri: referer,
+        pageName: pageName,
+      },
     };
 
     // Submit to HubSpot using unauthenticated endpoint
