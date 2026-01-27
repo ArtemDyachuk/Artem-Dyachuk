@@ -35,6 +35,13 @@ export async function POST(request: Request) {
     const formGuid = process.env.HUBSPOT_FORM_GUID;
 
     if (!portalId || !formGuid) {
+      console.error("HubSpot configuration missing:", {
+        hasPortalId: !!portalId,
+        hasFormGuid: !!formGuid,
+        portalIdLength: portalId?.length || 0,
+        formGuidLength: formGuid?.length || 0,
+        nodeEnv: process.env.NODE_ENV,
+      });
       return NextResponse.json(
         {
           success: false,
@@ -43,6 +50,11 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+    
+    console.log("HubSpot configuration loaded:", {
+      portalId: portalId.substring(0, 4) + "...",
+      formGuid: formGuid.substring(0, 4) + "...",
+    });
 
     const body = await request.json();
     const { firstname, email, lastname, message } = body;
@@ -124,6 +136,13 @@ export async function POST(request: Request) {
 
     // Submit to HubSpot using unauthenticated endpoint
     const hubspotUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`;
+    
+    console.log("Submitting to HubSpot:", {
+      url: hubspotUrl.replace(portalId, "PORTAL_ID").replace(formGuid, "FORM_GUID"),
+      fieldsCount: fields.length,
+      hasEmail: !!fields.find(f => f.name === "email"),
+      hasFirstname: !!fields.find(f => f.name === "firstname"),
+    });
 
     const response = await fetch(hubspotUrl, {
       method: "POST",
@@ -134,9 +153,9 @@ export async function POST(request: Request) {
     });
 
     const responseData = await response.json();
-
-    // Log HubSpot response for debugging (both dev and prod temporarily)
-    const logData = {
+    
+    // Log full HubSpot response for debugging
+    console.log("HubSpot API Response:", JSON.stringify({
       status: response.status,
       statusText: response.statusText,
       hasErrors: !!responseData.errors,
@@ -146,8 +165,7 @@ export async function POST(request: Request) {
       submittedAt: responseData.submittedAt,
       portalId: responseData.portalId,
       fullResponse: responseData,
-    };
-    console.log("HubSpot API Response:", JSON.stringify(logData, null, 2));
+    }, null, 2));
 
     if (!response.ok) {
       console.error("HubSpot API HTTP error:", {
