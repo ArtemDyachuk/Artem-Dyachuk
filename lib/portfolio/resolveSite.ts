@@ -33,7 +33,15 @@ async function resolveByCustomDomain(hostname: string): Promise<PortfolioSiteRes
 
 export async function resolvePortfolioSite(): Promise<PortfolioSiteResolution> {
   const headerStore = await headers();
-  const hostname = normalizeHost(headerStore.get("host"));
+  let hostname = normalizeHost(headerStore.get("host"));
+
+  // localhost sends Host: localhost — Firestore keys are real domains (e.g. www.artemdyachuk.com).
+  if (!hostname && process.env.NODE_ENV === "development") {
+    const devHost = process.env.PORTFOLIO_DEV_HOST?.trim().toLowerCase();
+    if (devHost) {
+      hostname = devHost;
+    }
+  }
 
   if (!hostname) {
     return { ok: false, reason: "missing_config" };

@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import type { PortfolioRole } from "@/types/portfolio";
+import { useMemo, useState } from "react";
+import type { PortfolioRole, PortfolioSkill } from "@/types/portfolio";
 import CompanyLogo from "./CompanyLogo";
+import RichTextContent from "./RichTextContent";
+import RoleSectionAccordion from "./RoleSectionAccordion";
 import styles from "./RolesList.module.css";
 
 function formatDateRange(startDate: string, endDate: string | null): string {
@@ -31,11 +33,28 @@ function formatAchievementDate(value: string | null): string | null {
   return value;
 }
 
+function groupSkillsByCategory(skills: PortfolioSkill[]) {
+  const buckets = new Map<string, PortfolioSkill[]>();
+  for (const skill of skills) {
+    const list = buckets.get(skill.category) ?? [];
+    list.push(skill);
+    buckets.set(skill.category, list);
+  }
+
+  return [...buckets.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([category, items]) => ({
+      category,
+      items: [...items].sort((left, right) => left.name.localeCompare(right.name)),
+    }));
+}
+
 function roleHasDetails(role: PortfolioRole): boolean {
   return Boolean(
     role.roleOverview?.trim() ||
       role.responsibilities.length > 0 ||
-      role.achievements.length > 0,
+      role.achievements.length > 0 ||
+      role.skills.length > 0,
   );
 }
 
@@ -46,6 +65,7 @@ type RoleCardProps = {
 function RoleCard({ role }: RoleCardProps) {
   const [expanded, setExpanded] = useState(false);
   const expandable = roleHasDetails(role);
+  const skillGroups = useMemo(() => groupSkillsByCategory(role.skills), [role.skills]);
 
   return (
     <article className={styles.card}>
@@ -76,43 +96,70 @@ function RoleCard({ role }: RoleCardProps) {
 
       <div className={`${styles.panel} ${expanded ? styles.panelOpen : ""}`} aria-hidden={!expanded}>
         <div className={styles.panelInner}>
-          {role.roleOverview ? <p className={styles.overview}>{role.roleOverview}</p> : null}
+          {role.roleOverview ? (
+            <RichTextContent html={role.roleOverview} className={styles.overview} />
+          ) : null}
 
-          {role.responsibilities.length > 0 ? (
-            <section className={styles.section}>
-              <h3 className={styles.sectionTitle}>Responsibilities</h3>
-              <ul className={styles.responsibilities}>
-                {role.responsibilities.map((item) => (
-                  <li key={item.id || `${item.name}-${item.text.slice(0, 24)}`}>
-                    {item.name ? <strong>{item.name}: </strong> : null}
-                    {item.text}
+          <RoleSectionAccordion
+            title="Responsibilities"
+            count={role.responsibilities.length}
+            defaultOpen={false}
+          >
+            <ul className={styles.responsibilities}>
+              {role.responsibilities.map((item) => (
+                <li
+                  key={item.id || `${item.name}-${item.text.slice(0, 24)}`}
+                  className={styles.responsibilityItem}
+                >
+                  {item.name ? <p className={styles.responsibilityName}>{item.name}</p> : null}
+                  <RichTextContent html={item.text} className={styles.responsibilityText} />
+                </li>
+              ))}
+            </ul>
+          </RoleSectionAccordion>
+
+          <RoleSectionAccordion
+            title="Achievements"
+            count={role.achievements.length}
+            defaultOpen={true}
+          >
+            <ul className={styles.achievements}>
+              {role.achievements.map((item) => {
+                const dateLabel = formatAchievementDate(item.date);
+                return (
+                  <li key={item.id}>
+                    <p className={styles.achievementTitle}>
+                      {item.title}
+                      {dateLabel ? (
+                        <span className={styles.achievementDate}> · {dateLabel}</span>
+                      ) : null}
+                    </p>
+                    <RichTextContent
+                      html={item.description}
+                      className={styles.achievementDescription}
+                    />
                   </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
+                );
+              })}
+            </ul>
+          </RoleSectionAccordion>
 
-          {role.achievements.length > 0 ? (
-            <section className={styles.section}>
-              <h3 className={styles.sectionTitle}>Achievements</h3>
-              <ul className={styles.achievements}>
-                {role.achievements.map((item) => {
-                  const dateLabel = formatAchievementDate(item.date);
-                  return (
-                    <li key={item.id}>
-                      <p className={styles.achievementTitle}>
-                        {item.title}
-                        {dateLabel ? (
-                          <span className={styles.achievementDate}> · {dateLabel}</span>
-                        ) : null}
-                      </p>
-                      <p className={styles.achievementDescription}>{item.description}</p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
-          ) : null}
+          <RoleSectionAccordion title="Skills" count={role.skills.length} defaultOpen={false}>
+            <div className={styles.skillsGroups}>
+              {skillGroups.map((group) => (
+                <div key={group.category} className={styles.skillGroup}>
+                  <p className={styles.skillCategory}>{group.category}</p>
+                  <div className={styles.skillPills}>
+                    {group.items.map((skill) => (
+                      <span key={skill.id} className={styles.skillPill}>
+                        {skill.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </RoleSectionAccordion>
         </div>
       </div>
     </article>

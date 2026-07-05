@@ -11,6 +11,12 @@ export type PortfolioAchievement = {
   date: string | null;
 };
 
+export type PortfolioSkill = {
+  id: string;
+  name: string;
+  category: string;
+};
+
 export type PortfolioRole = {
   id: string;
   company: string;
@@ -22,6 +28,7 @@ export type PortfolioRole = {
   roleOverview: string | null;
   responsibilities: PortfolioResponsibility[];
   achievements: PortfolioAchievement[];
+  skills: PortfolioSkill[];
 };
 
 export type PortfolioSiteResolution =
