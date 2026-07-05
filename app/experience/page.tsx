@@ -1,19 +1,23 @@
 import { Metadata } from "next";
+import RolesList from "../components/roles/RolesList";
+import { fetchPublicRoles } from "@/lib/portfolio/roles";
+import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
+import type { PortfolioRole } from "@/types/portfolio";
 import styles from "./page.module.css";
-import companiesData from "../data/companies.json";
-import achievementsData from "../data/achievements.json";
-import { Achievement, Company } from "@/types";
-import ExperienceAccordion from "../components/accordions/ExperienceAccordion";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Professional Experience | Artem Dyachuk - Lead Software Engineer & Product Manager",
-  description: "Professional experience of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. 6+ years in cloud architecture, software engineering, full-stack development, and technical product management. Experience includes IoT solutions, cloud infrastructure, and enterprise software at AT&T, Brightland Homes, and other companies.",
+  description:
+    "Professional experience of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. 6+ years in cloud architecture, software engineering, full-stack development, and technical product management. Experience includes IoT solutions, cloud infrastructure, and enterprise software at AT&T, Brightland Homes, and other companies.",
   authors: [{ name: "Artem Dyachuk" }],
   creator: "Artem Dyachuk",
   publisher: "Artem Dyachuk",
   openGraph: {
     title: "Professional Experience | Artem Dyachuk - Technical Product Manager",
-    description: "6+ years of experience in cloud architecture, software engineering, technical product management, and full-stack development. Key achievements in IoT solutions, cloud infrastructure, and enterprise software.",
+    description:
+      "6+ years of experience in cloud architecture, software engineering, technical product management, and full-stack development. Key achievements in IoT solutions, cloud infrastructure, and enterprise software.",
     url: "https://www.artemdyachuk.com/experience",
     siteName: "Artem Dyachuk - Portfolio",
     type: "website",
@@ -22,7 +26,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Professional Experience | Artem Dyachuk",
-    description: "Lead Software Engineer and Technical Product Manager with 6+ years in cloud architecture, software engineering, and full-stack development. Career journey and achievements.",
+    description:
+      "Lead Software Engineer and Technical Product Manager with 6+ years in cloud architecture, software engineering, and full-stack development. Career journey and achievements.",
     creator: "@artemdyachuk",
   },
   alternates: {
@@ -41,13 +46,41 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Experience() {
-  // Sort companies by start date (most recent first)
-  const sortedCompanies = [...(companiesData as Company[])].sort(
-    (a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
-  );
-  
-  const achievements = achievementsData as Achievement[];
+function siteMessage(reason: "missing_config" | "site_not_found" | "site_disabled"): string {
+  switch (reason) {
+    case "missing_config":
+      return "This page is temporarily unavailable.";
+    case "site_disabled":
+      return "This page is temporarily unavailable.";
+    default:
+      return "This page is temporarily unavailable.";
+  }
+}
+
+export default async function ExperiencePage() {
+  const site = await resolvePortfolioSite();
+
+  if (!site.ok) {
+    return (
+      <main className={styles.main}>
+        <section className={styles.experience}>
+          <div className={styles.container}>
+            <h1 className={styles.sectionTitle}>Professional Experience</h1>
+            <p className={styles.pageSummary}>{siteMessage(site.reason)}</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  let roles: PortfolioRole[] = [];
+  let errorMessage: string | null = null;
+
+  try {
+    roles = await fetchPublicRoles(site.userId);
+  } catch (error) {
+    errorMessage = error instanceof Error ? error.message : "Unable to load experience right now.";
+  }
 
   return (
     <main className={styles.main}>
@@ -55,11 +88,12 @@ export default function Experience() {
         <div className={styles.container}>
           <h1 className={styles.sectionTitle}>Professional Experience</h1>
           <p className={styles.pageSummary}>
-            Explore my career journey, from foundational e-commerce and digital marketing roles to Technical Product Management and now Lead Software Engineering. Each position details key responsibilities and impactful achievements, highlighting my blend of technical expertise and strategic leadership.
+            Explore my career journey across software engineering and product leadership. Expand
+            each role to view responsibilities and highlights.
           </p>
-          <ExperienceAccordion companies={sortedCompanies} achievements={achievements} />
+          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : <RolesList roles={roles} />}
         </div>
       </section>
     </main>
   );
-} 
+}

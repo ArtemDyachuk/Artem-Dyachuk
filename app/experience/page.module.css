@@ -43,6 +43,16 @@
   text-align: center;
 }
 
+.error {
+  margin: 0 auto 2rem;
+  max-width: 700px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+  text-align: center;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {

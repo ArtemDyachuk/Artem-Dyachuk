@@ -101,7 +101,7 @@ const AchievementsAccordion: React.FC<AchievementsAccordionProps> = ({ companies
           {expandedCompany === company.id && (
             <div className={styles.achievementsColumn} id={`company-achievements-${company.id}`}>
               <div className={styles.experienceLink}>
-                <Link href={`/experience?company=${company.id}`} className={styles.experienceButton}>
+                <Link href="/experience" className={styles.experienceButton}>
                   More about my role at this position
                 </Link>
               </div>

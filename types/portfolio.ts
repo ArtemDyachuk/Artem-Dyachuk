@@ -17,6 +17,25 @@ export type PortfolioSkill = {
   category: string;
 };
 
+export type PortfolioUserSkill = {
+  id: string;
+  name: string;
+  category: string;
+  note: string | null;
+};
+
+export type PortfolioSkillCategory = {
+  category: string;
+  skills: PortfolioUserSkill[];
+};
+
+export type PortfolioLanguage = {
+  id: string;
+  name: string;
+  fluencyLevel: string;
+  fluencyLabel: string;
+};
+
 export type PortfolioRole = {
   id: string;
   company: string;

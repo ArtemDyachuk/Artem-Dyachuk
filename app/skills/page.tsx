@@ -1,95 +1,148 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
-import skillsData from "../data/skills.json";
+import { fetchUserSkills } from "@/lib/portfolio/skills";
+import { fetchUserLanguages } from "@/lib/portfolio/languages";
+import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
+import type { PortfolioLanguage, PortfolioSkillCategory } from "@/types/portfolio";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Skills & Expertise',
-  description: 'Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.',
+  title: "Skills & Expertise",
+  description:
+    "Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.",
   openGraph: {
-    title: 'Skills & Expertise - Artem Dyachuk',
-    description: 'Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.',
-    url: 'https://www.artemdyachuk.com/skills',
+    title: "Skills & Expertise - Artem Dyachuk",
+    description:
+      "Technical skills and expertise of Artem Dyachuk - Lead Software Engineer and Technical Product Manager. Expertise in cloud architecture (AWS, Kubernetes, Terraform), full-stack development (React, Next.js, Node.js), software engineering, IoT solutions, and technical product management.",
+    url: "https://www.artemdyachuk.com/skills",
   },
   twitter: {
-    title: 'Skills & Expertise - Artem Dyachuk',
-    description: 'Explore Artem Dyachuk\'s technical skills and expertise including Full-Stack Development, Product Strategy, and more.',
+    title: "Skills & Expertise - Artem Dyachuk",
+    description:
+      "Explore Artem Dyachuk's technical skills and expertise including Full-Stack Development, Product Strategy, and more.",
   },
   alternates: {
-    canonical: '/skills',
+    canonical: "/skills",
   },
 };
 
-interface Skill {
-  id: number;
-  title: string;
-  type: string;
-  description: string;
-  order: number;
+function siteMessage(reason: "missing_config" | "site_not_found" | "site_disabled"): string {
+  switch (reason) {
+    case "missing_config":
+      return "This page is temporarily unavailable.";
+    case "site_disabled":
+      return "This page is temporarily unavailable.";
+    default:
+      return "This page is temporarily unavailable.";
+  }
 }
 
-// Group skills by type
-const skillsByType = (skillsData as Skill[]).reduce((acc: Record<string, Skill[]>, skill: Skill) => {
-  if (!acc[skill.type]) acc[skill.type] = [];
-  acc[skill.type].push(skill);
-  return acc;
-}, {});
+function LanguagesSection({ languages }: { languages: PortfolioLanguage[] }) {
+  if (languages.length === 0) return null;
 
-const sortedTypes = Object.keys(skillsByType).sort((a, b) => {
-  const priorityOrder = ["Product Management", "Technical Expertise", "Digital Marketing"];
-  const aIndex = priorityOrder.indexOf(a);
-  const bIndex = priorityOrder.indexOf(b);
+  return (
+    <section className={styles.skillSection}>
+      <h2 className={styles.sectionTitle}>Languages</h2>
+      <div className={styles.skillGrid}>
+        {languages.map((language) => (
+          <div key={language.id} className={styles.skillBadge}>
+            <span className={styles.skillTitle}>{language.name}</span>
+            <span className={styles.skillDescription}>{language.fluencyLabel}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-  // If both are in priority list, sort by their priority order
-  if (aIndex !== -1 && bIndex !== -1) {
-    return aIndex - bIndex;
+function SkillsContent({
+  categories,
+  languages,
+}: {
+  categories: PortfolioSkillCategory[];
+  languages: PortfolioLanguage[];
+}) {
+  if (categories.length === 0 && languages.length === 0) {
+    return <p className={styles.empty}>No skills published yet.</p>;
   }
 
-  // If only a is in priority list, a comes first
-  if (aIndex !== -1) return -1;
+  return (
+    <>
+      <LanguagesSection languages={languages} />
+      {categories.map((group) => (
+        <section key={group.category} className={styles.skillSection}>
+          <h2 className={styles.sectionTitle}>{group.category}</h2>
+          <div className={styles.skillGrid}>
+            {group.skills.map((skill) => (
+              <div key={skill.id} className={styles.skillBadge}>
+                <span className={styles.skillTitle}>{skill.name}</span>
+                {skill.note ? <span className={styles.skillDescription}>{skill.note}</span> : null}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  );
+}
 
-  // If only b is in priority list, b comes first
-  if (bIndex !== -1) return 1;
+export default async function SkillsPage() {
+  const site = await resolvePortfolioSite();
 
-  // If neither is in priority list, sort alphabetically
-  return a.localeCompare(b);
-});
+  if (!site.ok) {
+    return (
+      <main className={styles.main}>
+        <section className={styles.skills}>
+          <div className={styles.container}>
+            <h1 className={styles.title}>Skills & Expertise</h1>
+            <p className={styles.pageSummary}>{siteMessage(site.reason)}</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
-export default function Skills() {
+  let categories: PortfolioSkillCategory[] = [];
+  let languages: PortfolioLanguage[] = [];
+  let errorMessage: string | null = null;
+
+  const loadErrors: string[] = [];
+
+  try {
+    categories = await fetchUserSkills(site.userId);
+  } catch (error) {
+    loadErrors.push(error instanceof Error ? error.message : "Unable to load skills.");
+  }
+
+  try {
+    languages = await fetchUserLanguages(site.userId);
+  } catch (error) {
+    loadErrors.push(error instanceof Error ? error.message : "Unable to load languages.");
+  }
+
+  if (loadErrors.length === 2) {
+    errorMessage = loadErrors.join(" ");
+  } else if (loadErrors.length === 1) {
+    errorMessage = loadErrors[0] ?? null;
+  }
+
   return (
     <main className={styles.main}>
       <section className={styles.skills}>
         <div className={styles.container}>
           <h1 className={styles.title}>Skills & Expertise</h1>
           <p className={styles.pageSummary}>
-            This page outlines my core professional competencies as a Lead Software Engineer and Technical Product Manager. It reflects deep expertise in cloud architecture, software engineering, full-stack development (React, Next.js, Node.js), technical product management, IoT solutions, and DevOps practices, accumulated throughout my 6+ year career.
+            Core professional competencies across cloud architecture, software engineering,
+            full-stack development, technical product management, and DevOps — maintained in
+            sync with my career profile.
           </p>
-
-          {sortedTypes.map((type) => {
-            // Sort by order (as number), then by title
-            const sortedSkills = [...skillsByType[type]].sort((a, b) => {
-              if (a.order === b.order) {
-                return a.title.localeCompare(b.title);
-              }
-              return a.order - b.order;
-            });
-            return (
-              <section key={type} className={styles.skillSection}>
-                <h2 className={styles.sectionTitle}>{type}</h2>
-                <div className={styles.skillGrid}>
-                  {sortedSkills.map((skill) => (
-                    <div key={skill.id} className={styles.skillBadge}>
-                      <span className={styles.skillTitle}>{skill.title}</span>
-                      {skill.description && skill.description.trim() !== "" && (
-                        <span className={styles.skillDescription}>{skill.description}</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
+          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : null}
+          {!errorMessage || categories.length > 0 || languages.length > 0 ? (
+            <SkillsContent categories={categories} languages={languages} />
+          ) : null}
         </div>
       </section>
     </main>
   );
-} 
+}
