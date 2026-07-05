@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import styles from "./ExperienceAccordion.module.css";
@@ -16,7 +16,9 @@ function AccordionContent({ companies, achievements }: ExperienceAccordionProps)
   const router = useRouter();
   const targetCompanyId = searchParams.get('company');
 
-  const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(() =>
+    targetCompanyId && companies.find((c) => c.id === targetCompanyId) ? targetCompanyId : null,
+  );
 
   const toggleAccordion = (id: string) => {
     setActiveAccordion(activeAccordion === id ? null : id);
@@ -26,13 +28,6 @@ function AccordionContent({ companies, achievements }: ExperienceAccordionProps)
       router.replace('/experience', { scroll: false });
     }
   };
-
-  // Handle URL parameter for auto-expanding specific company (only on initial load)
-  useEffect(() => {
-    if (targetCompanyId && companies.find(c => c.id === targetCompanyId)) {
-      setActiveAccordion(targetCompanyId);
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Get achievements for a company
   const getCompanyAchievements = (company: Company) => {

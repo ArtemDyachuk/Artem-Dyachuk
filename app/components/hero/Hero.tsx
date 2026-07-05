@@ -20,7 +20,7 @@ const Hero = () => {
           <h1 className={styles.heroTitle}>Artem Dyachuk</h1>
           <h2 className={styles.heroSubtitle}>Lead Software Engineer & Product Manager</h2>
           <p className={styles.heroDescription}>
-            As a Lead Software Engineer & Product Manager based in Dallas, I bring 6+ years of experience building impactful digital solutions and scalable cloud architectures. I specialize in cloud architecture, full-stack development, and technical product management, currently leading engineering initiatives at AT&T's Connected Solutions department. My expertise spans IoT solutions, cloud infrastructure design, and product strategy, combining hands-on coding with strategic business leadership.
+            As a Lead Software Engineer & Product Manager based in Dallas, I bring 6+ years of experience building impactful digital solutions and scalable cloud architectures. I specialize in cloud architecture, full-stack development, and technical product management, currently leading engineering initiatives at AT&amp;T&apos;s Connected Solutions department. My expertise spans IoT solutions, cloud infrastructure design, and product strategy, combining hands-on coding with strategic business leadership.
           </p>
           <div className={styles.ctaContainer}>
             <Link href="/achievements" className={styles.ctaButton}>

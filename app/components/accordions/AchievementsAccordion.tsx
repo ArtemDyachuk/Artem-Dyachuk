@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./AchievementsAccordion.module.css";
@@ -11,40 +11,39 @@ interface AchievementsAccordionProps {
   initialCompanyId?: string | null;
 }
 
+function pickDefaultExpandedCompany(
+  targetCompanyIdFromUrl: string | null,
+  initialCompanyId: string | null | undefined,
+  companies: CompanyWithProcessedAchievements[],
+): string | null {
+  if (targetCompanyIdFromUrl && companies.find((c) => c.id === targetCompanyIdFromUrl)) {
+    return targetCompanyIdFromUrl;
+  }
+  if (initialCompanyId && companies.find((c) => c.id === initialCompanyId)) {
+    return initialCompanyId;
+  }
+  return companies.length > 0 ? companies[0].id : null;
+}
+
 const AchievementsAccordion: React.FC<AchievementsAccordionProps> = ({ companies, initialCompanyId }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const targetCompanyIdFromUrl = searchParams.get('company');
+  const targetCompanyIdFromUrl = searchParams.get("company");
 
-  const [expandedCompany, setExpandedCompany] = useState<string | null>(null);
-  const [hasInitialized, setHasInitialized] = useState(false);
-
-  useEffect(() => {
-    if (!hasInitialized) {
-      if (targetCompanyIdFromUrl && companies.find(c => c.id === targetCompanyIdFromUrl)) {
-        setExpandedCompany(targetCompanyIdFromUrl);
-      } else if (initialCompanyId && companies.find(c => c.id === initialCompanyId)) {
-        setExpandedCompany(initialCompanyId);
-      } else if (companies.length > 0) {
-        setExpandedCompany(companies[0].id);
-      }
-      setHasInitialized(true);
-    } else {
-      // Only update if there's a URL parameter change and we find a matching company
-      if (targetCompanyIdFromUrl && companies.find(c => c.id === targetCompanyIdFromUrl)) {
-        setExpandedCompany(targetCompanyIdFromUrl);
-      }
-    }
-  }, [targetCompanyIdFromUrl, initialCompanyId, companies, hasInitialized]);
+  const [manualExpanded, setManualExpanded] = useState<string | null | undefined>(undefined);
+  const expandedCompany =
+    manualExpanded !== undefined
+      ? manualExpanded
+      : pickDefaultExpandedCompany(targetCompanyIdFromUrl, initialCompanyId, companies);
 
   const toggleCompany = (companyId: string) => {
     const newExpandedCompany = expandedCompany === companyId ? null : companyId;
-    setExpandedCompany(newExpandedCompany);
+    setManualExpanded(newExpandedCompany);
 
     if (newExpandedCompany) {
       router.replace(`/achievements?company=${newExpandedCompany}`, { scroll: false });
     } else {
-      router.replace('/achievements', { scroll: false });
+      router.replace("/achievements", { scroll: false });
     }
   };
 

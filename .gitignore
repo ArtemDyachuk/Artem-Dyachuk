@@ -130,3 +130,4 @@ dist
 .pnp.*
 app/.DS_Store
 .DS_Store
+.vercel

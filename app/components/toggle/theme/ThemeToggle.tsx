@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useSyncExternalStore } from "react";
 import ToggleSlider from "../ToggleSlider";
 import styles from "./ThemeToggle.module.css";
 
@@ -9,6 +11,36 @@ function getSystemTheme() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   }
   return "light";
+}
+
+const themeListeners = new Set<() => void>();
+
+function subscribeToTheme(onStoreChange: () => void) {
+  themeListeners.add(onStoreChange);
+
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const handleMediaChange = () => onStoreChange();
+  media.addEventListener("change", handleMediaChange);
+
+  return () => {
+    themeListeners.delete(onStoreChange);
+    media.removeEventListener("change", handleMediaChange);
+  };
+}
+
+function getThemeSnapshot() {
+  const saved = localStorage.getItem(THEME_KEY);
+  return saved || getSystemTheme();
+}
+
+function getThemeServerSnapshot() {
+  return "light";
+}
+
+function notifyThemeListeners() {
+  for (const listener of themeListeners) {
+    listener();
+  }
 }
 
 function SunIcon() {
@@ -38,26 +70,17 @@ function MoonIcon() {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("light");
-  const [mounted, setMounted] = useState(false);
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getThemeServerSnapshot);
 
   useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem(THEME_KEY);
-    setTheme(saved || getSystemTheme());
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem(THEME_KEY, theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem(THEME_KEY, nextTheme);
+    notifyThemeListeners();
   };
-
-  if (!mounted) return null;
 
   return (
     <div className={styles.themeToggleWrapper}>
@@ -69,4 +92,4 @@ export default function ThemeToggle() {
       />
     </div>
   );
-} 
+}
