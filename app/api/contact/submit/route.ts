@@ -131,7 +131,7 @@ export async function POST(request: Request) {
       "/experience": "Professional Experience",
       "/skills": "Skills & Expertise",
       "/achievements": "Key Achievements",
-      "/my-work": "Portfolio",
+      "/projects": "Projects",
     };
     
     // Extract pathname from referer URL
@@ -147,7 +147,7 @@ export async function POST(request: Request) {
       else if (referer.includes("/experience")) pageName = "Professional Experience";
       else if (referer.includes("/skills")) pageName = "Skills & Expertise";
       else if (referer.includes("/achievements")) pageName = "Key Achievements";
-      else if (referer.includes("/my-work")) pageName = "Portfolio";
+      else if (referer.includes("/projects")) pageName = "Projects";
     }
     
     // Include pageUri and pageName in context for conversion page tracking

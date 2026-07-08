@@ -60,8 +60,112 @@
   color: var(--color-text-secondary);
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Horizontal category bar — mobile/tablet only. */
+.mobileNav {
+  display: none;
+}
+
+.mobileNavTrack {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 1rem;
+}
+
+.mobileNavTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileChip {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.mobileChipActive {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.content {
+  min-width: 0;
+}
+
+.sidebar {
+  position: sticky;
+  /* Clear the fixed 65px header plus a little breathing room. */
+  top: 90px;
+  align-self: start;
+}
+
+.sidebarNav {
+  border-left: 1px solid var(--color-border);
+  padding-left: 1rem;
+}
+
+.sidebarHeading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.sidebarList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sidebarLink {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.sidebarLink:hover {
+  color: var(--color-text);
+  background: var(--color-bg-card);
+}
+
+.sidebarLinkActive {
+  color: var(--color-primary);
+  font-weight: 600;
+  border-left-color: var(--color-primary);
+}
+
 .skillSection {
   margin-bottom: 2.5rem;
+  /* Offset for the fixed header when scrolled to via anchor links. */
+  scroll-margin-top: 90px;
 }
 
 .sectionTitle {
@@ -71,6 +175,13 @@
   margin-bottom: 1.5rem;
   letter-spacing: 0.01em;
   text-align: left;
+  position: sticky;
+  /* Sit just below the fixed 65px header. */
+  top: 65px;
+  z-index: 5;
+  background: var(--color-bg);
+  padding: 0.75rem 0;
+  margin-top: -0.75rem;
 }
 
 .skillGrid {
@@ -80,6 +191,7 @@
 }
 
 .skillBadge {
+  position: relative;
   background: var(--color-bg-card);
   color: var(--color-text);
   border: 1px solid var(--color-border);
@@ -91,8 +203,41 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   min-width: 160px;
   transition: background 0.2s, border 0.2s, transform 0.2s;
+}
+
+.infoButton {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-style: italic;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.infoButton:hover,
+.infoButton:focus-visible {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  outline: none;
 }
 
 .skillBadge:hover {
@@ -103,13 +248,152 @@
 .skillTitle {
   font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 0.2rem;
   color: var(--color-text);
+  padding-right: 1.25rem;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  animation: modalFade 0.15s ease-out;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  animation: modalRise 0.18s ease-out;
+}
+
+.modalClose {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modalClose:hover,
+.modalClose:focus-visible {
+  background: var(--color-border);
+  color: var(--color-text);
+  outline: none;
+}
+
+.modalCategory {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin: 0 0 0.35rem;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.9rem;
+  padding-right: 1.5rem;
+}
+
+.modalNote {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.modalNoteEmpty {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .skillDescription {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .mobileNav {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1900;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobileNavTrack {
+    /* Leave room on the right so the last chips clear the floating
+       contact button (64px + margin). */
+    padding-right: 6rem;
+  }
+
+  /* Keep space so the fixed bottom bar never covers the last skills. */
+  .content {
+    padding-bottom: 5.5rem;
+  }
 }
 
 @media (max-width: 768px) {

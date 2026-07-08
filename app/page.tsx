@@ -2,10 +2,24 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 import Hero from './components/hero/Hero';
 import { FeaturedProjects } from './components/featured-products/FeaturedProjects';
-import portfolioData from './data/portfolio.json';
 import aboutData from './data/about.json';
 import contactsData from './data/contacts.json';
 import { Project } from './components/featured-products/ProjectCard';
+import { fetchPublicProjects } from '@/lib/portfolio/projects';
+import { resolvePortfolioSite } from '@/lib/portfolio/resolveSite';
+
+export const revalidate = 60;
+
+function toPlainText(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -24,17 +38,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  const projects: Project[] = portfolioData
-    .filter(project => project.featured)
-    .map(project => ({
-      id: project.id,
-      title: project.title,
-      // imageUrl: `/images/projects/${project.id}.jpg`, // Assuming images follow this naming convention
-      altText: `${project.title} - ${project.productDescription}`,
-      description: project.productDescription,
-      caseStudyUrl: `/my-work/${project.id}`
-    }));
+export default async function Home() {
+  const site = await resolvePortfolioSite();
+
+  let projects: Project[] = [];
+  if (site.ok) {
+    try {
+      const publicProjects = await fetchPublicProjects(site.userId);
+      projects = publicProjects
+        .filter((project) => project.featured)
+        .map((project) => ({
+          id: project.id,
+          title: project.name,
+          description: toPlainText(project.description),
+          caseStudyUrl: '/projects',
+        }));
+    } catch {
+      projects = [];
+    }
+  }
 
   // Structured data for SEO
   const socialLinks = contactsData.contacts

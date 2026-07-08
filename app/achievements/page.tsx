@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import styles from "./page.module.css"; // Keep for main page layout
-import companiesData from "../data/companies.json";
-import achievementsData from "../data/achievements.json";
-import { Achievement, Company } from "@/types";
-import AchievementsAccordion from "@/app/components/accordions/AchievementsAccordion";
-import { processAchievementsForCompanies } from "@/lib/achievements";
+import styles from "./page.module.css";
+import AchievementsByRole from "@/app/components/achievements/AchievementsByRole";
+import { fetchPublicRoles } from "@/lib/portfolio/roles";
+import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
+import type { PortfolioRole } from "@/types/portfolio";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Key Achievements | Artem Dyachuk - Product Manager & Software Developer',
@@ -39,21 +40,22 @@ export const metadata: Metadata = {
   },
 };
 
-interface AchievementsPageProps {
-  searchParams: Promise<{
-    company?: string;
-  }>;
-}
+export default async function AchievementsPage() {
+  const site = await resolvePortfolioSite();
 
-export default async function AchievementsPage({ searchParams }: AchievementsPageProps) {
-  // Data fetching and processing is done on the server
-  const processedCompanies = processAchievementsForCompanies(
-    companiesData as Company[],
-    achievementsData as Achievement[]
-  );
+  let roles: PortfolioRole[] = [];
+  let errorMessage: string | null = null;
 
-  const resolvedSearchParams = await searchParams;
-  const targetCompanyId = resolvedSearchParams?.company;
+  if (site.ok) {
+    try {
+      roles = await fetchPublicRoles(site.userId);
+    } catch (error) {
+      errorMessage =
+        error instanceof Error ? error.message : "Unable to load achievements right now.";
+    }
+  } else {
+    errorMessage = "This page is temporarily unavailable.";
+  }
 
   return (
     <main className={styles.main}>
@@ -61,14 +63,16 @@ export default async function AchievementsPage({ searchParams }: AchievementsPag
         <div className={styles.container}>
           <h1 className={styles.title}>Key Achievements</h1>
           <p className={styles.pageSummary}>
-            This page showcases a comprehensive list of my key achievements, organized by company. Discover impactful contributions in product strategy, technical development, and performance optimization that demonstrate a consistent record of delivering measurable results.
+            Measurable highlights from my career, grouped by role. Explore impactful contributions
+            across product strategy, technical development, and performance optimization — then open
+            any role for the full story.
           </p>
 
-          <AchievementsAccordion 
-            companies={processedCompanies} 
-            initialCompanyId={targetCompanyId}
-          />
-          
+          {errorMessage ? (
+            <p className={styles.error}>{errorMessage}</p>
+          ) : (
+            <AchievementsByRole roles={roles} />
+          )}
         </div>
       </section>
     </main>

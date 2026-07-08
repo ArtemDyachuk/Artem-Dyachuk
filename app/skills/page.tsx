@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
+import SkillsContent from "./SkillsContent";
 import { fetchUserSkills } from "@/lib/portfolio/skills";
 import { fetchUserLanguages } from "@/lib/portfolio/languages";
 import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
@@ -36,55 +37,6 @@ function siteMessage(reason: "missing_config" | "site_not_found" | "site_disable
     default:
       return "This page is temporarily unavailable.";
   }
-}
-
-function LanguagesSection({ languages }: { languages: PortfolioLanguage[] }) {
-  if (languages.length === 0) return null;
-
-  return (
-    <section className={styles.skillSection}>
-      <h2 className={styles.sectionTitle}>Languages</h2>
-      <div className={styles.skillGrid}>
-        {languages.map((language) => (
-          <div key={language.id} className={styles.skillBadge}>
-            <span className={styles.skillTitle}>{language.name}</span>
-            <span className={styles.skillDescription}>{language.fluencyLabel}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SkillsContent({
-  categories,
-  languages,
-}: {
-  categories: PortfolioSkillCategory[];
-  languages: PortfolioLanguage[];
-}) {
-  if (categories.length === 0 && languages.length === 0) {
-    return <p className={styles.empty}>No skills published yet.</p>;
-  }
-
-  return (
-    <>
-      <LanguagesSection languages={languages} />
-      {categories.map((group) => (
-        <section key={group.category} className={styles.skillSection}>
-          <h2 className={styles.sectionTitle}>{group.category}</h2>
-          <div className={styles.skillGrid}>
-            {group.skills.map((skill) => (
-              <div key={skill.id} className={styles.skillBadge}>
-                <span className={styles.skillTitle}>{skill.name}</span>
-                {skill.note ? <span className={styles.skillDescription}>{skill.note}</span> : null}
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </>
-  );
 }
 
 export default async function SkillsPage() {

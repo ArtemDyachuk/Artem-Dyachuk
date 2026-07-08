@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/navigation/header/Header";
 import FabContact from "./components/FabContact";
 import Footer from "./components/navigation/footer/Footer";
+import { fetchPortfolioContact } from "@/lib/portfolio/contact";
 import { Analytics } from "@vercel/analytics/next"
 import { GoogleTagManager } from '@next/third-parties/google'
 
@@ -71,19 +72,22 @@ export const metadata: Metadata = {
   // },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const contact = await fetchPortfolioContact();
+  const email = contact.emails[0]?.address;
+
   return (
     <html lang="en">
       <GoogleTagManager gtmId="GTM-KHWLTHMR" />
       <body className={`${inter.variable} ${nunito.variable}`}>
-        <Header />
+        <Header links={contact.links} email={email} />
         <FabContact />
         {children}
-        <Footer />
+        <Footer links={contact.links} email={email} />
         <Analytics />
       </body>
     </html>

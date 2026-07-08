@@ -1,7 +1,6 @@
-import React from 'react';
 import type { Metadata } from "next";
-import contactsData from "../data/contacts.json";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { fetchPortfolioContact } from "@/lib/portfolio/contact";
+import { contactLinkIcon, contactLinkLabel } from "@/lib/contactLinks";
 import styles from "./page.module.css";
 import CustomContactForm from "../components/contact-form/CustomContactForm";
 
@@ -22,13 +21,8 @@ export const metadata: Metadata = {
   },
 };
 
-const iconMap: Record<string, React.ReactNode> = {
-  GitHub: <FaGithub size={22} color="#333" />,
-  LinkedIn: <FaLinkedin size={22} color="#2563eb" />,
-};
-
 export default async function Contact() {
-  const links = contactsData.contacts.filter((c) => c.type === "link");
+  const { links } = await fetchPortfolioContact();
 
   return (
     <main className={styles.main}>
@@ -54,10 +48,10 @@ export default async function Contact() {
               <h3 className={styles.linksTitle}>Links</h3>
               <ul className={styles.linksList}>
                 {links.map((link) => (
-                  <li key={link.value} className={styles.linkItem}>
-                    <a href={link.value} target="_blank" rel="noopener noreferrer" className={styles.linkUrl}>
-                      {link.linkType && iconMap[link.linkType]}
-                      <span>{link.linkType}</span>
+                  <li key={link.id} className={styles.linkItem}>
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.linkUrl}>
+                      {contactLinkIcon(link.type)}
+                      <span>{contactLinkLabel(link.type, link.label)}</span>
                     </a>
                   </li>
                 ))}

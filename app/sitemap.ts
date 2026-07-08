@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import portfolioData from './data/portfolio.json'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.artemdyachuk.com'
@@ -37,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/my-work`,
+      url: `${baseUrl}/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const, // Portfolio updates when projects added
       priority: 0.9,
@@ -61,14 +60,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
   ]
-  
-  // Dynamic project pages - project case studies rarely change once published
-  const projectPages = portfolioData.map((project) => ({
-    url: `${baseUrl}/my-work/${project.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'yearly' as const, // Case studies are static once published
-    priority: 0.7,
-  }))
-  
-  return [...staticPages, ...projectPages]
+
+  return staticPages
 } 

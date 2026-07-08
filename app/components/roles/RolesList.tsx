@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PortfolioRole, PortfolioSkill } from "@/types/portfolio";
 import CompanyLogo from "./CompanyLogo";
 import RichTextContent from "./RichTextContent";
@@ -60,15 +60,30 @@ function roleHasDetails(role: PortfolioRole): boolean {
 
 type RoleCardProps = {
   role: PortfolioRole;
+  initiallyExpanded?: boolean;
 };
 
-function RoleCard({ role }: RoleCardProps) {
-  const [expanded, setExpanded] = useState(false);
+function RoleCard({ role, initiallyExpanded = false }: RoleCardProps) {
   const expandable = roleHasDetails(role);
+  const [expanded, setExpanded] = useState(initiallyExpanded && expandable);
   const skillGroups = useMemo(() => groupSkillsByCategory(role.skills), [role.skills]);
+  const cardRef = useRef<HTMLElement | null>(null);
+
+  // When deep-linked (e.g. from the achievements page), scroll the targeted
+  // role into view below the fixed header once it has expanded.
+  useEffect(() => {
+    if (!initiallyExpanded) return;
+    const el = cardRef.current;
+    if (!el) return;
+    const timer = window.setTimeout(() => {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, [initiallyExpanded]);
 
   return (
-    <article className={styles.card}>
+    <article className={styles.card} id={`role-${role.id}`} ref={cardRef}>
       <button
         type="button"
         className={`${styles.cardHeader} ${expanded ? styles.cardHeaderActive : ""}`}
@@ -168,9 +183,10 @@ function RoleCard({ role }: RoleCardProps) {
 
 type RolesListProps = {
   roles: PortfolioRole[];
+  initialRoleId?: string | null;
 };
 
-export default function RolesList({ roles }: RolesListProps) {
+export default function RolesList({ roles, initialRoleId = null }: RolesListProps) {
   if (roles.length === 0) {
     return (
       <div className={styles.empty}>
@@ -183,7 +199,7 @@ export default function RolesList({ roles }: RolesListProps) {
   return (
     <div className={styles.list}>
       {roles.map((role) => (
-        <RoleCard key={role.id} role={role} />
+        <RoleCard key={role.id} role={role} initiallyExpanded={role.id === initialRoleId} />
       ))}
     </div>
   );

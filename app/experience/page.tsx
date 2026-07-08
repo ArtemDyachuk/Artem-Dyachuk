@@ -57,8 +57,13 @@ function siteMessage(reason: "missing_config" | "site_not_found" | "site_disable
   }
 }
 
-export default async function ExperiencePage() {
+type ExperiencePageProps = {
+  searchParams: Promise<{ role?: string }>;
+};
+
+export default async function ExperiencePage({ searchParams }: ExperiencePageProps) {
   const site = await resolvePortfolioSite();
+  const { role: initialRoleId } = await searchParams;
 
   if (!site.ok) {
     return (
@@ -91,7 +96,11 @@ export default async function ExperiencePage() {
             Explore my career journey across software engineering and product leadership. Expand
             each role to view responsibilities and highlights.
           </p>
-          {errorMessage ? <p className={styles.error}>{errorMessage}</p> : <RolesList roles={roles} />}
+          {errorMessage ? (
+            <p className={styles.error}>{errorMessage}</p>
+          ) : (
+            <RolesList roles={roles} initialRoleId={initialRoleId ?? null} />
+          )}
         </div>
       </section>
     </main>

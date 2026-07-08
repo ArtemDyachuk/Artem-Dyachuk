@@ -1,29 +1,38 @@
 import styles from "./Footer.module.css";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import contactsData from "../../../data/contacts.json";
+import { contactLinkIcon, contactLinkLabel } from "@/lib/contactLinks";
+import type { PortfolioContactLink } from "@/types/portfolio";
 import ClientThemeToggle from "../../toggle/theme/ClientThemeToggle";
 
-const github = contactsData.contacts.find(c => c.linkType === "GitHub");
-const linkedin = contactsData.contacts.find(c => c.linkType === "LinkedIn");
-const email = contactsData.contacts.find(c => c.type === "email");
+type FooterProps = {
+  links: PortfolioContactLink[];
+  email?: string;
+};
 
-export default function Footer() {
+export default function Footer({ links, email }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className={styles.socials}>
-        {linkedin && (
-          <a href={linkedin.value} aria-label="LinkedIn" className={styles.icon} target="_blank" rel="noopener noreferrer">
-            <FaLinkedin size={18} />
+        {links.map((link) => (
+          <a
+            key={link.id}
+            href={link.url}
+            aria-label={contactLinkLabel(link.type, link.label)}
+            title={contactLinkLabel(link.type, link.label)}
+            className={styles.icon}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {contactLinkIcon(link.type, 18)}
           </a>
-        )}
-        {github && (
-          <a href={github.value} aria-label="GitHub" className={styles.icon} target="_blank" rel="noopener noreferrer">
-            <FaGithub size={18} />
-          </a>
-        )}
+        ))}
         {email && (
-          <a href="/contact" aria-label="Email" className={styles.icon}>
+          <a
+            href={`mailto:${email}`}
+            aria-label="Email"
+            title={email}
+            className={styles.icon}
+          >
             <MdEmail size={18} />
           </a>
         )}
@@ -36,4 +45,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}

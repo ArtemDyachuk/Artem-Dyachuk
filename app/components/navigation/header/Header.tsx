@@ -3,14 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import contactsData from "../../../data/contacts.json";
+import { contactLinkIcon, contactLinkLabel } from "@/lib/contactLinks";
+import type { PortfolioContactLink } from "@/types/portfolio";
 import styles from "./Header.module.css";
 
-const github = contactsData.contacts.find(c => c.linkType === "GitHub");
-const linkedin = contactsData.contacts.find(c => c.linkType === "LinkedIn");
-const email = contactsData.contacts.find(c => c.type === "email");
+type HeaderProps = {
+  links: PortfolioContactLink[];
+  email?: string;
+};
 
 function HamburgerIcon({ open, ...props }: { open: boolean;[key: string]: unknown }) {
   return (
@@ -22,7 +23,7 @@ function HamburgerIcon({ open, ...props }: { open: boolean;[key: string]: unknow
   );
 }
 
-export default function Header() {
+export default function Header({ links, email }: HeaderProps) {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -50,7 +51,7 @@ export default function Header() {
   };
 
   const navigationLinks = [
-    { href: "/my-work", label: "My Work" },
+    { href: "/projects", label: "Projects" },
     { href: "/achievements", label: "Achievements" },
     { href: "/experience", label: "Experience" },
     { href: "/skills", label: "Skills" },
@@ -111,34 +112,23 @@ export default function Header() {
 
           {/* Social Icons */}
           <div className={styles.socialIcons}>
-            {linkedin && (
+            {links.map((link) => (
               <Link
-                href={linkedin.value}
+                key={link.id}
+                href={link.url}
                 className={styles.socialIcon}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
+                aria-label={contactLinkLabel(link.type, link.label)}
               >
-                <FaLinkedin size={24} />
+                {contactLinkIcon(link.type, 24)}
               </Link>
-            )}
-            {github && (
-              <Link
-                href={github.value}
-                className={styles.socialIcon}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <FaGithub size={24} />
-              </Link>
-            )}
+            ))}
             {email && (
               <Link
-                href="/contact"
+                href={`mailto:${email}`}
                 className={styles.socialIcon}
                 aria-label="Email"
-                onClick={handleInternalNavigation}
               >
                 <MdEmail size={24} />
               </Link>

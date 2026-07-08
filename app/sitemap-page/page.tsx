@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import styles from "./page.module.css";
-import portfolioData from "../data/portfolio.json";
 
 export const metadata: Metadata = {
   title: 'Sitemap',
@@ -20,13 +19,6 @@ export const metadata: Metadata = {
 };
 
 export default function SitemapPage() {
-  const projects = portfolioData.map(project => ({
-    id: project.id,
-    title: project.title,
-    url: `/my-work/${project.id}`,
-    description: project.productDescription
-  }));
-
   const mainPages = [
     {
       title: "Home",
@@ -54,9 +46,9 @@ export default function SitemapPage() {
       description: "Professional accomplishments, certifications, and recognitions."
     },
     {
-      title: "My Work",
-      url: "/my-work",
-      description: "Portfolio of projects, case studies, and professional work samples."
+      title: "Projects",
+      url: "/projects",
+      description: "Portfolio of projects and professional work samples."
     },
     {
       title: "Contact",
@@ -100,31 +92,6 @@ export default function SitemapPage() {
                   </h3>
                   <p className={styles.pageDescription}>{page.description}</p>
                   <span className={styles.pageUrl}>{page.url}</span>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Project Case Studies</h2>
-            <p className={styles.sectionDescription}>
-              Detailed case studies of professional projects and work samples.
-            </p>
-            <div className={styles.pageGrid}>
-              {projects.map((project) => (
-                <div key={project.url} className={styles.pageCard}>
-                  <h3 className={styles.pageTitle}>
-                    <a href={project.url} className={styles.pageLink}>
-                      {project.title}
-                    </a>
-                  </h3>
-                  <p className={styles.pageDescription}>
-                    {project.description.length > 120 
-                      ? `${project.description.substring(0, 120)}...` 
-                      : project.description
-                    }
-                  </p>
-                  <span className={styles.pageUrl}>{project.url}</span>
                 </div>
               ))}
             </div>
