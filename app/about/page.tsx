@@ -4,7 +4,6 @@ import styles from "./page.module.css";
 import aboutData from "../data/about.json";
 import companiesData from "../data/companies.json";
 import TwoColumnBlock from "../components/2-column-block/TwoColumnBlock";
-import Philosophy from "../components/philosophy/Philosophy";
 import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
 import { fetchPublicRoles } from "@/lib/portfolio/roles";
 import { fetchPublicProfile } from "@/lib/portfolio/profile";
@@ -42,6 +41,7 @@ type WorkHistoryItem = {
   yearRange: string;
   title: string;
   company: string;
+  href?: string;
 };
 
 type EducationEntry = {
@@ -90,6 +90,7 @@ function workHistoryFromRoles(roles: PortfolioRole[]): WorkHistoryItem[] {
     yearRange: formatDateRange(role.startDate, role.endDate),
     title: role.role,
     company: role.company,
+    href: `/experience?role=${encodeURIComponent(role.id)}`,
   }));
 }
 
@@ -206,10 +207,6 @@ export default async function About() {
         showResumeButton={false}
         workHistory={workHistory}
       />
-      <Philosophy
-        intro={aboutData.philosophy.intro}
-        principles={aboutData.philosophy.principles}
-      />
       <section className={styles.about}>
         <div className={styles.container}>
           <div className={styles.content}>
@@ -287,11 +284,6 @@ export default async function About() {
 
               <div className={styles.strengths}>
                 <h3>Skills</h3>
-                <p className={styles.summary}>
-                  My core technical and professional competencies — from cloud architecture and
-                  full-stack development to technical product management — are kept in sync with my
-                  career profile.
-                </p>
                 <Link href="/skills" className={styles.skillsLink}>
                   Explore skills &amp; expertise →
                 </Link>

@@ -18,23 +18,6 @@
     }
   },
   "summary": "Lead Software Engineer and Technical Product Manager based in Dallas, Texas, with 6+ years of experience in cloud architecture, full-stack development, and software engineering. Currently at AT&T's Connected Solutions department, I design and implement scalable cloud architectures for IoT solutions and emerging products. My expertise combines hands-on software engineering (React, Next.js, Node.js, AWS, Kubernetes, Terraform) with technical product management, delivering innovative solutions that optimize cloud resources and drive business value.",
-  "philosophy": {
-    "intro": "My approach as a Lead Software Engineer & Product Manager is rooted in:",
-    "principles": [
-      {
-        "title": "Strategic Technical Execution",
-        "description": "Leveraging deep full-stack development expertise to architect and directly contribute to impactful digital solutions that are tightly aligned with strategic business objectives and deliver measurable results, including significant revenue support and cost efficiencies."
-      },
-      {
-        "title": "Data-Driven, User-Obsessed Innovation",
-        "description": "Championing the use of analytics, A/B testing, and user feedback to drive continuous product improvement, optimize user experiences, and ensure solutions solve meaningful problems effectively, leading to enhanced engagement and tangible business outcomes."
-      },
-      {
-        "title": "Collaborative Leadership & Agile Delivery",
-        "description": "Fostering strong partnerships across marketing, IT, sales, and engineering to streamline development, spark innovation, and tackle complex challenges with efficient, scalable solutions delivered through Agile methodologies."
-      }
-    ]
-  },
   "keyStrengths": [
     "Cloud Architecture & Design",
     "Technical Product Management",

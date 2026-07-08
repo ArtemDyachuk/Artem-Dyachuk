@@ -86,6 +86,18 @@
   font-size: 1.08rem;
 }
 
+.workHistoryLink {
+  display: contents;
+  text-decoration: none;
+  color: inherit;
+}
+
+.workHistoryLink:hover .jobTitle,
+.workHistoryLink:focus-visible .jobTitle {
+  color: var(--color-primary, #2563eb);
+  text-decoration: underline;
+}
+
 .jobInfo {
   display: flex;
   flex-direction: column;

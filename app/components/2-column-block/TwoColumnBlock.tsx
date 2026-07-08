@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './TwoColumnBlock.module.css';
 import DownloadResumeButton from '../resume/download/DownloadResumeButton';
 
@@ -6,6 +7,7 @@ interface WorkHistoryItem {
   yearRange: string;
   title: string;
   company: string;
+  href?: string;
 }
 
 interface TwoColumnBlockProps {
@@ -55,15 +57,29 @@ export default function TwoColumnBlock({
         <div className={styles.workHistorySection}>
           <h2 className={styles.workHistoryTitle}>Where I&rsquo;ve Worked</h2>
           <ul className={styles.workHistoryList}>
-            {workHistory?.map((item, idx) => (
-              <li key={idx} className={styles.workHistoryItem}>
-                <div className={styles.jobInfo}>
-                  <span className={styles.jobTitle}>{item.title}</span>
-                  <span className={styles.company}>{item.company}</span>
-                </div>
-                <span className={styles.yearRange}>{item.yearRange}</span>
-              </li>
-            ))}
+            {workHistory?.map((item, idx) => {
+              const content = (
+                <>
+                  <div className={styles.jobInfo}>
+                    <span className={styles.jobTitle}>{item.title}</span>
+                    <span className={styles.company}>{item.company}</span>
+                  </div>
+                  <span className={styles.yearRange}>{item.yearRange}</span>
+                </>
+              );
+
+              return (
+                <li key={idx} className={styles.workHistoryItem}>
+                  {item.href ? (
+                    <Link href={item.href} className={styles.workHistoryLink}>
+                      {content}
+                    </Link>
+                  ) : (
+                    content
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
