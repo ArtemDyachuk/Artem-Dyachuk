@@ -51,9 +51,9 @@ export default function Header({ links, email }: HeaderProps) {
   };
 
   const navigationLinks = [
-    { href: "/projects", label: "Projects" },
-    { href: "/achievements", label: "Achievements" },
     { href: "/experience", label: "Experience" },
+    { href: "/achievements", label: "Achievements" },
+    { href: "/projects", label: "Projects" },
     { href: "/skills", label: "Skills" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" }

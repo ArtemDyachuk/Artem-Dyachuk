@@ -28,6 +28,10 @@ export function isPublicCompanyLogoKey(key: string): boolean {
   return /^users\/[^/]+\/company-logos\//.test(key);
 }
 
+export function isPublicAvatarKey(key: string): boolean {
+  return /^users\/[^/]+\/avatars\//.test(key);
+}
+
 export async function createPresignedDownloadUrl(
   key: string,
 ): Promise<{ downloadUrl: string; expiresIn: number }> {

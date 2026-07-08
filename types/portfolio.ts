@@ -71,6 +71,13 @@ export type PortfolioContactPhone = {
 };
 
 export type PortfolioProfile = {
+  /** Owner's display name, mirrored from the resume-tailor account. */
+  name: string;
+  firstName: string;
+  lastName: string;
+  /** Presigned URL for a self-uploaded avatar, or null to use the site default. */
+  avatarUrl: string | null;
+  headline: string;
   summary: string;
   careerFocus: string;
   emails: PortfolioContactEmail[];
@@ -86,6 +93,16 @@ export type PortfolioEducation = {
   startDate: string | null;
   endDate: string | null;
   notes: string;
+};
+
+export type PortfolioCertification = {
+  id: string;
+  name: string;
+  issuer: string;
+  category: string;
+  issueDate: string | null;
+  expiryDate: string | null;
+  credentialUrl: string;
 };
 
 export type PortfolioProjectSkill = {

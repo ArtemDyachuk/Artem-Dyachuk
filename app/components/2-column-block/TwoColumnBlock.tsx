@@ -39,6 +39,7 @@ export default function TwoColumnBlock({
             width={340}
             height={340}
             className={styles.profileImg}
+            unoptimized={/^https?:\/\//.test(imageUrl)}
           />
         </div>
       )}

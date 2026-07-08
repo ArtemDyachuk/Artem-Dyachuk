@@ -6,7 +6,9 @@ import aboutData from './data/about.json';
 import contactsData from './data/contacts.json';
 import { Project } from './components/featured-products/ProjectCard';
 import { fetchPublicProjects } from '@/lib/portfolio/projects';
+import { fetchPublicProfile } from '@/lib/portfolio/profile';
 import { resolvePortfolioSite } from '@/lib/portfolio/resolveSite';
+import type { PortfolioProfile } from '@/types/portfolio';
 
 export const revalidate = 60;
 
@@ -42,10 +44,15 @@ export default async function Home() {
   const site = await resolvePortfolioSite();
 
   let projects: Project[] = [];
+  let profile: PortfolioProfile | null = null;
   if (site.ok) {
-    try {
-      const publicProjects = await fetchPublicProjects(site.userId);
-      projects = publicProjects
+    const [projectsResult, profileResult] = await Promise.allSettled([
+      fetchPublicProjects(site.userId),
+      fetchPublicProfile(site.userId),
+    ]);
+
+    if (projectsResult.status === 'fulfilled') {
+      projects = projectsResult.value
         .filter((project) => project.featured)
         .map((project) => ({
           id: project.id,
@@ -53,8 +60,10 @@ export default async function Home() {
           description: toPlainText(project.description),
           caseStudyUrl: '/projects',
         }));
-    } catch {
-      projects = [];
+    }
+
+    if (profileResult.status === 'fulfilled') {
+      profile = profileResult.value;
     }
   }
 
@@ -96,7 +105,12 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <main className={styles.main}>
-        <Hero />
+        <Hero
+          name={profile?.name}
+          headline={profile?.headline}
+          summary={profile?.summary}
+          avatarUrl={profile?.avatarUrl}
+        />
         {projects.length > 0 && <FeaturedProjects projects={projects} />}
       </main>
     </>

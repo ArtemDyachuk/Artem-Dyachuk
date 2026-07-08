@@ -2,6 +2,8 @@ import "server-only";
 
 import { doc, getDoc } from "firebase/firestore";
 import { getServerFirestore } from "@/lib/firebase-server";
+import { createPresignedDownloadUrl, isPublicAvatarKey } from "@/lib/r2";
+import { isR2Configured } from "@/lib/r2Config";
 import type {
   PortfolioContactEmail,
   PortfolioContactLink,
@@ -11,6 +13,18 @@ import type {
 
 function asString(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
+}
+
+async function resolveAvatarUrl(avatarR2Key: string): Promise<string | null> {
+  if (!avatarR2Key || !isR2Configured() || !isPublicAvatarKey(avatarR2Key)) {
+    return null;
+  }
+  try {
+    const { downloadUrl } = await createPresignedDownloadUrl(avatarR2Key);
+    return downloadUrl;
+  } catch {
+    return null;
+  }
 }
 
 function parseEmails(value: unknown): PortfolioContactEmail[] {
@@ -58,9 +72,10 @@ function parseLinks(value: unknown): PortfolioContactLink[] {
 
 /**
  * Reads the portfolio-safe subset of the profile that resume-tailor mirrors
- * into `users/{uid}/publicProfile/main`. This includes the About-page narrative
- * (summary + careerFocus) and any contact emails/phones/links the owner marked
- * as public. Returns null only when nothing has been published yet.
+ * into `users/{uid}/publicProfile/main`. This includes the owner's name and
+ * headline, the About-page narrative (summary + careerFocus), and any contact
+ * emails/phones/links the owner marked as public. Returns null only when
+ * nothing has been published yet.
  */
 export async function fetchPublicProfile(userId: string): Promise<PortfolioProfile | null> {
   const db = getServerFirestore();
@@ -68,7 +83,13 @@ export async function fetchPublicProfile(userId: string): Promise<PortfolioProfi
   if (!snap.exists()) return null;
 
   const data = snap.data() as Record<string, unknown>;
+  const avatarUrl = await resolveAvatarUrl(asString(data.avatarR2Key));
   const profile: PortfolioProfile = {
+    name: asString(data.name),
+    firstName: asString(data.firstName),
+    lastName: asString(data.lastName),
+    avatarUrl,
+    headline: asString(data.headline),
     summary: asString(data.summary),
     careerFocus: asString(data.careerFocus),
     emails: parseEmails(data.emails),
@@ -77,6 +98,9 @@ export async function fetchPublicProfile(userId: string): Promise<PortfolioProfi
   };
 
   const isEmpty =
+    !profile.name &&
+    !profile.avatarUrl &&
+    !profile.headline &&
     !profile.summary &&
     !profile.careerFocus &&
     profile.emails.length === 0 &&

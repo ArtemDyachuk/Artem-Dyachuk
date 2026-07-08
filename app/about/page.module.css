@@ -79,6 +79,7 @@
 
 .careerFocus,
 .education,
+.certifications,
 .languages,
 .strengths {
   margin-bottom: 2rem;
@@ -86,6 +87,7 @@
 
 .careerFocus h3,
 .education h3,
+.certifications h3,
 .languages h3,
 .strengths h3 {
   font-size: 1.3rem;

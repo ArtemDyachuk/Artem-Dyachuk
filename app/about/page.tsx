@@ -9,8 +9,10 @@ import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
 import { fetchPublicRoles } from "@/lib/portfolio/roles";
 import { fetchPublicProfile } from "@/lib/portfolio/profile";
 import { fetchPublicEducation } from "@/lib/portfolio/education";
+import { fetchPublicCertifications } from "@/lib/portfolio/certifications";
 import { fetchUserLanguages } from "@/lib/portfolio/languages";
 import type {
+  PortfolioCertification,
   PortfolioEducation,
   PortfolioLanguage,
   PortfolioProfile,
@@ -53,6 +55,12 @@ type LanguageEntry = {
   id: string;
   name: string;
   fluencyLabel: string | null;
+};
+
+type CertificationEntry = {
+  id: string;
+  label: string;
+  url: string | null;
 };
 
 function formatMonthYear(value: string): string {
@@ -131,25 +139,45 @@ function languagesFromJson(): LanguageEntry[] {
   }));
 }
 
+function certificationsFromFirebase(items: PortfolioCertification[]): CertificationEntry[] {
+  return items.map((item) => ({
+    id: item.id,
+    label: item.issuer ? `${item.name} (${item.issuer})` : item.name,
+    url: item.credentialUrl || null,
+  }));
+}
+
+function certificationsFromJson(): CertificationEntry[] {
+  return aboutData.certifications.map((name: string, index: number) => ({
+    id: `json-certification-${index}`,
+    label: name,
+    url: null,
+  }));
+}
+
 export default async function About() {
   const site = await resolvePortfolioSite();
 
   let roles: PortfolioRole[] = [];
   let profile: PortfolioProfile | null = null;
   let education: PortfolioEducation[] = [];
+  let certifications: PortfolioCertification[] = [];
   let languages: PortfolioLanguage[] = [];
 
   if (site.ok) {
-    const [rolesResult, profileResult, educationResult, languagesResult] = await Promise.allSettled([
+    const [rolesResult, profileResult, educationResult, certificationsResult, languagesResult] =
+      await Promise.allSettled([
       fetchPublicRoles(site.userId),
       fetchPublicProfile(site.userId),
       fetchPublicEducation(site.userId),
+      fetchPublicCertifications(site.userId),
       fetchUserLanguages(site.userId),
     ]);
 
     if (rolesResult.status === "fulfilled") roles = rolesResult.value;
     if (profileResult.status === "fulfilled") profile = profileResult.value;
     if (educationResult.status === "fulfilled") education = educationResult.value;
+    if (certificationsResult.status === "fulfilled") certifications = certificationsResult.value;
     if (languagesResult.status === "fulfilled") languages = languagesResult.value;
   }
 
@@ -157,17 +185,23 @@ export default async function About() {
   // page never renders empty if Firebase is unavailable.
   const workHistory = roles.length > 0 ? workHistoryFromRoles(roles) : workHistoryFromJson();
   const summary = profile?.summary || aboutData.summary;
+  const fullName =
+    profile?.name?.trim() ||
+    `${aboutData.personalInfo.firstName} ${aboutData.personalInfo.lastName}`;
+  const profileImage = profile?.avatarUrl || aboutData.personalInfo.profileImage;
   const careerFocus = profile?.careerFocus ?? "";
   const educationEntries = education.length > 0 ? educationFromFirebase(education) : educationFromJson();
+  const certificationEntries =
+    certifications.length > 0 ? certificationsFromFirebase(certifications) : certificationsFromJson();
   const languageEntries = languages.length > 0 ? languagesFromFirebase(languages) : languagesFromJson();
 
   return (
     <main className={styles.main}>
       <TwoColumnBlock
-        imageUrl={aboutData.personalInfo.profileImage}
-        imageAlt={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
-        name={aboutData.personalInfo.firstName + " " + aboutData.personalInfo.lastName}
-        intro={aboutData.personalInfo.currentRole}
+        imageUrl={profileImage}
+        imageAlt={fullName}
+        name={fullName}
+        intro={profile?.headline || aboutData.personalInfo.currentRole}
         location={aboutData.personalInfo.location}
         showResumeButton={false}
         workHistory={workHistory}
@@ -207,6 +241,31 @@ export default async function About() {
                       </li>
                     ))}
                   </ul>
+                </div>
+              ) : null}
+
+              {certificationEntries.length > 0 ? (
+                <div className={styles.certifications}>
+                  <h3>Certifications</h3>
+                  <div className={styles.skillList}>
+                    {certificationEntries.map((item) =>
+                      item.url ? (
+                        <a
+                          key={item.id}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={styles.certification}
+                        >
+                          {item.label}
+                        </a>
+                      ) : (
+                        <span key={item.id} className={styles.certification}>
+                          {item.label}
+                        </span>
+                      ),
+                    )}
+                  </div>
                 </div>
               ) : null}
 
