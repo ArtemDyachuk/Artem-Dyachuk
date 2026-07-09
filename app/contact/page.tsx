@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { fetchPortfolioContact } from "@/lib/portfolio/contact";
+import { fetchPrimaryResume, primaryResumeDownloadFilename } from "@/lib/portfolio/resume";
+import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
 import { contactLinkIcon, contactLinkLabel } from "@/lib/contactLinks";
 import styles from "./page.module.css";
 import CustomContactForm from "../components/contact-form/CustomContactForm";
+import DownloadResumeButton from "../components/resume/download/DownloadResumeButton";
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -24,6 +27,15 @@ export const metadata: Metadata = {
 export default async function Contact() {
   const { links } = await fetchPortfolioContact();
 
+  const site = await resolvePortfolioSite();
+  let hasResume = false;
+  let resumeDownloadFilename: string | undefined;
+  if (site.ok) {
+    const resume = await fetchPrimaryResume(site.userId).catch(() => null);
+    hasResume = resume !== null;
+    resumeDownloadFilename = primaryResumeDownloadFilename(resume ?? null);
+  }
+
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Contact</h1>
@@ -43,6 +55,15 @@ export default async function Contact() {
         </div>
         
         <div className={styles.rightColumn}>
+          {hasResume && (
+            <div className={styles.resumeSection}>
+              <DownloadResumeButton
+                variant="primary"
+                size="medium"
+                downloadFilename={resumeDownloadFilename}
+              />
+            </div>
+          )}
           {links.length > 0 && (
             <div className={styles.linksSection}>
               <h3 className={styles.linksTitle}>Links</h3>

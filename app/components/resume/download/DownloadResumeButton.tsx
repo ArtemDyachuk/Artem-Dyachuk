@@ -7,6 +7,9 @@ interface DownloadResumeButtonProps {
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   className?: string;
+  href?: string;
+  /** Suggested save-as name (required — bare `download` uses the URL path segment). */
+  downloadFilename?: string;
 }
 
 const DownloadResumeButton: React.FC<DownloadResumeButtonProps> = ({
@@ -14,6 +17,8 @@ const DownloadResumeButton: React.FC<DownloadResumeButtonProps> = ({
   size = 'medium',
   fullWidth = false,
   className = '',
+  href = '/api/resume/download',
+  downloadFilename,
 }) => {
   const buttonClasses = [
     styles.downloadButton,
@@ -24,11 +29,11 @@ const DownloadResumeButton: React.FC<DownloadResumeButtonProps> = ({
   ].filter(Boolean).join(' ');
 
   return (
-    <a 
-      href="/resume/Artem Dyachuk - Product Manager Resume.pdf" 
-      download="Artem_Dyachuk_Product_Manager_Resume.pdf"
+    <a
+      href={href}
+      {...(downloadFilename ? { download: downloadFilename } : {})}
       className={buttonClasses}
-      aria-label="Download Artem Dyachuk's resume as PDF"
+      aria-label="Download resume"
     >
       <MdDownload size={size === 'small' ? 16 : size === 'large' ? 24 : 20} />
       Download Resume

@@ -14,8 +14,10 @@
 .leftCol {
   flex: 1 1 340px;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .profileImg {
@@ -56,7 +58,8 @@
 }
 
 .resumeSection {
-  margin-top: 0.5rem;
+  width: 100%;
+  max-width: 340px;
 }
 
 .workHistorySection {

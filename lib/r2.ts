@@ -32,6 +32,10 @@ export function isPublicAvatarKey(key: string): boolean {
   return /^users\/[^/]+\/avatars\//.test(key);
 }
 
+export function isPublicResumeKey(key: string): boolean {
+  return /^users\/[^/]+\/manual-resumes\//.test(key);
+}
+
 export async function createPresignedDownloadUrl(
   key: string,
 ): Promise<{ downloadUrl: string; expiresIn: number }> {
@@ -46,4 +50,26 @@ export async function createPresignedDownloadUrl(
   });
 
   return { downloadUrl, expiresIn: PRESIGN_TTL_SECONDS };
+}
+
+export async function getR2Object(
+  key: string,
+): Promise<{ body: Uint8Array; contentType: string }> {
+  const { bucket } = getR2Config();
+  const response = await getR2Client().send(
+    new GetObjectCommand({
+      Bucket: bucket,
+      Key: key,
+    }),
+  );
+
+  if (!response.Body) {
+    throw new Error("Empty object body");
+  }
+
+  const bytes = await response.Body.transformToByteArray();
+  return {
+    body: bytes,
+    contentType: response.ContentType ?? "application/octet-stream",
+  };
 }

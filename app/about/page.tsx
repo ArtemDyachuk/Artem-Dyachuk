@@ -7,6 +7,7 @@ import TwoColumnBlock from "../components/2-column-block/TwoColumnBlock";
 import { resolvePortfolioSite } from "@/lib/portfolio/resolveSite";
 import { fetchPublicRoles } from "@/lib/portfolio/roles";
 import { fetchPublicProfile } from "@/lib/portfolio/profile";
+import { fetchPrimaryResume, primaryResumeDownloadFilename } from "@/lib/portfolio/resume";
 import { fetchPublicEducation } from "@/lib/portfolio/education";
 import { fetchPublicCertifications } from "@/lib/portfolio/certifications";
 import { fetchUserLanguages } from "@/lib/portfolio/languages";
@@ -164,15 +165,24 @@ export default async function About() {
   let education: PortfolioEducation[] = [];
   let certifications: PortfolioCertification[] = [];
   let languages: PortfolioLanguage[] = [];
+  let hasResume = false;
+  let resumeDownloadFilename: string | undefined;
 
   if (site.ok) {
-    const [rolesResult, profileResult, educationResult, certificationsResult, languagesResult] =
-      await Promise.allSettled([
+    const [
+      rolesResult,
+      profileResult,
+      educationResult,
+      certificationsResult,
+      languagesResult,
+      resumeResult,
+    ] = await Promise.allSettled([
       fetchPublicRoles(site.userId),
       fetchPublicProfile(site.userId),
       fetchPublicEducation(site.userId),
       fetchPublicCertifications(site.userId),
       fetchUserLanguages(site.userId),
+      fetchPrimaryResume(site.userId),
     ]);
 
     if (rolesResult.status === "fulfilled") roles = rolesResult.value;
@@ -180,6 +190,10 @@ export default async function About() {
     if (educationResult.status === "fulfilled") education = educationResult.value;
     if (certificationsResult.status === "fulfilled") certifications = certificationsResult.value;
     if (languagesResult.status === "fulfilled") languages = languagesResult.value;
+    if (resumeResult.status === "fulfilled") {
+      hasResume = resumeResult.value !== null;
+      resumeDownloadFilename = primaryResumeDownloadFilename(resumeResult.value);
+    }
   }
 
   // Prefer live data from the career database; fall back to bundled JSON so the
@@ -204,7 +218,8 @@ export default async function About() {
         name={fullName}
         intro={profile?.headline || aboutData.personalInfo.currentRole}
         location={aboutData.personalInfo.location}
-        showResumeButton={false}
+        showResumeButton={hasResume}
+        resumeDownloadFilename={resumeDownloadFilename}
         workHistory={workHistory}
       />
       <section className={styles.about}>

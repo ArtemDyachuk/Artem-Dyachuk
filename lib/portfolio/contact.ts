@@ -42,7 +42,11 @@ function contactFromJson(): PortfolioContact {
     }
   });
 
-  return { emails, phones, links };
+  return {
+    emails,
+    phones,
+    links: links.filter((link) => link.type !== "website"),
+  };
 }
 
 /**
@@ -68,7 +72,7 @@ export async function fetchPortfolioContact(): Promise<PortfolioContact> {
     return {
       emails: profile.emails,
       phones: profile.phones,
-      links: profile.links,
+      links: profile.links.filter((link) => link.type !== "website"),
     };
   } catch {
     return fallback;
