@@ -2,8 +2,7 @@ import "server-only";
 
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { getServerFirestore } from "@/lib/firebase-server";
-import { createPresignedDownloadUrl, isPublicCompanyLogoKey } from "@/lib/r2";
-import { isR2Configured } from "@/lib/r2Config";
+import { resolveCompanyLogoUrl } from "@/lib/r2";
 import type {
   PortfolioAchievement,
   PortfolioResponsibility,
@@ -39,19 +38,6 @@ async function resolveCompany(companyId: string): Promise<CompanyCacheEntry> {
 
   companyCache.set(companyId, entry);
   return entry;
-}
-
-async function resolveCompanyLogoUrl(logoR2Key: string | null): Promise<string | null> {
-  if (!logoR2Key || !isR2Configured() || !isPublicCompanyLogoKey(logoR2Key)) {
-    return null;
-  }
-
-  try {
-    const { downloadUrl } = await createPresignedDownloadUrl(logoR2Key);
-    return downloadUrl;
-  } catch {
-    return null;
-  }
 }
 
 function shouldShowResponsibilityOnPortfolio(raw: Record<string, unknown>): boolean {

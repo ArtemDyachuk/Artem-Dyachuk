@@ -2,6 +2,7 @@ import "server-only";
 
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { isLegacyPrivateCompanyLogoKey, isPublicAssetKey, publicAssetUrl } from "./publicAssets";
 import { getR2Config } from "./r2Config";
 
 const PRESIGN_TTL_SECONDS = 3600;
@@ -25,7 +26,7 @@ function getR2Client(): S3Client {
 }
 
 export function isPublicCompanyLogoKey(key: string): boolean {
-  return /^users\/[^/]+\/company-logos\//.test(key);
+  return isPublicAssetKey(key) || isLegacyPrivateCompanyLogoKey(key);
 }
 
 export function isPublicAvatarKey(key: string): boolean {
@@ -72,4 +73,22 @@ export async function getR2Object(
     body: bytes,
     contentType: response.ContentType ?? "application/octet-stream",
   };
+}
+
+/** Resolve a company logo to a stable public URL, or a short-lived signed URL for legacy keys. */
+export async function resolveCompanyLogoUrl(logoR2Key: string | null): Promise<string | null> {
+  if (!logoR2Key || !isPublicCompanyLogoKey(logoR2Key)) {
+    return null;
+  }
+
+  if (isPublicAssetKey(logoR2Key)) {
+    return publicAssetUrl(logoR2Key);
+  }
+
+  try {
+    const { downloadUrl } = await createPresignedDownloadUrl(logoR2Key);
+    return downloadUrl;
+  } catch {
+    return null;
+  }
 }

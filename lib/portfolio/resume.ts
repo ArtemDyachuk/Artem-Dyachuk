@@ -36,8 +36,9 @@ function isDocx(file: PrimaryResumeFile): boolean {
 }
 
 /**
- * Chooses the best downloadable file for the primary resume: PDF first, then
- * Word (.docx), then whatever is available.
+ * Chooses the downloadable file for the primary resume.
+ * resume-tailor mirrors only the public file (or a PDF-first fallback), so
+ * this usually receives a single entry; PDF still preferred if several remain.
  */
 export function pickBestResumeFile(files: PrimaryResumeFile[]): PrimaryResumeFile | null {
   return files.find(isPdf) ?? files.find(isDocx) ?? files[0] ?? null;
