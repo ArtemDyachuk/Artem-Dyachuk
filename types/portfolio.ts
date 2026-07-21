@@ -9,6 +9,8 @@ export type PortfolioAchievement = {
   title: string;
   description: string;
   date: string | null;
+  /** Drag order from resume-tailor; null for legacy items. */
+  sortOrder: number | null;
 };
 
 export type PortfolioSkill = {

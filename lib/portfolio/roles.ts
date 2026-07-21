@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { getServerFirestore } from "@/lib/firebase-server";
 import { resolveCompanyLogoUrl } from "@/lib/r2";
@@ -15,36 +16,27 @@ type CompanyCacheEntry = {
   logoR2Key: string | null;
 };
 
-const companyCache = new Map<string, CompanyCacheEntry>();
+/** Per-request only — process-lifetime Maps go stale after logo reuploads (key/ext changes). */
 const categoryNameCache = new Map<string, string | null>();
 
 function isPublicOnPortfolio(value: unknown): boolean {
   return value === true;
 }
 
-async function resolveCompany(companyId: string): Promise<CompanyCacheEntry> {
-  if (companyCache.has(companyId)) {
-    return companyCache.get(companyId)!;
-  }
-
+const resolveCompany = cache(async (companyId: string): Promise<CompanyCacheEntry> => {
   const db = getServerFirestore();
   const snap = await getDoc(doc(db, "companies", companyId));
   const data = snap.exists() ? snap.data() : null;
 
-  const entry: CompanyCacheEntry = {
+  return {
     name: data && typeof data.name === "string" ? data.name : null,
     logoR2Key: data && typeof data.logoR2Key === "string" ? data.logoR2Key : null,
   };
-
-  companyCache.set(companyId, entry);
-  return entry;
-}
+});
 
 function shouldShowResponsibilityOnPortfolio(raw: Record<string, unknown>): boolean {
-  if (raw.includeOnPortfolio === false) return false;
-  if (raw.includeOnPortfolio === true) return true;
-  // Role is already public — inherit resume-pool items unless explicitly hidden from portfolio.
-  return raw.includeInResume !== false;
+  // Match resume-tailor globe badge: only explicit includeOnPortfolio === true.
+  return raw.includeOnPortfolio === true;
 }
 
 function mapResponsibility(raw: Record<string, unknown>): PortfolioResponsibility | null {
@@ -179,6 +171,7 @@ function mapAchievement(id: string, raw: Record<string, unknown>): PortfolioAchi
     title,
     description,
     date: typeof raw.date === "string" ? raw.date : null,
+    sortOrder: typeof raw.sortOrder === "number" && Number.isFinite(raw.sortOrder) ? raw.sortOrder : null,
   };
 }
 
@@ -226,12 +219,17 @@ async function mapRole(id: string, raw: Record<string, unknown>): Promise<Portfo
   };
 }
 
+/** Match resume-tailor: sortOrder ascending, nulls last, then date desc. */
 function sortAchievements(items: PortfolioAchievement[]): PortfolioAchievement[] {
   return [...items].sort((left, right) => {
-    if (left.date && right.date) return right.date.localeCompare(left.date);
-    if (left.date) return -1;
-    if (right.date) return 1;
-    return left.title.localeCompare(right.title);
+    const leftOrder = left.sortOrder;
+    const rightOrder = right.sortOrder;
+    if (leftOrder != null && rightOrder != null && leftOrder !== rightOrder) {
+      return leftOrder - rightOrder;
+    }
+    if (leftOrder != null && rightOrder == null) return -1;
+    if (leftOrder == null && rightOrder != null) return 1;
+    return (right.date ?? "").localeCompare(left.date ?? "");
   });
 }
 
